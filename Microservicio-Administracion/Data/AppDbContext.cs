@@ -14,5 +14,15 @@ namespace Microservicio_Administracion.Data
         public DbSet<Tipo_Empleado> Tipos_Empleados { get; set; }
         public DbSet<Centro_Medico> Centros_Medicos { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Usuario>()
+                .HasOne(u => u.empleado)
+                .WithOne()
+                .HasForeignKey<Usuario>(u => u.empleadoId);
+
+        }
+
+
     }
 }

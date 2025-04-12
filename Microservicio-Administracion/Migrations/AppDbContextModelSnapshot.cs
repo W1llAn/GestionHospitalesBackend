@@ -47,15 +47,6 @@ namespace Microservicio_Administracion.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("Centro_MedicoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EspecialidadId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Tipo_EmpleadoId")
-                        .HasColumnType("int");
-
                     b.Property<string>("cedula")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -67,9 +58,8 @@ namespace Microservicio_Administracion.Migrations
                     b.Property<int>("id_centro_medico")
                         .HasColumnType("int");
 
-                    b.Property<string>("id_especialidad")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("id_especialidad")
+                        .HasColumnType("int");
 
                     b.Property<int>("id_tipo")
                         .HasColumnType("int");
@@ -86,12 +76,6 @@ namespace Microservicio_Administracion.Migrations
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Centro_MedicoId");
-
-                    b.HasIndex("EspecialidadId");
-
-                    b.HasIndex("Tipo_EmpleadoId");
 
                     b.ToTable("Empleados");
                 });
@@ -128,8 +112,9 @@ namespace Microservicio_Administracion.Migrations
 
             modelBuilder.Entity("Microservicio_Administracion.Models.Usuario", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
                     b.Property<string>("contraseña")
                         .IsRequired()
@@ -138,53 +123,23 @@ namespace Microservicio_Administracion.Migrations
                     b.Property<int>("empleadoId")
                         .HasColumnType("int");
 
-                    b.Property<string>("id_empleado")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<string>("nombre_usuario")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("empleadoId");
+                    b.HasIndex("empleadoId")
+                        .IsUnique();
 
                     b.ToTable("Usuarios");
-                });
-
-            modelBuilder.Entity("Microservicio_Administracion.Models.Empleado", b =>
-                {
-                    b.HasOne("Microservicio_Administracion.Models.Centro_Medico", "Centro_Medico")
-                        .WithMany()
-                        .HasForeignKey("Centro_MedicoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Microservicio_Administracion.Models.Especialidad", "Especialidad")
-                        .WithMany()
-                        .HasForeignKey("EspecialidadId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Microservicio_Administracion.Models.Tipo_Empleado", "Tipo_Empleado")
-                        .WithMany()
-                        .HasForeignKey("Tipo_EmpleadoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Centro_Medico");
-
-                    b.Navigation("Especialidad");
-
-                    b.Navigation("Tipo_Empleado");
                 });
 
             modelBuilder.Entity("Microservicio_Administracion.Models.Usuario", b =>
                 {
                     b.HasOne("Microservicio_Administracion.Models.Empleado", "empleado")
-                        .WithMany()
-                        .HasForeignKey("empleadoId")
+                        .WithOne()
+                        .HasForeignKey("Microservicio_Administracion.Models.Usuario", "empleadoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
