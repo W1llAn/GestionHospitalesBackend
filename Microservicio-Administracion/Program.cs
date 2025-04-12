@@ -1,4 +1,5 @@
 using Microservicio_Administracion.Data;
+using Microservicio_Administracion.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,41 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+//migracion
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate(); // <-- esto aplica las migraciones
+    if (!db.Especialidades.Any()){
+        db.Especialidades.Add(new Especialidad {Id=1, especialidad="Sin Especialidad"});
+        db.SaveChanges();
+    }
+    if (!db.Tipos_Empleados.Any())
+    {
+        db.Tipos_Empleados.Add(new Tipo_Empleado { Id = 1, tipo = "Administrador" });
+        db.SaveChanges();
+    }
+
+    if (!db.Centros_Medicos.Any())
+    {
+        db.Centros_Medicos.Add(new Centro_Medico { Id = 1, nombre = "Central",ciudad="Quito",direccion="direccion" });
+        db.SaveChanges();
+    }
+
+    if (!db.Empleados.Any())
+    {
+        db.Empleados.Add(new Empleado {Id=1, nombre = "admin", cedula = "01020304",id_especialidad=1,email="admin@admin.com",id_tipo=1,telefono="0123456789",id_centro_medico=1 });
+        db.SaveChanges();
+    }
+    if (!db.Usuarios.Any())
+    {
+        db.Usuarios.Add(new Usuario { Id = 1, nombre_usuario = "root",contraseña="1234",empleadoId=1 });
+        db.SaveChanges();
+    }
+}
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

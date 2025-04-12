@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Microservicio_Administracion.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250412154832_dbContext-creating")]
-    partial class dbContextcreating
+    [Migration("20250412174306_dtos-Usuarios")]
+    partial class dtosUsuarios
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
