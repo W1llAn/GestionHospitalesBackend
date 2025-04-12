@@ -20,6 +20,22 @@ namespace Microservicio_Administracion.Data
                 .HasOne(u => u.empleado)
                 .WithOne()
                 .HasForeignKey<Usuario>(u => u.empleadoId);
+            modelBuilder.Entity<Empleado>()
+                .HasOne(e => e.Centro_Medico)               
+                .WithMany()                 
+                .HasForeignKey(e => e.centro_medicoID);     
+
+            modelBuilder.Entity<Empleado>()
+                .HasOne(e => e.Especialidad)
+                .WithMany()
+                .HasForeignKey(e => e.especialidadID);
+
+            modelBuilder.Entity<Empleado>()
+                .HasOne(e => e.Tipo_Empleado)
+                .WithMany()
+                .HasForeignKey(e => e.tipo_empleadoID);
+
+
 
         }
 

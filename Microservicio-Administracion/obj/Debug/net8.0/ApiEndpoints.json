@@ -118,7 +118,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Microservicio_Administracion.Models.Empleado, Microservicio-Administracion, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Microservicio_Administracion.Models.EmpleadoDTOSeleccionar, Microservicio-Administracion, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -138,13 +138,13 @@
     "Parameters": [
       {
         "Name": "empleado",
-        "Type": "Microservicio_Administracion.Models.Empleado",
+        "Type": "Microservicio_Administracion.Models.EmpleadoDTOCrear",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "Microservicio_Administracion.Models.Empleado",
+        "Type": "Microservicio_Administracion.Models.EmpleadoDTOSeleccionar",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -170,7 +170,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Microservicio_Administracion.Models.Empleado",
+        "Type": "Microservicio_Administracion.Models.EmpleadoDTOSeleccionar",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -195,7 +195,7 @@
       },
       {
         "Name": "empleado",
-        "Type": "Microservicio_Administracion.Models.Empleado",
+        "Type": "Microservicio_Administracion.Models.EmpleadoDTOCrear",
         "IsRequired": true
       }
     ],

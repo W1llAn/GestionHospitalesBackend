@@ -23,36 +23,110 @@ namespace Microservicio_Administracion.Controllers
 
         // GET: api/Empleadoes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Empleado>>> GetEmpleados()
+        public async Task<ActionResult<IEnumerable<EmpleadoDTOSeleccionar>>> GetEmpleados()
         {
-            return await _context.Empleados.ToListAsync();
+            var empleados = await _context.Empleados
+                .Include(e=>e.Centro_Medico)
+                .Include(e => e.Especialidad)
+                .Include(e => e.Tipo_Empleado)
+                .ToListAsync();
+            var empleadosdto = empleados.Select(
+                e=> new EmpleadoDTOSeleccionar
+                {
+                    Id = e.Id,
+                    cedula = e.cedula,
+                    email = e.email,
+                    nombre = e.nombre,
+                    telefono = e.telefono,
+                    Centro_Medico=new Centro_Medico { 
+                        nombre=e.Centro_Medico.nombre,
+                        Id=e.Centro_Medico.Id,
+                        ciudad=e.Centro_Medico.ciudad,
+                        direccion = e.Centro_Medico.direccion
+                    },
+                    Especialidad=new Especialidad
+                    {
+                        Id=e.especialidadID,
+                        especialidad=e.Especialidad.especialidad
+                    },
+                    Tipo_Empleado=new Tipo_Empleado { 
+                        Id=e.tipo_empleadoID,
+                        tipo=e.Tipo_Empleado.tipo
+                    },
+                    salario = e.salario
+                }
+                );
+            return Ok(empleadosdto);
         }
 
         // GET: api/Empleadoes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Empleado>> GetEmpleado(int id)
+        public async Task<ActionResult<EmpleadoDTOSeleccionar>> GetEmpleado(int id)
         {
-            var empleado = await _context.Empleados.FindAsync(id);
+            var e = await _context.Empleados
+                .Include(e => e.Centro_Medico)
+                .Include(e => e.Especialidad)
+                .Include(e => e.Tipo_Empleado)
+                .FirstOrDefaultAsync(e=>e.Id==id);
 
-            if (empleado == null)
+            if (e == null)
             {
                 return NotFound();
             }
 
-            return empleado;
+            var empleadoDTO = new EmpleadoDTOSeleccionar
+            {
+                Id = e.Id,
+                cedula = e.cedula,
+                email = e.email,
+                nombre = e.nombre,
+                telefono = e.telefono,
+                Centro_Medico = new Centro_Medico
+                {
+                    nombre = e.Centro_Medico.nombre,
+                    Id = e.Centro_Medico.Id,
+                    ciudad = e.Centro_Medico.ciudad,
+                    direccion = e.Centro_Medico.direccion
+                },
+                Especialidad = new Especialidad
+                {
+                    Id = e.especialidadID,
+                    especialidad = e.Especialidad.especialidad
+                },
+                Tipo_Empleado = new Tipo_Empleado
+                {
+                    Id = e.tipo_empleadoID,
+                    tipo = e.Tipo_Empleado.tipo
+                },
+                salario = e.salario
+            };
+
+            return empleadoDTO;
         }
 
         // PUT: api/Empleadoes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmpleado(int id, Empleado empleado)
+        public async Task<IActionResult> PutEmpleado(int id, EmpleadoDTOCrear empleado)
         {
             if (id != empleado.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(empleado).State = EntityState.Modified;
+            var empleadoModificar = new EmpleadoDTOCrear {
+                Id = empleado.Id,
+                cedula = empleado.cedula,
+                email = empleado.email,
+                nombre = empleado.nombre,
+                telefono = empleado.telefono,
+                salario= empleado.salario,
+                centro_medicoID=empleado.centro_medicoID,
+                especialidadID = empleado.especialidadID,
+                tipo_empleadoID = empleado.tipo_empleadoID
+            };
+
+            _context.Entry(empleadoModificar).State = EntityState.Modified;
 
             try
             {
@@ -76,9 +150,21 @@ namespace Microservicio_Administracion.Controllers
         // POST: api/Empleadoes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Empleado>> PostEmpleado(Empleado empleado)
+        public async Task<ActionResult<EmpleadoDTOSeleccionar>> PostEmpleado(EmpleadoDTOCrear empleado)
         {
-            _context.Empleados.Add(empleado);
+            var empleadocrear = new Empleado
+            {
+                Id = empleado.Id,
+                cedula = empleado.cedula,
+                email = empleado.email,
+                nombre = empleado.nombre,
+                telefono = empleado.telefono,
+                salario = empleado.salario,
+                centro_medicoID = empleado.centro_medicoID,
+                especialidadID = empleado.especialidadID,
+                tipo_empleadoID = empleado.tipo_empleadoID
+            };
+            _context.Empleados.Add(empleadocrear);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetEmpleado", new { id = empleado.Id }, empleado);

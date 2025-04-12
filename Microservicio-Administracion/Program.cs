@@ -43,7 +43,7 @@ using (var scope = app.Services.CreateScope())
 
     if (!db.Empleados.Any())
     {
-        db.Empleados.Add(new Empleado {Id=1, nombre = "admin", cedula = "01020304",id_especialidad=1,email="admin@admin.com",id_tipo=1,telefono="0123456789",id_centro_medico=1 });
+        db.Empleados.Add(new Empleado {Id=1, nombre = "admin", cedula = "01020304",especialidadID=1,email="admin@admin.com",tipo_empleadoID=1,telefono="0123456789",centro_medicoID=1 });
         db.SaveChanges();
     }
     if (!db.Usuarios.Any())
