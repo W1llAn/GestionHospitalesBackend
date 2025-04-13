@@ -39,6 +39,5 @@ namespace Microservicio_Administracion.Data
 
         }
 
-
     }
 }

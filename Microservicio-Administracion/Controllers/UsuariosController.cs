@@ -26,7 +26,12 @@ namespace Microservicio_Administracion.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UsuarioDTOSeleccionar>>> GetUsuarios()
         {
-            var usuarios = await _context.Usuarios.Include(u=>u.empleado).ToListAsync();
+            var usuarios = await _context.Usuarios
+                .Include(u=>u.empleado)
+                .Include(u => u.empleado.Centro_Medico)
+                .Include(u => u.empleado.Tipo_Empleado)
+                .Include(u => u.empleado.Especialidad)
+                .ToListAsync();
             var dto = usuarios.Select(
                 u=> new UsuarioDTOSeleccionar
                 {
@@ -51,7 +56,10 @@ namespace Microservicio_Administracion.Controllers
         {
             var usuario = await _context.Usuarios
                 .Include(u => u.empleado)
-        .FirstOrDefaultAsync(u => u.Id == id);
+                .Include(u => u.empleado.Centro_Medico)
+                .Include(u => u.empleado.Tipo_Empleado)
+                .Include(u => u.empleado.Especialidad)
+                .FirstOrDefaultAsync(u => u.Id == id);
 
             if (usuario == null)
             {
