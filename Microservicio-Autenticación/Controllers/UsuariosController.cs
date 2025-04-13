@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Grpc.Net.Client;
 using Microservicio_Administracion.Protos;
+using Microservicio_Autenticación.Auth;
 
 
 namespace Microservicio_Autenticación.Controllers
@@ -25,7 +26,7 @@ namespace Microservicio_Autenticación.Controllers
         // POST: api/Usuarios
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<UsuarioLoginRespuesta>> PostUsuario(UsuarioLogin usuario)
+        public async Task<ActionResult<String>> PostUsuario(UsuarioLogin usuario)
         {
 
             using var canal = GrpcChannel.ForAddress(_config["grcp:administracion"]);
@@ -37,7 +38,14 @@ namespace Microservicio_Autenticación.Controllers
              Contrasenia=usuario.Contrasenia
             });
 
-            return respuesta;
+            if (!respuesta.EsValido && respuesta.Usuario==null)
+            {
+                return BadRequest();
+            }
+            var TokenProvider = new TokenProvider(_config);
+
+            var Token=TokenProvider.Create(respuesta.Usuario);
+            return Token;
         }
     }
 }

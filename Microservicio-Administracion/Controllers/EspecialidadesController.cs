@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microservicio_Administracion.Data;
 using Microservicio_Administracion.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Microservicio_Administracion.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize(Policy = "TipoEmpleadoPolitica")]
     [ApiController]
     public class EspecialidadesController : ControllerBase
     {

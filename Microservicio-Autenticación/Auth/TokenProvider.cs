@@ -1,4 +1,4 @@
-﻿using Microservicio_Autenticación.Models;
+﻿using Microservicio_Administracion.Protos;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
@@ -17,9 +17,9 @@ namespace Microservicio_Autenticación.Auth
             {
                 Subject = new ClaimsIdentity(new[] {
                 new Claim(JwtRegisteredClaimNames.Sub,usuario.Id.ToString()),
-                new Claim(JwtRegisteredClaimNames.UniqueName,usuario.nombre_usuario.ToString()),
-                new Claim("TipoEmpleado",usuario.empleado.Tipo_Empleado.tipo.ToString()),
-                new Claim("CentroMedico",usuario.empleado.Centro_Medico.nombre.ToString())
+                new Claim(JwtRegisteredClaimNames.UniqueName,usuario.NombreUsuario.ToString()),
+                new Claim("TipoEmpleado",usuario.Empleado.TipoEmpleado.Tipo.ToString()),
+                new Claim("CentroMedico",usuario.Empleado.CentroMedico.Nombre.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddMinutes(configuration.GetValue<int>("Jwt:TiempoExpira")),
                 SigningCredentials = credentials,
