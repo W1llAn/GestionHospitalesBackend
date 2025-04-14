@@ -31,6 +31,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+// Aplicar migraciones automáticamente al iniciar
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<DataContext>();
+    dbContext.Database.Migrate(); // Esto aplica las migraciones pendientes
+}
 
 app.UseHttpsRedirection();
 
