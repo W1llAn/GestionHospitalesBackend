@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option csharp_namespace = "Microservicio_ConsultasMedicas.Protos";
+
+package paciente;
+
+message PacienteModel {
+  int32 id_paciente = 1;
+  string nombre = 2;
+  string cedula = 3;
+  string fecha_nacimiento = 4;
+  string telefono = 5;
+  string direccion = 6;
+}
+
+message GetPacienteRequest {
+  int32 id_paciente = 1;
+}
+
+message GetPacienteResponse {
+  PacienteModel paciente = 1;
+}
+
+message CrearPacienteRequest {
+  PacienteModel paciente = 1;
+}
+
+message CrearPacienteResponse {
+  PacienteModel paciente = 1;
+}
+
+service PacienteService {
+  rpc GetPaciente(GetPacienteRequest) returns (GetPacienteResponse);
+  rpc CrearPaciente(CrearPacienteRequest) returns (CrearPacienteResponse);
+}

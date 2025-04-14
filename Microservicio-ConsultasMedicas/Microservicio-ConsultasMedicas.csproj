@@ -14,5 +14,8 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
+  <ItemGroup>
+  <Protobuf Include="Protos\paciente.proto" GrpcServices="Server" />
+</ItemGroup>
 
 </Project>
