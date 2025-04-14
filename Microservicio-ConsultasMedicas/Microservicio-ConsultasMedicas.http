@@ -1,0 +1,6 @@
+@Microservicio_ConsultasMedicas_HostAddress = http://localhost:5268
+
+GET {{Microservicio_ConsultasMedicas_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

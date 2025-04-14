@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "EEL1iA292xg835uSSLpB8V17kZc2fc2Q71U3dEUkSlM=",
+  "Source": "Microservicio-ConsultasMedicas",
+  "BasePath": "_content/Microservicio-ConsultasMedicas",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

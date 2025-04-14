@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("Microservicio-Administracion")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("Microservicio-ConsultasMedicas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8d9e5046acb3d9934f22f20364244a63546f8c99")]
-[assembly: System.Reflection.AssemblyProductAttribute("Microservicio-Administracion")]
-[assembly: System.Reflection.AssemblyTitleAttribute("Microservicio-Administracion")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+538e0dbb37366de4e579d7b979a09b3a301f3859")]
+[assembly: System.Reflection.AssemblyProductAttribute("Microservicio-ConsultasMedicas")]
+[assembly: System.Reflection.AssemblyTitleAttribute("Microservicio-ConsultasMedicas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Generado por la clase WriteCodeFragment de MSBuild.
