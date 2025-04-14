@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Microservicio-ConsultasMedicas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+190a0a2a0692bf0b1758151190c008b18a4e26b0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f49be90d28ef9dd0719811259e6dcd0ee956b99b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Microservicio-ConsultasMedicas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Microservicio-ConsultasMedicas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
