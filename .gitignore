@@ -1,1 +1,11 @@
 Microservicio-Administracion/.vs/
+Microservicio-Administracion/bin/
+Microservicio-Administracion/obj/
+
+Microservicio-Autenticación/.vs/
+Microservicio-Autenticación/bin/
+Microservicio-Autenticación/obj/
+Microservicio-Administracion/obj/Debug/net8.0/Microservicio-Administracion.AssemblyInfo.cs
+Microservicio-Administracion/obj/Debug/net8.0/Microservicio-Administracion.AssemblyInfoInputs.cache
+Microservicio-Administracion/obj/Debug/net8.0/Microservicio-Administracion.AssemblyInfo.cs
+Microservicio-Administracion/obj/Debug/net8.0/Microservicio-Administracion.AssemblyInfoInputs.cache
