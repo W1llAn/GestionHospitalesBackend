@@ -9,5 +9,4 @@ Microservicio-Administracion/obj/Debug/net8.0/Microservicio-Administracion.Assem
 Microservicio-Administracion/obj/Debug/net8.0/Microservicio-Administracion.AssemblyInfoInputs.cache
 Microservicio-Administracion/obj/Debug/net8.0/Microservicio-Administracion.AssemblyInfo.cs
 Microservicio-Administracion/obj/Debug/net8.0/Microservicio-Administracion.AssemblyInfoInputs.cache
-*.dbmdl
-*.jfm
+.vs/
