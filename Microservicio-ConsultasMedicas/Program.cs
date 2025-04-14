@@ -1,6 +1,8 @@
+using Microservicio_ConsultasMedicas;
 using Microservicio_ConsultasMedicas.Data;
 using Microservicio_ConsultasMedicas.Models;
 using Microservicio_ConsultasMedicas.Protos;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +11,7 @@ var connectionString = builder.Configuration.GetConnectionString("HospitalConnec
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 // Add services to the container.
+
 builder.Services.AddGrpc();
 
 

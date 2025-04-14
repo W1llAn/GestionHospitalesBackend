@@ -18,7 +18,7 @@ namespace Microservicio_ConsultasMedicas
         public override async Task<GetPacienteResponse> GetPaciente(GetPacienteRequest request, ServerCallContext context)
         {
             var paciente = await _context.Paciente.FirstOrDefaultAsync(p => p.id_paciente == request.IdPaciente);
-
+            
             if (paciente == null)
             {
                 throw new RpcException(new Status(StatusCode.NotFound, "Paciente no encontrado"));
@@ -33,10 +33,10 @@ namespace Microservicio_ConsultasMedicas
                 Telefono = paciente.telefono,
                 Direccion = paciente.direccion
             };
-
+        
             return new GetPacienteResponse { Paciente = pacienteModel };
         }
-
+        
         public override async Task<CrearPacienteResponse> CrearPaciente(CrearPacienteRequest request, ServerCallContext context)
         {
             if (!DateOnly.TryParse(request.Paciente.FechaNacimiento, out var fechaNacimiento))

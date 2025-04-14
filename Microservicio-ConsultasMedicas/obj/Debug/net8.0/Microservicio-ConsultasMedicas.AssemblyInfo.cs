@@ -11,11 +11,10 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("98cfe050-c638-4e44-b708-81b21c702a52")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Microservicio-ConsultasMedicas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fa3767f0ede64b33195a044c2ebc60d4de450082")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+538e0dbb37366de4e579d7b979a09b3a301f3859")]
 [assembly: System.Reflection.AssemblyProductAttribute("Microservicio-ConsultasMedicas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Microservicio-ConsultasMedicas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
