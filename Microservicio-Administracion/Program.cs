@@ -150,6 +150,8 @@ app.UseHttpsRedirection();
 
 app.MapGrpcService<UsuarioServiceImpl>();
 
+app.MapGrpcService<AdministracionServiceImpl>();
+
 app.UseAuthorization();
 
 app.MapControllers();
