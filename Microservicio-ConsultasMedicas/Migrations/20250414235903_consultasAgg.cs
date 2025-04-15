@@ -10,11 +10,11 @@ namespace Microservicio_Administracion.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
+            _ = migrationBuilder.DropColumn(
                 name: "id_empleado",
                 table: "ConsultasMedicas");
 
-            migrationBuilder.DropColumn(
+            _ = migrationBuilder.DropColumn(
                 name: "id_paciente",
                 table: "ConsultasMedicas");
         }
@@ -22,14 +22,14 @@ namespace Microservicio_Administracion.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
+            _ = migrationBuilder.AddColumn<int>(
                 name: "id_empleado",
                 table: "ConsultasMedicas",
                 type: "int",
                 nullable: false,
                 defaultValue: 0);
 
-            migrationBuilder.AddColumn<int>(
+            _ = migrationBuilder.AddColumn<int>(
                 name: "id_paciente",
                 table: "ConsultasMedicas",
                 type: "int",

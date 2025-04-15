@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -12,10 +11,10 @@ namespace Microservicio_Administracion.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterDatabase()
+            _ = migrationBuilder.AlterDatabase()
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "Paciente",
                 columns: table => new
                 {
@@ -33,7 +32,7 @@ namespace Microservicio_Administracion.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Paciente", x => x.id_paciente);
+                    _ = table.PrimaryKey("PK_Paciente", x => x.id_paciente);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
         }
@@ -41,7 +40,7 @@ namespace Microservicio_Administracion.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "Paciente");
         }
     }

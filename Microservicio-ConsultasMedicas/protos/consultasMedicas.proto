@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option csharp_namespace = "ConsultasMedicas"; // Ajusta el namespace para que sea más específico
+
+// Importamos los protos necesarios
+import "paciente.proto"; // Para el mensaje PacienteModel
+import "AdministracionService.proto"; // Para el mensaje Empleado y sus relaciones
+
+// Mensaje para una consulta médica
+message Consulta {
+    int32 id_consulta_medica = 1;
+    string fecha = 2;
+    string hora = 3;
+    string motivo = 4;
+    string diagnostico = 5;
+    string tratamiento = 6;
+    
+    // Relaciones con Empleado (médico) y Paciente
+    Empleado empleado = 7; // Viene del microservicio de administración
+    PacienteModel paciente = 8; // Viene del microservicio de consultas
+}
+
+// Solicitud para buscar consulta por cédula del paciente
+message ConsultaCedulaRequest {
+    string cedula = 1;
+}
+
+// Respuesta para una lista de consultas (puedes usarlo para reportes)
+message ConsultaList {
+    repeated Consulta consultas = 1;
+}
+
+// Definimos el servicio
+service ConsultasService {
+    // Obtener una consulta por cédula del paciente
+    rpc GetConsultaCedula(ConsultaCedulaRequest) returns (Consulta);
+
+    // Opcional: para reportes de consultas médicas
+    rpc GetConsultasReporte(ConsultaCedulaRequest) returns (ConsultaList);
+}

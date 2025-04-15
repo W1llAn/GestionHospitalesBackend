@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Microservicio_ConsultasMedicas.Controllers
+namespace Microservicio_Administracion.Controllers
 {
     [ApiController]
     [Route("[controller]")]

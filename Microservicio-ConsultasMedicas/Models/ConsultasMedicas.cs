@@ -1,6 +1,5 @@
-﻿using Microservicio_ConsultasMedicas.Models;
+﻿using Microservicio_Administracion.Administracion;
 using System.ComponentModel.DataAnnotations;
-using Microservicio_Administracion.Protos;
 namespace Microservicio_Administracion.Models
 
 {
@@ -9,15 +8,12 @@ namespace Microservicio_Administracion.Models
         [Key]
         public required int id_consulta_medica { set; get; }
         public required DateOnly fecha { set; get; }
-        public required string  hora { set; get; }
+        public required string hora { set; get; }
         public required string motivo { set; get; }
         public required string diagnostico { set; get; }
         public required string tratamiento { set; get; }
 
-        public Empleado empleado { get; set; }
-        public Paciente paciente { set; get; }
-
-
-
+        public required Empleado empleado { get; set; }
+        public required Paciente paciente { set; get; }
     }
 }

@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microservicio_ConsultasMedicas.Data;
-using Microservicio_ConsultasMedicas.Models;
+﻿using Microservicio_Administracion.Data;
+using Microservicio_Administracion.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace Microservicio_ConsultasMedicas.Controllers
+namespace Microservicio_Administracion.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -25,19 +25,16 @@ namespace Microservicio_ConsultasMedicas.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Paciente>> GetPaciente(int id)
         {
-            var paciente = await _context.Paciente.FindAsync(id);
+            Paciente? paciente = await _context.Paciente.FindAsync(id);
 
-            if (paciente == null)
-                return NotFound();
-
-            return paciente;
+            return paciente == null ? (ActionResult<Paciente>)NotFound() : (ActionResult<Paciente>)paciente;
         }
 
         [HttpPost]
         public async Task<ActionResult<Paciente>> PostPaciente(Paciente paciente)
         {
-            _context.Paciente.Add(paciente);
-            await _context.SaveChangesAsync();
+            _ = _context.Paciente.Add(paciente);
+            _ = await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetPaciente), new { id = paciente.id_paciente }, paciente);
         }
@@ -46,10 +43,12 @@ namespace Microservicio_ConsultasMedicas.Controllers
         public async Task<IActionResult> PutPaciente(int id, Paciente paciente)
         {
             if (id != paciente.id_paciente)
+            {
                 return BadRequest();
+            }
 
             _context.Entry(paciente).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            _ = await _context.SaveChangesAsync();
 
             return NoContent();
         }
@@ -57,12 +56,14 @@ namespace Microservicio_ConsultasMedicas.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePaciente(int id)
         {
-            var paciente = await _context.Paciente.FindAsync(id);
+            Paciente? paciente = await _context.Paciente.FindAsync(id);
             if (paciente == null)
+            {
                 return NotFound();
+            }
 
-            _context.Paciente.Remove(paciente);
-            await _context.SaveChangesAsync();
+            _ = _context.Paciente.Remove(paciente);
+            _ = await _context.SaveChangesAsync();
 
             return NoContent();
         }

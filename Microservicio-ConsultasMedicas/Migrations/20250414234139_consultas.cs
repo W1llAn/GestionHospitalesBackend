@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -12,7 +11,7 @@ namespace Microservicio_Administracion.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "Centro_Medico",
                 columns: table => new
                 {
@@ -27,11 +26,11 @@ namespace Microservicio_Administracion.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Centro_Medico", x => x.Id);
+                    _ = table.PrimaryKey("PK_Centro_Medico", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "Especialidad",
                 columns: table => new
                 {
@@ -42,11 +41,11 @@ namespace Microservicio_Administracion.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Especialidad", x => x.Id);
+                    _ = table.PrimaryKey("PK_Especialidad", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "Tipo_Empleado",
                 columns: table => new
                 {
@@ -57,11 +56,11 @@ namespace Microservicio_Administracion.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tipo_Empleado", x => x.Id);
+                    _ = table.PrimaryKey("PK_Tipo_Empleado", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "Empleado",
                 columns: table => new
                 {
@@ -82,20 +81,20 @@ namespace Microservicio_Administracion.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Empleado", x => x.Id);
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_Empleado", x => x.Id);
+                    _ = table.ForeignKey(
                         name: "FK_Empleado_Centro_Medico_CentroMedicoID",
                         column: x => x.CentroMedicoID,
                         principalTable: "Centro_Medico",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
+                    _ = table.ForeignKey(
                         name: "FK_Empleado_Especialidad_EspecialidadID",
                         column: x => x.EspecialidadID,
                         principalTable: "Especialidad",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
+                    _ = table.ForeignKey(
                         name: "FK_Empleado_Tipo_Empleado_TipoEmpleadoID",
                         column: x => x.TipoEmpleadoID,
                         principalTable: "Tipo_Empleado",
@@ -104,7 +103,7 @@ namespace Microservicio_Administracion.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "ConsultasMedicas",
                 columns: table => new
                 {
@@ -126,14 +125,14 @@ namespace Microservicio_Administracion.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ConsultasMedicas", x => x.id_consulta_medica);
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_ConsultasMedicas", x => x.id_consulta_medica);
+                    _ = table.ForeignKey(
                         name: "FK_ConsultasMedicas_Empleado_empleadoId",
                         column: x => x.empleadoId,
                         principalTable: "Empleado",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
+                    _ = table.ForeignKey(
                         name: "FK_ConsultasMedicas_Paciente_pacienteid_paciente",
                         column: x => x.pacienteid_paciente,
                         principalTable: "Paciente",
@@ -142,27 +141,27 @@ namespace Microservicio_Administracion.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_ConsultasMedicas_empleadoId",
                 table: "ConsultasMedicas",
                 column: "empleadoId");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_ConsultasMedicas_pacienteid_paciente",
                 table: "ConsultasMedicas",
                 column: "pacienteid_paciente");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_Empleado_CentroMedicoID",
                 table: "Empleado",
                 column: "CentroMedicoID");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_Empleado_EspecialidadID",
                 table: "Empleado",
                 column: "EspecialidadID");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_Empleado_TipoEmpleadoID",
                 table: "Empleado",
                 column: "TipoEmpleadoID");
@@ -171,19 +170,19 @@ namespace Microservicio_Administracion.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "ConsultasMedicas");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "Empleado");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "Centro_Medico");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "Especialidad");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "Tipo_Empleado");
         }
     }

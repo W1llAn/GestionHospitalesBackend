@@ -1,26 +1,18 @@
 syntax = "proto3";
 
-option csharp_namespace = "Microservicio_Administracion.Protos";
+option csharp_namespace = "Microservicio_Administracion.Administracion";
 
-service UsuarioService{
-	rpc ValidarUsuario (UsuarioLogin) returns (UsuarioLoginRespuesta);
-}
-message UsuarioLogin {
-  string nombre_usuario = 1;
-  string contrasenia = 2;
-}
-message UsuarioLoginRespuesta {
-  bool EsValido = 1;
-  Usuario Usuario = 2;
+package Admin;
+
+service AdministracionService{
+	rpc GetEmpleado (EmpleadoGet) returns (Empleado);
 }
 
-message Usuario{
- int32 Id=1;
- string nombre_usuario=2;
- string contrasenia=3;
- int32 empleadoId=4;
- Empleado empleado=5;
+
+message EmpleadoGet{
+    int32 Id=1;
 }
+
 message Empleado{
 	    int32 Id=1;
         int32 centro_medicoID=2;

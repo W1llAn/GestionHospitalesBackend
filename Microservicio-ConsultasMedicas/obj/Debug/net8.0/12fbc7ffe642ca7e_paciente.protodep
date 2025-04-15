@@ -1,2 +1,2 @@
-obj\Debug\net8.0\protos/Paciente.cs \
-obj\Debug\net8.0\protos/PacienteGrpc.cs: protos/paciente.proto
+obj\Debug\net8.0\Protos/Paciente.cs \
+obj\Debug\net8.0\Protos/PacienteGrpc.cs: Protos/paciente.proto

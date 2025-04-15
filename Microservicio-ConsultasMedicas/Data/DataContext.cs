@@ -1,7 +1,7 @@
-﻿using Microservicio_ConsultasMedicas.Models;
+﻿using Microservicio_Administracion.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Microservicio_ConsultasMedicas.Data
+namespace Microservicio_Administracion.Data
 {
     public class DataContext : DbContext
     {
