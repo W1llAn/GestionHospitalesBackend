@@ -1,5 +1,6 @@
 ﻿using Grpc.Core;
 using Microservicio_Administracion.Data;
+using Microservicio_Administracion.Models;
 using Microservicio_ConsultasMedicas.Protos;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,0 +1,4 @@
+obj\Debug\net8.0\Protos/ConsultasMedicas.cs \
+obj\Debug\net8.0\Protos/ConsultasMedicasGrpc.cs: Protos/paciente.proto\
+ Protos/AdministracionService.proto\
+ Protos/consultasMedicas.proto
