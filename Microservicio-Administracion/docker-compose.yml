@@ -6,7 +6,7 @@ services:
     container_name: mariadb-dev
     environment:
       MARIADB_ROOT_PASSWORD: 200232
-      MARIADB_DATABASE: admin
+      MARIADB_DATABASE: hospital
     ports:
       - "3307:3306"
     volumes:
