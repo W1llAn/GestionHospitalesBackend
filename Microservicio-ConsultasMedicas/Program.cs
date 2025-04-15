@@ -9,6 +9,7 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 // Add services to the container.
 
+
 builder.Services.AddGrpc();
 
 
@@ -20,6 +21,8 @@ builder.Services.AddSwaggerGen();
 WebApplication app = builder.Build();
 
 app.MapGrpcService<PacienteServiceImpl>();
+app.MapGrpcService<ConsultasServiceImpl>();
+
 app.MapGet("/", () => "Comunicacion a trav�s de GRPC");
 
 // Configure the HTTP request pipeline.
@@ -27,12 +30,6 @@ if (app.Environment.IsDevelopment())
 {
     _ = app.UseSwagger();
     _ = app.UseSwaggerUI();
-}
-// Aplicar migraciones autom�ticamente al iniciar
-using (IServiceScope scope = app.Services.CreateScope())
-{
-    DataContext dbContext = scope.ServiceProvider.GetRequiredService<DataContext>();
-    dbContext.Database.Migrate(); // Esto aplica las migraciones pendientes
 }
 
 app.UseHttpsRedirection();

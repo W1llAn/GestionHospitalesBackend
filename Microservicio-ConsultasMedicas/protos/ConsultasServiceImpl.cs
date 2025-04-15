@@ -2,7 +2,7 @@
 using Grpc.Net.Client;
 using Microservicio_Administracion.Data;
 using Microsoft.EntityFrameworkCore;
-using ConsultasMedicas.Protos;
+using ConsultasMedicas;
 using Microservicio_Administracion.Administracion;
 using Microservicio_Administracion.Models;
 using Microservicio_ConsultasMedicas.Protos;
@@ -45,7 +45,7 @@ namespace Microservicio_Administracion.protos
             var empleadoRequest = new EmpleadoGet { Id = consulta.id_empleado };
             using var canal = GrpcChannel.ForAddress(_config["grcp:administracion"]);
             var cliente = new AdministracionService.AdministracionServiceClient(canal);
-            var empleadoResponse = await cliente.GetEmpleado(empleadoRequest);
+            var empleadoResponse = await cliente.GetEmpleadoAsync(new EmpleadoGet { Id = consulta.id_empleado });
 
             if (empleadoResponse == null)
             {

@@ -13,7 +13,7 @@ namespace Microservicio_Administracion.Models
         public required string diagnostico { set; get; }
         public required string tratamiento { set; get; }
 
-        public required Empleado empleado { get; set; }
+        public required int id_empleado { get; set; }
         public required Paciente paciente { set; get; }
     }
 }
