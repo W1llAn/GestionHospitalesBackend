@@ -1,14 +1,14 @@
 ﻿using Grpc.Core;
 using Grpc.Net.Client;
-using Microservicio_Administracion.Data;
+using Microservicio_ConsultasMedicas.Data;
 using Microsoft.EntityFrameworkCore;
 using ConsultasMedicas;
 using Microservicio_Administracion.Administracion;
-using Microservicio_Administracion.Models;
+using Microservicio_ConsultasMedicas.Models;
 using Microservicio_ConsultasMedicas.Protos;
 
 
-namespace Microservicio_Administracion.protos
+namespace Microservicio_ConsultasMedicas.protos
 {
     public class ConsultasServiceImpl : ConsultasService.ConsultasServiceBase
     {

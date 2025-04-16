@@ -1,5 +1,5 @@
-using Microservicio_Administracion.Data;
-using Microservicio_Administracion.protos;
+using Microservicio_ConsultasMedicas.Data;
+using Microservicio_ConsultasMedicas.protos;
 using Microsoft.EntityFrameworkCore;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Microservicio_Administracion.Models
+namespace Microservicio_ConsultasMedicas.Models
 {
     public class Paciente
     {

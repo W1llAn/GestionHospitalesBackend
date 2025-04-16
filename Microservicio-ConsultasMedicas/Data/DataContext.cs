@@ -1,7 +1,7 @@
-﻿using Microservicio_Administracion.Models;
+﻿using Microservicio_ConsultasMedicas.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Microservicio_Administracion.Data
+namespace Microservicio_ConsultasMedicas.Data
 {
     public class DataContext : DbContext
     {
@@ -9,7 +9,7 @@ namespace Microservicio_Administracion.Data
             : base(options)
         {
         }
-        public DbSet<Microservicio_Administracion.Models.ConsultasMedicasEntity> ConsultasMedicas{ get; set; }
+        public DbSet<Microservicio_ConsultasMedicas.Models.ConsultasMedicasEntity> ConsultasMedicas{ get; set; }
         public DbSet<Paciente> Paciente { get; set; }
     }
 }

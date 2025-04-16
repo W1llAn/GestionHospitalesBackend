@@ -1,9 +1,9 @@
-﻿using Microservicio_Administracion.Data;
-using Microservicio_Administracion.Models;
+﻿using Microservicio_ConsultasMedicas.Data;
+using Microservicio_ConsultasMedicas.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace Microservicio_Administracion.Controllers
+namespace Microservicio_ConsultasMedicas.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

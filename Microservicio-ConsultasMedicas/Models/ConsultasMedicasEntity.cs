@@ -1,7 +1,7 @@
-﻿using Microservicio_Administracion.Administracion;
+﻿
 using System.ComponentModel.DataAnnotations;
 
-namespace Microservicio_Administracion.Models
+namespace Microservicio_ConsultasMedicas.Models
 {
     public class ConsultasMedicasEntity
     {

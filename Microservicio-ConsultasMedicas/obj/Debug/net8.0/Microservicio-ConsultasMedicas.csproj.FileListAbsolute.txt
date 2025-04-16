@@ -246,7 +246,6 @@ C:\Users\William\Documents\6° Semestre\Aplicaciones Distribuidas\1Parcial\Exame
 C:\Users\William\Documents\6° Semestre\Aplicaciones Distribuidas\1Parcial\Examen\GestionHospitalesBackend\Microservicio-ConsultasMedicas\obj\Debug\net8.0\Microservicio-ConsultasMedicas.pdb
 C:\Users\William\Documents\6° Semestre\Aplicaciones Distribuidas\1Parcial\Examen\GestionHospitalesBackend\Microservicio-ConsultasMedicas\obj\Debug\net8.0\Microservicio-ConsultasMedicas.genruntimeconfig.cache
 C:\Users\William\Documents\6° Semestre\Aplicaciones Distribuidas\1Parcial\Examen\GestionHospitalesBackend\Microservicio-ConsultasMedicas\obj\Debug\net8.0\ref\Microservicio-ConsultasMedicas.dll
-C:\Users\William\Documents\6° Semestre\Aplicaciones Distribuidas\1Parcial\Examen\GestionHospitalesBackend\Microservicio-ConsultasMedicas\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\ASUS\Desktop\sexto\APD\Examen\Back\GestionHospitalesBackend\Microservicio-ConsultasMedicas\obj\Debug\net8.0\Microservicio-ConsultasMedicas.csproj.AssemblyReference.cache
 C:\Users\ASUS\Desktop\sexto\APD\Examen\Back\GestionHospitalesBackend\Microservicio-ConsultasMedicas\obj\Debug\net8.0\Microservicio-ConsultasMedicas.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\User\git\GestionHospitalesBackend\Microservicio-ConsultasMedicas\obj\Debug\net8.0\Microservicio-ConsultasMedicas.csproj.AssemblyReference.cache
@@ -744,3 +743,4 @@ C:\Users\ASUS\Desktop\sexto\APD\Examen\Back2\GestionHospitalesBackend\Microservi
 C:\Users\ASUS\Desktop\sexto\APD\Examen\Back2\GestionHospitalesBackend\Microservicio-ConsultasMedicas\obj\Debug\net8.0\Microservicio-ConsultasMedicas.pdb
 C:\Users\ASUS\Desktop\sexto\APD\Examen\Back2\GestionHospitalesBackend\Microservicio-ConsultasMedicas\obj\Debug\net8.0\Microservicio-ConsultasMedicas.genruntimeconfig.cache
 C:\Users\ASUS\Desktop\sexto\APD\Examen\Back2\GestionHospitalesBackend\Microservicio-ConsultasMedicas\obj\Debug\net8.0\ref\Microservicio-ConsultasMedicas.dll
+C:\Users\William\Documents\6° Semestre\Aplicaciones Distribuidas\1Parcial\Examen\GestionHospitalesBackend\Microservicio-ConsultasMedicas\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
