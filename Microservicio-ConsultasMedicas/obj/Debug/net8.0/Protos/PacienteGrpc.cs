@@ -53,6 +53,14 @@ namespace Microservicio_ConsultasMedicas.Protos {
     static readonly grpc::Marshaller<global::Microservicio_ConsultasMedicas.Protos.CrearPacienteRequest> __Marshaller_paciente_CrearPacienteRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Microservicio_ConsultasMedicas.Protos.CrearPacienteRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Microservicio_ConsultasMedicas.Protos.CrearPacienteResponse> __Marshaller_paciente_CrearPacienteResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Microservicio_ConsultasMedicas.Protos.CrearPacienteResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Microservicio_ConsultasMedicas.Protos.ActualizarPacienteRequest> __Marshaller_paciente_ActualizarPacienteRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Microservicio_ConsultasMedicas.Protos.ActualizarPacienteRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Microservicio_ConsultasMedicas.Protos.ActualizarPacienteResponse> __Marshaller_paciente_ActualizarPacienteResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Microservicio_ConsultasMedicas.Protos.ActualizarPacienteResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Microservicio_ConsultasMedicas.Protos.EliminarPacienteRequest> __Marshaller_paciente_EliminarPacienteRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Microservicio_ConsultasMedicas.Protos.EliminarPacienteRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Microservicio_ConsultasMedicas.Protos.EliminarPacienteResponse> __Marshaller_paciente_EliminarPacienteResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Microservicio_ConsultasMedicas.Protos.EliminarPacienteResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Microservicio_ConsultasMedicas.Protos.GetPacienteRequest, global::Microservicio_ConsultasMedicas.Protos.GetPacienteResponse> __Method_GetPaciente = new grpc::Method<global::Microservicio_ConsultasMedicas.Protos.GetPacienteRequest, global::Microservicio_ConsultasMedicas.Protos.GetPacienteResponse>(
@@ -69,6 +77,22 @@ namespace Microservicio_ConsultasMedicas.Protos {
         "CrearPaciente",
         __Marshaller_paciente_CrearPacienteRequest,
         __Marshaller_paciente_CrearPacienteResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Microservicio_ConsultasMedicas.Protos.ActualizarPacienteRequest, global::Microservicio_ConsultasMedicas.Protos.ActualizarPacienteResponse> __Method_ActualizarPaciente = new grpc::Method<global::Microservicio_ConsultasMedicas.Protos.ActualizarPacienteRequest, global::Microservicio_ConsultasMedicas.Protos.ActualizarPacienteResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "ActualizarPaciente",
+        __Marshaller_paciente_ActualizarPacienteRequest,
+        __Marshaller_paciente_ActualizarPacienteResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Microservicio_ConsultasMedicas.Protos.EliminarPacienteRequest, global::Microservicio_ConsultasMedicas.Protos.EliminarPacienteResponse> __Method_EliminarPaciente = new grpc::Method<global::Microservicio_ConsultasMedicas.Protos.EliminarPacienteRequest, global::Microservicio_ConsultasMedicas.Protos.EliminarPacienteResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "EliminarPaciente",
+        __Marshaller_paciente_EliminarPacienteRequest,
+        __Marshaller_paciente_EliminarPacienteResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -92,6 +116,18 @@ namespace Microservicio_ConsultasMedicas.Protos {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Microservicio_ConsultasMedicas.Protos.ActualizarPacienteResponse> ActualizarPaciente(global::Microservicio_ConsultasMedicas.Protos.ActualizarPacienteRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Microservicio_ConsultasMedicas.Protos.EliminarPacienteResponse> EliminarPaciente(global::Microservicio_ConsultasMedicas.Protos.EliminarPacienteRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
@@ -101,7 +137,9 @@ namespace Microservicio_ConsultasMedicas.Protos {
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_GetPaciente, serviceImpl.GetPaciente)
-          .AddMethod(__Method_CrearPaciente, serviceImpl.CrearPaciente).Build();
+          .AddMethod(__Method_CrearPaciente, serviceImpl.CrearPaciente)
+          .AddMethod(__Method_ActualizarPaciente, serviceImpl.ActualizarPaciente)
+          .AddMethod(__Method_EliminarPaciente, serviceImpl.EliminarPaciente).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -113,6 +151,8 @@ namespace Microservicio_ConsultasMedicas.Protos {
     {
       serviceBinder.AddMethod(__Method_GetPaciente, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Microservicio_ConsultasMedicas.Protos.GetPacienteRequest, global::Microservicio_ConsultasMedicas.Protos.GetPacienteResponse>(serviceImpl.GetPaciente));
       serviceBinder.AddMethod(__Method_CrearPaciente, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Microservicio_ConsultasMedicas.Protos.CrearPacienteRequest, global::Microservicio_ConsultasMedicas.Protos.CrearPacienteResponse>(serviceImpl.CrearPaciente));
+      serviceBinder.AddMethod(__Method_ActualizarPaciente, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Microservicio_ConsultasMedicas.Protos.ActualizarPacienteRequest, global::Microservicio_ConsultasMedicas.Protos.ActualizarPacienteResponse>(serviceImpl.ActualizarPaciente));
+      serviceBinder.AddMethod(__Method_EliminarPaciente, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Microservicio_ConsultasMedicas.Protos.EliminarPacienteRequest, global::Microservicio_ConsultasMedicas.Protos.EliminarPacienteResponse>(serviceImpl.EliminarPaciente));
     }
 
   }

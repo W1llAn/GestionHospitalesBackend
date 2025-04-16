@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Grpc.Core;
 using Microservicio_Administracion.Data;
 using Microservicio_Administracion.Administracion;
+using Microservicio_Administracion.Models;
 
 namespace Microservicio_Administracion.Protos
 {
@@ -28,7 +29,10 @@ namespace Microservicio_Administracion.Protos
                 .Include(e => e.Especialidad)
                 .Include(e => e.Tipo_Empleado)
                 .FirstOrDefaultAsync(e => e.Id == request.Id);
-
+            if (e == null)
+            {
+                throw new RpcException(new Status(StatusCode.NotFound, "Empleado no encontrado"));
+            }
 
 
             return new Administracion.Empleado

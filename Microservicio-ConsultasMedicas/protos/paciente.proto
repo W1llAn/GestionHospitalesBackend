@@ -29,7 +29,26 @@ message CrearPacienteResponse {
   PacienteModel paciente = 1;
 }
 
+// Nuevos mensajes para Actualizar y Eliminar
+message ActualizarPacienteRequest {
+  PacienteModel paciente = 1;
+}
+
+message ActualizarPacienteResponse {
+  PacienteModel paciente = 1;
+}
+
+message EliminarPacienteRequest {
+  int32 id_paciente = 1;
+}
+
+message EliminarPacienteResponse {
+  bool success = 1;
+}
+
 service PacienteService {
   rpc GetPaciente(GetPacienteRequest) returns (GetPacienteResponse);
   rpc CrearPaciente(CrearPacienteRequest) returns (CrearPacienteResponse);
+  rpc ActualizarPaciente(ActualizarPacienteRequest) returns (ActualizarPacienteResponse);
+  rpc EliminarPaciente(EliminarPacienteRequest) returns (EliminarPacienteResponse);
 }

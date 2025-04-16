@@ -7,19 +7,19 @@ namespace Microservicio_ConsultasMedicas.Models
         [Key]
         public int id_paciente { get; set; }
 
-        public required string  nombre { get; set; }
-        
+        public required string nombre { get; set; }
+
 
         public required string cedula { get; set; }
-        
+
 
         public required DateOnly fecha_nacimiento { get; set; }
-        
+
 
         public required string telefono { get; set; }
-        
+
 
         public required string direccion { get; set; }
-        
+
     }
 }

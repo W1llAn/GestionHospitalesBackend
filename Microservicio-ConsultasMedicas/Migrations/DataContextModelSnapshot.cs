@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Microservicio_Administracion.Migrations
+namespace Microservicio_ConsultasMedicas.Migrations
 {
     [DbContext(typeof(DataContext))]
     partial class DataContextModelSnapshot : ModelSnapshot
@@ -18,6 +18,44 @@ namespace Microservicio_Administracion.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "8.0.15")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("Microservicio_ConsultasMedicas.Models.ConsultasMedicasEntity", b =>
+                {
+                    b.Property<int>("id_consulta_medica")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("diagnostico")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateOnly>("fecha")
+                        .HasColumnType("date");
+
+                    b.Property<string>("hora")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("id_empleado")
+                        .HasColumnType("int");
+
+                    b.Property<string>("motivo")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("pacienteid_paciente")
+                        .HasColumnType("int");
+
+                    b.Property<string>("tratamiento")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("id_consulta_medica");
+
+                    b.HasIndex("pacienteid_paciente");
+
+                    b.ToTable("ConsultasMedicas");
+                });
 
             modelBuilder.Entity("Microservicio_ConsultasMedicas.Models.Paciente", b =>
                 {
@@ -47,6 +85,17 @@ namespace Microservicio_Administracion.Migrations
                     b.HasKey("id_paciente");
 
                     b.ToTable("Paciente");
+                });
+
+            modelBuilder.Entity("Microservicio_ConsultasMedicas.Models.ConsultasMedicasEntity", b =>
+                {
+                    b.HasOne("Microservicio_ConsultasMedicas.Models.Paciente", "paciente")
+                        .WithMany()
+                        .HasForeignKey("pacienteid_paciente")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("paciente");
                 });
 #pragma warning restore 612, 618
         }
