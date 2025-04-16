@@ -63,9 +63,6 @@ namespace Microservicio_Administracion.Protos
 
             };
         }
-
-
-
         
     }
 }
