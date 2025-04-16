@@ -12,15 +12,6 @@ services:
     volumes:
       - mariadb_data:/var/lib/mysql
 
-  paciente-service:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: paciente-grpc
-    ports:
-      - "7256:7256"
-    depends_on:
-      - mariadb
 
 volumes:
   mariadb_data:

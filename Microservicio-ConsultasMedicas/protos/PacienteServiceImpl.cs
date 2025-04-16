@@ -4,7 +4,7 @@ using Microservicio_ConsultasMedicas.Models;
 using Microservicio_ConsultasMedicas.Protos;
 using Microsoft.EntityFrameworkCore;
 
-namespace Microservicio_ConsultasMedicas
+namespace Microservicio_ConsultasMedicas.protos
 {
     public class PacienteServiceImpl : PacienteService.PacienteServiceBase
     {
@@ -17,14 +17,14 @@ namespace Microservicio_ConsultasMedicas
 
         public override async Task<GetPacienteResponse> GetPaciente(GetPacienteRequest request, ServerCallContext context)
         {
-            var paciente = await _context.Paciente.FirstOrDefaultAsync(p => p.id_paciente == request.IdPaciente);
-            
+            Models.Paciente? paciente = await _context.Paciente.FirstOrDefaultAsync(p => p.id_paciente == request.IdPaciente);
+
             if (paciente == null)
             {
                 throw new RpcException(new Status(StatusCode.NotFound, "Paciente no encontrado"));
             }
 
-            var pacienteModel = new PacienteModel
+            PacienteModel pacienteModel = new()
             {
                 IdPaciente = paciente.id_paciente,
                 Nombre = paciente.nombre,
@@ -33,13 +33,14 @@ namespace Microservicio_ConsultasMedicas
                 Telefono = paciente.telefono,
                 Direccion = paciente.direccion
             };
-        
+
             return new GetPacienteResponse { Paciente = pacienteModel };
         }
-        
+
+        // Create (Existente)
         public override async Task<CrearPacienteResponse> CrearPaciente(CrearPacienteRequest request, ServerCallContext context)
         {
-            if (!DateOnly.TryParse(request.Paciente.FechaNacimiento, out var fechaNacimiento))
+            if (!DateOnly.TryParse(request.Paciente.FechaNacimiento, out DateOnly fechaNacimiento))
             {
                 throw new RpcException(new Status(StatusCode.InvalidArgument, "Formato de fecha inválido"));
             }
@@ -54,9 +55,9 @@ namespace Microservicio_ConsultasMedicas
             };
 
             _context.Paciente.Add(nuevoPaciente);
-            await _context.SaveChangesAsync();
+            _ = await _context.SaveChangesAsync();
 
-            var pacienteCreado = new PacienteModel
+            PacienteModel pacienteCreado = new()
             {
                 IdPaciente = nuevoPaciente.id_paciente,
                 Nombre = nuevoPaciente.nombre,
@@ -67,6 +68,57 @@ namespace Microservicio_ConsultasMedicas
             };
 
             return new CrearPacienteResponse { Paciente = pacienteCreado };
+        }
+
+        public override async Task<ActualizarPacienteResponse> ActualizarPaciente(ActualizarPacienteRequest request, ServerCallContext context)
+        {
+            var paciente = await _context.Paciente.FindAsync(request.Paciente.IdPaciente);
+
+            if (paciente == null)
+            {
+                throw new RpcException(new Status(StatusCode.NotFound, "Paciente no encontrado"));
+            }
+
+            if (!DateOnly.TryParse(request.Paciente.FechaNacimiento, out DateOnly fechaNacimiento))
+            {
+                throw new RpcException(new Status(StatusCode.InvalidArgument, "Formato de fecha inválido"));
+            }
+
+            paciente.nombre = request.Paciente.Nombre;
+            paciente.cedula = request.Paciente.Cedula;
+            paciente.fecha_nacimiento = fechaNacimiento;
+            paciente.telefono = request.Paciente.Telefono;
+            paciente.direccion = request.Paciente.Direccion;
+
+            await _context.SaveChangesAsync();
+
+            return new ActualizarPacienteResponse
+            {
+                Paciente = new PacienteModel
+                {
+                    IdPaciente = paciente.id_paciente,
+                    Nombre = paciente.nombre,
+                    Cedula = paciente.cedula,
+                    FechaNacimiento = paciente.fecha_nacimiento.ToString("yyyy-MM-dd"),
+                    Telefono = paciente.telefono,
+                    Direccion = paciente.direccion
+                }
+            };
+        }
+
+        public override async Task<EliminarPacienteResponse> EliminarPaciente(EliminarPacienteRequest request, ServerCallContext context)
+        {
+            var paciente = await _context.Paciente.FindAsync(request.IdPaciente);
+
+            if (paciente == null)
+            {
+                throw new RpcException(new Status(StatusCode.NotFound, "Paciente no encontrado"));
+            }
+
+            _context.Paciente.Remove(paciente);
+            await _context.SaveChangesAsync();
+
+            return new EliminarPacienteResponse { Success = true };
         }
     }
 }

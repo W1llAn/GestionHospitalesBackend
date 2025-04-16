@@ -1,4 +1,4 @@
-namespace Microservicio_ConsultasMedicas
+namespace Microservicio_Administracion
 {
     public class WeatherForecast
     {

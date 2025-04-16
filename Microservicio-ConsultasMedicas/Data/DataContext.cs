@@ -9,7 +9,7 @@ namespace Microservicio_ConsultasMedicas.Data
             : base(options)
         {
         }
-
+        public DbSet<Microservicio_ConsultasMedicas.Models.ConsultasMedicasEntity> ConsultasMedicas{ get; set; }
         public DbSet<Paciente> Paciente { get; set; }
     }
 }
