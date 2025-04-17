@@ -2,6 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "Microservicio_Administracion.Protos";
 
+package Auth;
+
 service UsuarioService{
 	rpc ValidarUsuario (UsuarioLogin) returns (UsuarioLoginRespuesta);
     rpc RegistrarUsuario (UsuarioRegistro) returns (Usuario);

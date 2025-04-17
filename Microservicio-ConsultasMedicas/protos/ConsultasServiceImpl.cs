@@ -6,6 +6,10 @@ using ConsultasMedicas;
 using Microservicio_Administracion.Administracion;
 using Microservicio_ConsultasMedicas.Models;
 using Microservicio_ConsultasMedicas.Protos;
+using NuGet.Protocol;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using System.Globalization;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace Microservicio_ConsultasMedicas.protos
@@ -21,6 +25,7 @@ namespace Microservicio_ConsultasMedicas.protos
             _context = context;
             _config = config;
         }
+        [Authorize]
         public override async Task<Consulta> GetConsultaCedula(ConsultaCedulaRequest request, ServerCallContext context)
         {
             // Buscar el paciente por cédula
@@ -42,10 +47,15 @@ namespace Microservicio_ConsultasMedicas.protos
             }
 
             // Obtener el médico (empleado) desde el microservicio de administración
+            var authHeader = context.RequestHeaders.FirstOrDefault(h=>h.Key=="authorization");
+            var token= authHeader?.Value;
             var empleadoRequest = new EmpleadoGet { Id = consulta.id_empleado };
             using var canal = GrpcChannel.ForAddress(_config["grcp:administracion"]);
             var cliente = new AdministracionService.AdministracionServiceClient(canal);
-            var empleadoResponse = await cliente.GetEmpleadoAsync(new EmpleadoGet { Id = consulta.id_empleado });
+            var metadata = new Metadata {
+                { "Authorization",token}
+            };
+            var empleadoResponse = await cliente.GetEmpleadoAsync(new EmpleadoGet { Id = consulta.id_empleado },new CallOptions(headers: metadata));
 
             if (empleadoResponse == null)
             {
@@ -75,7 +85,7 @@ namespace Microservicio_ConsultasMedicas.protos
 
             return consultaResponse;
         }
-
+        [Authorize]
         public override async Task<Consulta> CreateConsulta(CreateConsultaRequest request, ServerCallContext context)
         {
             // Validación básica
@@ -95,11 +105,14 @@ namespace Microservicio_ConsultasMedicas.protos
             }
 
             // Obtener el médico desde el microservicio de administración
-            var empleadoRequest = new EmpleadoGet { Id = request.IdMedico };
-
+            var authHeader = context.RequestHeaders.FirstOrDefault(h => h.Key == "authorization");
+            var token = authHeader?.Value;
             using var canal = GrpcChannel.ForAddress(_config["grcp:administracion"]);
             var cliente = new AdministracionService.AdministracionServiceClient(canal);
-            var empleadoResponse = await cliente.GetEmpleadoAsync(new EmpleadoGet { Id = request.IdMedico });
+            var metadata = new Metadata {
+                { "Authorization",token}
+            };
+            var empleadoResponse = await cliente.GetEmpleadoAsync(new EmpleadoGet { Id = request.IdMedico }, new CallOptions(headers: metadata));
 
             if (empleadoResponse == null || empleadoResponse.Id == 0)
             {
@@ -147,7 +160,8 @@ namespace Microservicio_ConsultasMedicas.protos
             return consultaResponse;
         }
         //eliminar una consulta 
-        public override async Task<EmptyResponse> DeleteConsulta(DeleteConsultaRequest request, ServerCallContext context)
+        [Authorize]
+        public override async Task<ConsultasMedicas.EmptyResponse> DeleteConsulta(DeleteConsultaRequest request, ServerCallContext context)
         {
             try
             {
@@ -170,7 +184,7 @@ namespace Microservicio_ConsultasMedicas.protos
                 }
 
                 // Devolver respuesta vacía
-                return new EmptyResponse(); // Puedes agregar un campo "mensaje" si tu EmptyResponse lo permite
+                return new ConsultasMedicas.EmptyResponse(); // Puedes agregar un campo "mensaje" si tu EmptyResponse lo permite
             }
             catch (Exception ex)
             {
@@ -179,7 +193,8 @@ namespace Microservicio_ConsultasMedicas.protos
         }
 
         //Obtener todas las consultas
-        public override async Task<ConsultaList> GetAllConsultas(EmptyResponse request, ServerCallContext context)
+        [Authorize]
+        public override async Task<ConsultaList> GetAllConsultas(ConsultasMedicas.EmptyResponse request, ServerCallContext context)
         {
             // Obtener todas las consultas de la base de datos, incluyendo los pacientes relacionados
             var consultas = await _context.ConsultasMedicas
@@ -196,15 +211,20 @@ namespace Microservicio_ConsultasMedicas.protos
             var consultaResponses = new List<Consulta>();
 
             // Configurar el canal gRPC para el microservicio de administración
+            var authHeader = context.RequestHeaders.FirstOrDefault(h => h.Key == "authorization");
+            var token = authHeader?.Value;
             using var canal = GrpcChannel.ForAddress(_config["grcp:administracion"]);
             var cliente = new AdministracionService.AdministracionServiceClient(canal);
+            var metadata = new Metadata {
+                { "Authorization",token}
+            };
 
             // Mapear cada consulta de la base de datos a un mensaje Consulta del proto
             foreach (var consulta in consultas)
             {
                 // Obtener el médico (empleado) desde el microservicio de administración
                 var empleadoRequest = new EmpleadoGet { Id = consulta.id_empleado };
-                var empleadoResponse = await cliente.GetEmpleadoAsync(empleadoRequest);
+                var empleadoResponse = await cliente.GetEmpleadoAsync(empleadoRequest, new CallOptions(headers: metadata));
 
                 if (empleadoResponse == null || empleadoResponse.Id == 0)
                 {
@@ -243,8 +263,220 @@ namespace Microservicio_ConsultasMedicas.protos
             // Devolver la lista de consultas en un mensaje ConsultaList
             return new ConsultaList { Consultas = { consultaResponses } };
         }
+        [Authorize]
+        public override async Task<ConsultaList> GetConsultasReporte(ConsultaCedulaRequest request, ServerCallContext context)
+        {
+            // Obtener todas las consultas de la base de datos, incluyendo los pacientes relacionados
+            var consultas = await _context.ConsultasMedicas
+                .Include(c => c.paciente) // Incluir el paciente relacionado para evitar consultas adicionales
+                .Where(c => c.paciente.cedula == request.Cedula)
+                .ToListAsync();
 
+            // Si no hay consultas, devolver una lista vacía
+            if (consultas == null || !consultas.Any())
+            {
+                return new ConsultaList();
+            }
 
+            // Crear la lista de mensajes Consulta para la respuesta
+            var consultaResponses = new List<Consulta>();
 
+            // Configurar el canal gRPC para el microservicio de administración
+            var authHeader = context.RequestHeaders.FirstOrDefault(h => h.Key == "authorization");
+            var token = authHeader?.Value;
+            using var canal = GrpcChannel.ForAddress(_config["grcp:administracion"]);
+            var cliente = new AdministracionService.AdministracionServiceClient(canal);
+            var metadata = new Metadata {
+                { "Authorization",token}
+            };
+
+            // Mapear cada consulta de la base de datos a un mensaje Consulta del proto
+            foreach (var consulta in consultas)
+            {
+                // Obtener el médico (empleado) desde el microservicio de administración
+                var empleadoRequest = new EmpleadoGet { Id = consulta.id_empleado };
+                var empleadoResponse = await cliente.GetEmpleadoAsync(empleadoRequest, new CallOptions(headers: metadata));
+
+                if (empleadoResponse == null || empleadoResponse.Id == 0)
+                {
+                    // Si no se encuentra el médico, podemos decidir cómo manejar esto
+                    // Opción 1: Saltar esta consulta
+                    continue;
+
+                    // Opción 2: Lanzar una excepción (descomentar si prefieres este enfoque)
+                    // throw new RpcException(new Status(StatusCode.NotFound, $"Médico no encontrado para la consulta con ID {consulta.id_consulta_medica}"));
+                }
+
+                // Mapear los datos de la consulta al mensaje Consulta del proto
+                var consultaResponse = new Consulta
+                {
+                    IdConsultaMedica = consulta.id_consulta_medica,
+                    Fecha = consulta.fecha.ToString("yyyy-MM-dd"),
+                    Hora = consulta.hora,
+                    Motivo = consulta.motivo,
+                    Diagnostico = consulta.diagnostico,
+                    Tratamiento = consulta.tratamiento,
+                    Paciente = new PacienteModel
+                    {
+                        IdPaciente = consulta.paciente.id_paciente,
+                        Nombre = consulta.paciente.nombre,
+                        Cedula = consulta.paciente.cedula,
+                        FechaNacimiento = consulta.paciente.fecha_nacimiento.ToString("yyyy-MM-dd"),
+                        Telefono = consulta.paciente.telefono,
+                        Direccion = consulta.paciente.direccion
+                    },
+                    Empleado = empleadoResponse
+                };
+
+                consultaResponses.Add(consultaResponse);
+            }
+
+            // Devolver la lista de consultas en un mensaje ConsultaList
+            return new ConsultaList { Consultas = { consultaResponses } };
+        }
+        [Authorize]
+        public override async Task<ConsultaList> GetConsultasCentroMedico(Centro_MedicoGet request, ServerCallContext context)
+        {
+            // Obtener todas las consultas de la base de datos, incluyendo los pacientes relacionados
+            var consultas = await _context.ConsultasMedicas
+                .Include(c => c.paciente) // Incluir el paciente relacionado para evitar consultas adicionales
+                .ToListAsync();
+
+            // Si no hay consultas, devolver una lista vacía
+            if (consultas == null || !consultas.Any())
+            {
+                return new ConsultaList();
+            }
+
+            // Crear la lista de mensajes Consulta para la respuesta
+            var consultaResponses = new List<Consulta>();
+
+            // Configurar el canal gRPC para el microservicio de administración
+            var authHeader = context.RequestHeaders.FirstOrDefault(h => h.Key == "authorization");
+            var token = authHeader?.Value;
+            using var canal = GrpcChannel.ForAddress(_config["grcp:administracion"]);
+            var cliente = new AdministracionService.AdministracionServiceClient(canal);
+            var metadata = new Metadata {
+                { "Authorization",token}
+            };
+
+            // Mapear cada consulta de la base de datos a un mensaje Consulta del proto
+            foreach (var consulta in consultas)
+            {
+                // Obtener el médico (empleado) desde el microservicio de administración
+                var empleadoRequest = new EmpleadoGet { Id = consulta.id_empleado };
+                var empleadoResponse = await cliente.GetEmpleadoAsync(empleadoRequest, new CallOptions(headers: metadata));
+
+                if (empleadoResponse == null || empleadoResponse.Id == 0)
+                {
+                    // Si no se encuentra el médico, podemos decidir cómo manejar esto
+                    // Opción 1: Saltar esta consulta
+                    continue;
+
+                    // Opción 2: Lanzar una excepción (descomentar si prefieres este enfoque)
+                    // throw new RpcException(new Status(StatusCode.NotFound, $"Médico no encontrado para la consulta con ID {consulta.id_consulta_medica}"));
+                }
+
+                // Mapear los datos de la consulta al mensaje Consulta del proto
+                var consultaResponse = new Consulta
+                {
+                    IdConsultaMedica = consulta.id_consulta_medica,
+                    Fecha = consulta.fecha.ToString("yyyy-MM-dd"),
+                    Hora = consulta.hora,
+                    Motivo = consulta.motivo,
+                    Diagnostico = consulta.diagnostico,
+                    Tratamiento = consulta.tratamiento,
+                    Paciente = new PacienteModel
+                    {
+                        IdPaciente = consulta.paciente.id_paciente,
+                        Nombre = consulta.paciente.nombre,
+                        Cedula = consulta.paciente.cedula,
+                        FechaNacimiento = consulta.paciente.fecha_nacimiento.ToString("yyyy-MM-dd"),
+                        Telefono = consulta.paciente.telefono,
+                        Direccion = consulta.paciente.direccion
+                    },
+                    Empleado = empleadoResponse
+                };
+                if (consultaResponse.Empleado.CentroMedicoID==request.Id) 
+                {
+                    consultaResponses.Add(consultaResponse);
+                }
+
+            }
+
+            // Devolver la lista de consultas en un mensaje ConsultaList
+            return new ConsultaList { Consultas = { consultaResponses } };
+        }
+        [Authorize]
+        public override async Task<ConsultaList> GetConsultasByFecha(ConsultaFechaRequest request, ServerCallContext context)
+        {
+            // Obtener todas las consultas de la base de datos, incluyendo los pacientes relacionados
+            var consultas = await _context.ConsultasMedicas
+                .Include(c => c.paciente) // Incluir el paciente relacionado para evitar consultas adicionales
+                .Where(c => c.fecha >= DateOnly.ParseExact(request.FechaDesde,"yyyy/MM/dd") && c.fecha <= DateOnly.ParseExact(request.FechaHasta, "yyyy/MM/dd"))
+                .ToListAsync();
+
+            // Si no hay consultas, devolver una lista vacía
+            if (consultas == null || !consultas.Any())
+            {
+                return new ConsultaList();
+            }
+
+            // Crear la lista de mensajes Consulta para la respuesta
+            var consultaResponses = new List<Consulta>();
+
+            // Configurar el canal gRPC para el microservicio de administración
+            var authHeader = context.RequestHeaders.FirstOrDefault(h => h.Key == "authorization");
+            var token = authHeader?.Value;
+            using var canal = GrpcChannel.ForAddress(_config["grcp:administracion"]);
+            var cliente = new AdministracionService.AdministracionServiceClient(canal);
+            var metadata = new Metadata {
+                { "Authorization",token}
+            };
+
+            // Mapear cada consulta de la base de datos a un mensaje Consulta del proto
+            foreach (var consulta in consultas)
+            {
+                // Obtener el médico (empleado) desde el microservicio de administración
+                var empleadoRequest = new EmpleadoGet { Id = consulta.id_empleado };
+                var empleadoResponse = await cliente.GetEmpleadoAsync(empleadoRequest, new CallOptions(headers: metadata));
+
+                if (empleadoResponse == null || empleadoResponse.Id == 0)
+                {
+                    // Si no se encuentra el médico, podemos decidir cómo manejar esto
+                    // Opción 1: Saltar esta consulta
+                    continue;
+
+                    // Opción 2: Lanzar una excepción (descomentar si prefieres este enfoque)
+                    // throw new RpcException(new Status(StatusCode.NotFound, $"Médico no encontrado para la consulta con ID {consulta.id_consulta_medica}"));
+                }
+
+                // Mapear los datos de la consulta al mensaje Consulta del proto
+                var consultaResponse = new Consulta
+                {
+                    IdConsultaMedica = consulta.id_consulta_medica,
+                    Fecha = consulta.fecha.ToString("yyyy-MM-dd"),
+                    Hora = consulta.hora,
+                    Motivo = consulta.motivo,
+                    Diagnostico = consulta.diagnostico,
+                    Tratamiento = consulta.tratamiento,
+                    Paciente = new PacienteModel
+                    {
+                        IdPaciente = consulta.paciente.id_paciente,
+                        Nombre = consulta.paciente.nombre,
+                        Cedula = consulta.paciente.cedula,
+                        FechaNacimiento = consulta.paciente.fecha_nacimiento.ToString("yyyy-MM-dd"),
+                        Telefono = consulta.paciente.telefono,
+                        Direccion = consulta.paciente.direccion
+                    },
+                    Empleado = empleadoResponse
+                };
+
+                consultaResponses.Add(consultaResponse);
+            }
+
+            // Devolver la lista de consultas en un mensaje ConsultaList
+            return new ConsultaList { Consultas = { consultaResponses } };
+        }
     }
 }

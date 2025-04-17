@@ -38,6 +38,9 @@ message Centro_Medico{
         string ciudad=3;
         string direccion=4;
 }
+message Centro_MedicoGet{
+        int32 Id=1;
+}
 message Tipo_Empleado{
     int32 Id=1;
     string tipo=2;

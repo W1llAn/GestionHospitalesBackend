@@ -4,6 +4,7 @@ using Grpc.Core;
 using Microservicio_Administracion.Data;
 using Microservicio_Administracion.Administracion;
 using Microservicio_Administracion.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Microservicio_Administracion.Protos
 {
@@ -15,6 +16,7 @@ namespace Microservicio_Administracion.Protos
         {
             _context = context;
         }
+        [Authorize]
         public override async Task<EmpleadoLista> GetAllEmpleado(Administracion.RespuestaVacia request, ServerCallContext context)
         {
             if (request == null)
@@ -68,6 +70,7 @@ namespace Microservicio_Administracion.Protos
                 Empleados = { empleadosLista }
             };
         }
+        [Authorize]
         public override async Task<Administracion.Empleado> GetEmpleado(EmpleadoGet request, ServerCallContext context)
         {
 
@@ -119,6 +122,7 @@ namespace Microservicio_Administracion.Protos
 
             };
         }
+        [Authorize(Policy = "TipoEmpleadoPolitica")]
         public override async Task<Administracion.RespuestaVacia> DeleteEmpleado(EmpleadoGet request, ServerCallContext context)
         {
             if (request == null)
@@ -136,7 +140,7 @@ namespace Microservicio_Administracion.Protos
 
             return new Administracion.RespuestaVacia { };
         }
-
+        [Authorize(Policy = "TipoEmpleadoPolitica")]
         public override async Task<Administracion.Empleado> PostEmpleado(EmpleadoPost request, ServerCallContext context)
         {
 
@@ -219,7 +223,7 @@ namespace Microservicio_Administracion.Protos
                 }
             };
         }
-
+        [Authorize(Policy = "TipoEmpleadoPolitica")]
         public override async Task<Administracion.Empleado> PutEmpleado(EmpleadoPut request, ServerCallContext context)
         {
             if (request == null)
@@ -306,7 +310,7 @@ namespace Microservicio_Administracion.Protos
                 }
             };
         }
-
+        [Authorize(Policy = "TipoEmpleadoPolitica")]
         public override async Task<EmpleadoLista> GetAllEmpleadoByCentroMedico(Centro_MedicoGet request, ServerCallContext context)
         {
             if (request == null)
@@ -416,7 +420,7 @@ namespace Microservicio_Administracion.Protos
             };
         }
         //////////////
-
+        [Authorize]
         public override async Task<Centro_MedicoLista> GetAllCentro_Medico(Administracion.RespuestaVacia request, ServerCallContext context)
         {
             var centrosMedicos = await _context.Centros_Medicos.ToListAsync();
@@ -440,7 +444,7 @@ namespace Microservicio_Administracion.Protos
                 Centros = { CentrosLista}
             };
         }
-
+        [Authorize]
         public override async Task<Administracion.Centro_Medico> GetCentro_Medico(Centro_MedicoGet request, ServerCallContext context)
         {
             if (request == null)
@@ -463,7 +467,7 @@ namespace Microservicio_Administracion.Protos
              Nombre=centrosMedico.nombre
             };
         }
-
+        [Authorize(Policy = "TipoEmpleadoPolitica")]
         public override async Task<Administracion.Centro_Medico> PostCentro_Medico(Centro_MedicoPost request, ServerCallContext context)
         {
             if (request == null)
@@ -500,7 +504,7 @@ namespace Microservicio_Administracion.Protos
             };
             
         }
-
+        [Authorize(Policy = "TipoEmpleadoPolitica")]
         public override async Task<Administracion.Centro_Medico> PutCentro_Medico(Administracion.Centro_Medico request, ServerCallContext context)
         {
             if (request == null)
@@ -541,7 +545,7 @@ namespace Microservicio_Administracion.Protos
             };
 
         }
-
+        [Authorize(Policy = "TipoEmpleadoPolitica")]
         public override async Task<Administracion.RespuestaVacia> DeleteCentro_Medico(Centro_MedicoGet request, ServerCallContext context)
         {
             if (request == null)
@@ -560,6 +564,7 @@ namespace Microservicio_Administracion.Protos
             return new Administracion.RespuestaVacia { };
         }
         //////////////////
+        [Authorize]
         public override async Task<Tipo_EmpleadoLista> GetAllTipo_Empleado(Administracion.RespuestaVacia request, ServerCallContext context)
         {
             var tipoBuscar = await _context.Tipos_Empleados.ToListAsync();
@@ -582,7 +587,7 @@ namespace Microservicio_Administracion.Protos
                 Tipos = { TiposLista }
             };
         }
-
+        [Authorize]
         public override async Task<Administracion.Tipo_Empleado> GetTipo_Empleado(Tipo_EmpleadoGet request, ServerCallContext context)
         {
             if (request == null)
@@ -603,7 +608,7 @@ namespace Microservicio_Administracion.Protos
                 Tipo=tipoBuscar.tipo
             };
         }
-
+        [Authorize(Policy = "TipoEmpleadoPolitica")]
         public override async Task<Administracion.Tipo_Empleado> PostTipo_Empleado(Tipo_EmpleadoPost request, ServerCallContext context)
         {
             if (request == null)
@@ -635,7 +640,7 @@ namespace Microservicio_Administracion.Protos
             };
 
         }
-
+        [Authorize(Policy = "TipoEmpleadoPolitica")]
         public override async Task<Administracion.Tipo_Empleado> PutTipo_Empleado(Administracion.Tipo_Empleado request, ServerCallContext context)
         {
             if (request == null)
@@ -673,7 +678,7 @@ namespace Microservicio_Administracion.Protos
             };
 
         }
-
+        [Authorize(Policy = "TipoEmpleadoPolitica")]
         public override async Task<Administracion.RespuestaVacia> DeleteTipo_Empleado(Tipo_EmpleadoGet request, ServerCallContext context)
         {
             if (request == null)
@@ -693,6 +698,7 @@ namespace Microservicio_Administracion.Protos
         }
 
         //////////////////
+        [Authorize]
         public override async Task<EspecialidadLista> GetAllEspecialidades(Administracion.RespuestaVacia request, ServerCallContext context)
         {
             var especialidadBuscar = await _context.Especialidades.ToListAsync();
@@ -715,7 +721,7 @@ namespace Microservicio_Administracion.Protos
                 Especialidades = { especialidadLista}
             };
         }
-
+        [Authorize]
         public override async Task<Administracion.Especialidad> GetEspecialidades(EspecialidadGet request, ServerCallContext context)
         {
             if (request == null)
@@ -736,7 +742,7 @@ namespace Microservicio_Administracion.Protos
                 Especialidad_=especialidadBuscar.especialidad
             };
         }
-
+        [Authorize(Policy = "TipoEmpleadoPolitica")]
         public override async Task<Administracion.Especialidad> PostEspecialidad(EspecialidadPost request, ServerCallContext context)
         {
             if (request == null)
@@ -768,7 +774,7 @@ namespace Microservicio_Administracion.Protos
             };
 
         }
-
+        [Authorize(Policy = "TipoEmpleadoPolitica")]
         public override async Task<Administracion.Especialidad> PutEspecialidad(Administracion.Especialidad request, ServerCallContext context)
         {
             if (request == null)
@@ -806,7 +812,7 @@ namespace Microservicio_Administracion.Protos
             };
 
         }
-
+        [Authorize(Policy = "TipoEmpleadoPolitica")]
         public override async Task<Administracion.RespuestaVacia> DeleteEspecialidad(EspecialidadGet request, ServerCallContext context)
         {
             if (request == null)

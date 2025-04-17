@@ -2,6 +2,7 @@
 using Microservicio_ConsultasMedicas.Data;
 using Microservicio_ConsultasMedicas.Models;
 using Microservicio_ConsultasMedicas.Protos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 namespace Microservicio_ConsultasMedicas.protos
@@ -14,7 +15,7 @@ namespace Microservicio_ConsultasMedicas.protos
         {
             _context = context;
         }
-
+        [Authorize]
         public override async Task<GetPacienteResponse> GetPaciente(GetPacienteRequest request, ServerCallContext context)
         {
             Models.Paciente? paciente = await _context.Paciente.FirstOrDefaultAsync(p => p.id_paciente == request.IdPaciente);
@@ -38,6 +39,7 @@ namespace Microservicio_ConsultasMedicas.protos
         }
 
         // Create (Existente)
+        [Authorize]
         public override async Task<CrearPacienteResponse> CrearPaciente(CrearPacienteRequest request, ServerCallContext context)
         {
             if (!DateOnly.TryParse(request.Paciente.FechaNacimiento, out DateOnly fechaNacimiento))
@@ -69,7 +71,7 @@ namespace Microservicio_ConsultasMedicas.protos
 
             return new CrearPacienteResponse { Paciente = pacienteCreado };
         }
-
+        [Authorize]
         public override async Task<ActualizarPacienteResponse> ActualizarPaciente(ActualizarPacienteRequest request, ServerCallContext context)
         {
             var paciente = await _context.Paciente.FindAsync(request.Paciente.IdPaciente);
@@ -105,7 +107,7 @@ namespace Microservicio_ConsultasMedicas.protos
                 }
             };
         }
-
+        [Authorize]
         public override async Task<EliminarPacienteResponse> EliminarPaciente(EliminarPacienteRequest request, ServerCallContext context)
         {
             var paciente = await _context.Paciente.FindAsync(request.IdPaciente);
@@ -119,6 +121,27 @@ namespace Microservicio_ConsultasMedicas.protos
             await _context.SaveChangesAsync();
 
             return new EliminarPacienteResponse { Success = true };
+        }
+        [Authorize]
+        public override async Task<GetPacienteListaResponse> GetAllPaciente(EmptyResponse request, ServerCallContext context)
+        {
+            var pacientes = await _context.Paciente.ToListAsync();
+            var pacientesLista= new List<PacienteModel>();
+            foreach (var paciente in pacientes)
+            {
+                pacientesLista.Add(new PacienteModel { 
+                IdPaciente=paciente.id_paciente,
+                Cedula=paciente.cedula,
+                Direccion=paciente.direccion,
+                FechaNacimiento=paciente.fecha_nacimiento.ToString(),
+                Nombre=paciente.nombre,
+                Telefono=paciente.telefono
+                });
+            }
+            return new GetPacienteListaResponse
+            {
+                Pacientes = { pacientesLista }
+            };
         }
     }
 }

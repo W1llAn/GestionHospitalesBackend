@@ -21,6 +21,10 @@ message GetPacienteResponse {
   PacienteModel paciente = 1;
 }
 
+message GetPacienteListaResponse {
+  repeated PacienteModel pacientes = 1;
+}
+
 message CrearPacienteRequest {
   PacienteModel paciente = 1;
 }
@@ -46,8 +50,11 @@ message EliminarPacienteResponse {
   bool success = 1;
 }
 
+message EmptyResponse{
+}
 service PacienteService {
   rpc GetPaciente(GetPacienteRequest) returns (GetPacienteResponse);
+  rpc GetAllPaciente(EmptyResponse) returns (GetPacienteListaResponse);
   rpc CrearPaciente(CrearPacienteRequest) returns (CrearPacienteResponse);
   rpc ActualizarPaciente(ActualizarPacienteRequest) returns (ActualizarPacienteResponse);
   rpc EliminarPaciente(EliminarPacienteRequest) returns (EliminarPacienteResponse);

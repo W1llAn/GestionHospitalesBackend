@@ -35,18 +35,20 @@ namespace ConsultasMedicas {
             "ZXN0Eg0KBWZlY2hhGAEgASgJEgwKBGhvcmEYAiABKAkSDgoGbW90aXZvGAMg",
             "ASgJEhMKC2RpYWdub3N0aWNvGAQgASgJEhMKC3RyYXRhbWllbnRvGAUgASgJ",
             "EhEKCWlkX21lZGljbxgGIAEoBRIOCgZjZWR1bGEYByABKAkiMwoVRGVsZXRl",
-            "Q29uc3VsdGFSZXF1ZXN0EhoKEmlkX2NvbnN1bHRhX21lZGljYRgBIAEoBSIl",
-            "ChRDb25zdWx0YUZlY2hhUmVxdWVzdBINCgVmZWNoYRgBIAEoCSIPCg1FbXB0",
-            "eVJlc3BvbnNlIiwKDENvbnN1bHRhTGlzdBIcCgljb25zdWx0YXMYASADKAsy",
-            "CS5Db25zdWx0YTLmAgoQQ29uc3VsdGFzU2VydmljZRI2ChFHZXRDb25zdWx0",
-            "YUNlZHVsYRIWLkNvbnN1bHRhQ2VkdWxhUmVxdWVzdBoJLkNvbnN1bHRhEjMK",
-            "DkNyZWF0ZUNvbnN1bHRhEhYuQ3JlYXRlQ29uc3VsdGFSZXF1ZXN0GgkuQ29u",
-            "c3VsdGESOAoORGVsZXRlQ29uc3VsdGESFi5EZWxldGVDb25zdWx0YVJlcXVl",
-            "c3QaDi5FbXB0eVJlc3BvbnNlEjAKD0dldEFsbENvbnN1bHRhcxIOLkVtcHR5",
-            "UmVzcG9uc2UaDS5Db25zdWx0YUxpc3QSOwoTR2V0Q29uc3VsdGFzQnlGZWNo",
-            "YRIVLkNvbnN1bHRhRmVjaGFSZXF1ZXN0Gg0uQ29uc3VsdGFMaXN0EjwKE0dl",
-            "dENvbnN1bHRhc1JlcG9ydGUSFi5Db25zdWx0YUNlZHVsYVJlcXVlc3QaDS5D",
-            "b25zdWx0YUxpc3RCE6oCEENvbnN1bHRhc01lZGljYXNiBnByb3RvMw=="));
+            "Q29uc3VsdGFSZXF1ZXN0EhoKEmlkX2NvbnN1bHRhX21lZGljYRgBIAEoBSJA",
+            "ChRDb25zdWx0YUZlY2hhUmVxdWVzdBITCgtmZWNoYV9kZXNkZRgBIAEoCRIT",
+            "CgtmZWNoYV9oYXN0YRgCIAEoCSIPCg1FbXB0eVJlc3BvbnNlIiwKDENvbnN1",
+            "bHRhTGlzdBIcCgljb25zdWx0YXMYASADKAsyCS5Db25zdWx0YTKqAwoQQ29u",
+            "c3VsdGFzU2VydmljZRI2ChFHZXRDb25zdWx0YUNlZHVsYRIWLkNvbnN1bHRh",
+            "Q2VkdWxhUmVxdWVzdBoJLkNvbnN1bHRhEjMKDkNyZWF0ZUNvbnN1bHRhEhYu",
+            "Q3JlYXRlQ29uc3VsdGFSZXF1ZXN0GgkuQ29uc3VsdGESOAoORGVsZXRlQ29u",
+            "c3VsdGESFi5EZWxldGVDb25zdWx0YVJlcXVlc3QaDi5FbXB0eVJlc3BvbnNl",
+            "EjAKD0dldEFsbENvbnN1bHRhcxIOLkVtcHR5UmVzcG9uc2UaDS5Db25zdWx0",
+            "YUxpc3QSOwoTR2V0Q29uc3VsdGFzQnlGZWNoYRIVLkNvbnN1bHRhRmVjaGFS",
+            "ZXF1ZXN0Gg0uQ29uc3VsdGFMaXN0EjwKE0dldENvbnN1bHRhc1JlcG9ydGUS",
+            "Fi5Db25zdWx0YUNlZHVsYVJlcXVlc3QaDS5Db25zdWx0YUxpc3QSQgoYR2V0",
+            "Q29uc3VsdGFzQ2VudHJvTWVkaWNvEhcuQWRtaW4uQ2VudHJvX01lZGljb0dl",
+            "dBoNLkNvbnN1bHRhTGlzdEITqgIQQ29uc3VsdGFzTWVkaWNhc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Microservicio_ConsultasMedicas.Protos.PacienteReflection.Descriptor, global::Microservicio_Administracion.Administracion.AdministracionServiceReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -54,7 +56,7 @@ namespace ConsultasMedicas {
             new pbr::GeneratedClrTypeInfo(typeof(global::ConsultasMedicas.ConsultaCedulaRequest), global::ConsultasMedicas.ConsultaCedulaRequest.Parser, new[]{ "Cedula" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ConsultasMedicas.CreateConsultaRequest), global::ConsultasMedicas.CreateConsultaRequest.Parser, new[]{ "Fecha", "Hora", "Motivo", "Diagnostico", "Tratamiento", "IdMedico", "Cedula" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ConsultasMedicas.DeleteConsultaRequest), global::ConsultasMedicas.DeleteConsultaRequest.Parser, new[]{ "IdConsultaMedica" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ConsultasMedicas.ConsultaFechaRequest), global::ConsultasMedicas.ConsultaFechaRequest.Parser, new[]{ "Fecha" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ConsultasMedicas.ConsultaFechaRequest), global::ConsultasMedicas.ConsultaFechaRequest.Parser, new[]{ "FechaDesde", "FechaHasta" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ConsultasMedicas.EmptyResponse), global::ConsultasMedicas.EmptyResponse.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ConsultasMedicas.ConsultaList), global::ConsultasMedicas.ConsultaList.Parser, new[]{ "Consultas" }, null, null, null, null)
           }));
@@ -1413,7 +1415,8 @@ namespace ConsultasMedicas {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ConsultaFechaRequest(ConsultaFechaRequest other) : this() {
-      fecha_ = other.fecha_;
+      fechaDesde_ = other.fechaDesde_;
+      fechaHasta_ = other.fechaHasta_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1423,15 +1426,27 @@ namespace ConsultasMedicas {
       return new ConsultaFechaRequest(this);
     }
 
-    /// <summary>Field number for the "fecha" field.</summary>
-    public const int FechaFieldNumber = 1;
-    private string fecha_ = "";
+    /// <summary>Field number for the "fecha_desde" field.</summary>
+    public const int FechaDesdeFieldNumber = 1;
+    private string fechaDesde_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Fecha {
-      get { return fecha_; }
+    public string FechaDesde {
+      get { return fechaDesde_; }
       set {
-        fecha_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        fechaDesde_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "fecha_hasta" field.</summary>
+    public const int FechaHastaFieldNumber = 2;
+    private string fechaHasta_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string FechaHasta {
+      get { return fechaHasta_; }
+      set {
+        fechaHasta_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1450,7 +1465,8 @@ namespace ConsultasMedicas {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Fecha != other.Fecha) return false;
+      if (FechaDesde != other.FechaDesde) return false;
+      if (FechaHasta != other.FechaHasta) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1458,7 +1474,8 @@ namespace ConsultasMedicas {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Fecha.Length != 0) hash ^= Fecha.GetHashCode();
+      if (FechaDesde.Length != 0) hash ^= FechaDesde.GetHashCode();
+      if (FechaHasta.Length != 0) hash ^= FechaHasta.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1477,9 +1494,13 @@ namespace ConsultasMedicas {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Fecha.Length != 0) {
+      if (FechaDesde.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Fecha);
+        output.WriteString(FechaDesde);
+      }
+      if (FechaHasta.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(FechaHasta);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1491,9 +1512,13 @@ namespace ConsultasMedicas {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Fecha.Length != 0) {
+      if (FechaDesde.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Fecha);
+        output.WriteString(FechaDesde);
+      }
+      if (FechaHasta.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(FechaHasta);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1505,8 +1530,11 @@ namespace ConsultasMedicas {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Fecha.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Fecha);
+      if (FechaDesde.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(FechaDesde);
+      }
+      if (FechaHasta.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(FechaHasta);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1520,8 +1548,11 @@ namespace ConsultasMedicas {
       if (other == null) {
         return;
       }
-      if (other.Fecha.Length != 0) {
-        Fecha = other.Fecha;
+      if (other.FechaDesde.Length != 0) {
+        FechaDesde = other.FechaDesde;
+      }
+      if (other.FechaHasta.Length != 0) {
+        FechaHasta = other.FechaHasta;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1543,7 +1574,11 @@ namespace ConsultasMedicas {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Fecha = input.ReadString();
+            FechaDesde = input.ReadString();
+            break;
+          }
+          case 18: {
+            FechaHasta = input.ReadString();
             break;
           }
         }
@@ -1566,7 +1601,11 @@ namespace ConsultasMedicas {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            Fecha = input.ReadString();
+            FechaDesde = input.ReadString();
+            break;
+          }
+          case 18: {
+            FechaHasta = input.ReadString();
             break;
           }
         }

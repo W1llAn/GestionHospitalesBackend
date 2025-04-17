@@ -744,3 +744,11 @@ C:\Users\ASUS\Desktop\sexto\APD\Examen\Back2\GestionHospitalesBackend\Microservi
 C:\Users\ASUS\Desktop\sexto\APD\Examen\Back2\GestionHospitalesBackend\Microservicio-ConsultasMedicas\obj\Debug\net8.0\Microservicio-ConsultasMedicas.genruntimeconfig.cache
 C:\Users\ASUS\Desktop\sexto\APD\Examen\Back2\GestionHospitalesBackend\Microservicio-ConsultasMedicas\obj\Debug\net8.0\ref\Microservicio-ConsultasMedicas.dll
 C:\Users\William\Documents\6° Semestre\Aplicaciones Distribuidas\1Parcial\Examen\GestionHospitalesBackend\Microservicio-ConsultasMedicas\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\User\git\GestionHospitalesBackend\Microservicio-ConsultasMedicas\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\User\git\GestionHospitalesBackend\Microservicio-ConsultasMedicas\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\User\git\GestionHospitalesBackend\Microservicio-ConsultasMedicas\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\User\git\GestionHospitalesBackend\Microservicio-ConsultasMedicas\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\User\git\GestionHospitalesBackend\Microservicio-ConsultasMedicas\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\User\git\GestionHospitalesBackend\Microservicio-ConsultasMedicas\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\User\git\GestionHospitalesBackend\Microservicio-ConsultasMedicas\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\User\git\GestionHospitalesBackend\Microservicio-ConsultasMedicas\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

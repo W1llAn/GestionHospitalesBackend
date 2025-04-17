@@ -43,7 +43,8 @@ message DeleteConsultaRequest {
 
 // Solicitud para buscar consultas por fecha
 message ConsultaFechaRequest {
-    string fecha = 1;
+    string fecha_desde = 1;
+    string fecha_hasta = 2;
 }
 
 // Respuesta vacía para operaciones como eliminar
@@ -75,4 +76,7 @@ service ConsultasService {
 
     // Opcional: para reportes de consultas médicas
     rpc GetConsultasReporte(ConsultaCedulaRequest) returns (ConsultaList);
+
+    // Obtener Consultas por Centro Medico
+    rpc GetConsultasCentroMedico(Admin.Centro_MedicoGet) returns (ConsultaList);
 }

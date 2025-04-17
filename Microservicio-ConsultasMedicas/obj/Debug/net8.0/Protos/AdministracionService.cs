@@ -35,11 +35,12 @@ namespace Microservicio_Administracion.Administracion {
             "ASgLMhMuQWRtaW4uRXNwZWNpYWxpZGFkIjAKDEVzcGVjaWFsaWRhZBIKCgJJ",
             "ZBgBIAEoBRIUCgxlc3BlY2lhbGlkYWQYAiABKAkiTgoNQ2VudHJvX01lZGlj",
             "bxIKCgJJZBgBIAEoBRIOCgZub21icmUYAiABKAkSDgoGY2l1ZGFkGAMgASgJ",
-            "EhEKCWRpcmVjY2lvbhgEIAEoCSIpCg1UaXBvX0VtcGxlYWRvEgoKAklkGAEg",
-            "ASgFEgwKBHRpcG8YAiABKAkySwoVQWRtaW5pc3RyYWNpb25TZXJ2aWNlEjIK",
-            "C0dldEVtcGxlYWRvEhIuQWRtaW4uRW1wbGVhZG9HZXQaDy5BZG1pbi5FbXBs",
-            "ZWFkb0IuqgIrTWljcm9zZXJ2aWNpb19BZG1pbmlzdHJhY2lvbi5BZG1pbmlz",
-            "dHJhY2lvbmIGcHJvdG8z"));
+            "EhEKCWRpcmVjY2lvbhgEIAEoCSIeChBDZW50cm9fTWVkaWNvR2V0EgoKAklk",
+            "GAEgASgFIikKDVRpcG9fRW1wbGVhZG8SCgoCSWQYASABKAUSDAoEdGlwbxgC",
+            "IAEoCTJLChVBZG1pbmlzdHJhY2lvblNlcnZpY2USMgoLR2V0RW1wbGVhZG8S",
+            "Ei5BZG1pbi5FbXBsZWFkb0dldBoPLkFkbWluLkVtcGxlYWRvQi6qAitNaWNy",
+            "b3NlcnZpY2lvX0FkbWluaXN0cmFjaW9uLkFkbWluaXN0cmFjaW9uYgZwcm90",
+            "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -47,6 +48,7 @@ namespace Microservicio_Administracion.Administracion {
             new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_Administracion.Administracion.Empleado), global::Microservicio_Administracion.Administracion.Empleado.Parser, new[]{ "Id", "CentroMedicoID", "TipoEmpleadoID", "Nombre", "Cedula", "EspecialidadID", "Telefono", "Email", "Salario", "CentroMedico", "TipoEmpleado", "Especialidad" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_Administracion.Administracion.Especialidad), global::Microservicio_Administracion.Administracion.Especialidad.Parser, new[]{ "Id", "Especialidad_" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_Administracion.Administracion.Centro_Medico), global::Microservicio_Administracion.Administracion.Centro_Medico.Parser, new[]{ "Id", "Nombre", "Ciudad", "Direccion" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_Administracion.Administracion.Centro_MedicoGet), global::Microservicio_Administracion.Administracion.Centro_MedicoGet.Parser, new[]{ "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_Administracion.Administracion.Tipo_Empleado), global::Microservicio_Administracion.Administracion.Tipo_Empleado.Parser, new[]{ "Id", "Tipo" }, null, null, null, null)
           }));
     }
@@ -1429,6 +1431,204 @@ namespace Microservicio_Administracion.Administracion {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class Centro_MedicoGet : pb::IMessage<Centro_MedicoGet>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<Centro_MedicoGet> _parser = new pb::MessageParser<Centro_MedicoGet>(() => new Centro_MedicoGet());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<Centro_MedicoGet> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Microservicio_Administracion.Administracion.AdministracionServiceReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public Centro_MedicoGet() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public Centro_MedicoGet(Centro_MedicoGet other) : this() {
+      id_ = other.id_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public Centro_MedicoGet Clone() {
+      return new Centro_MedicoGet(this);
+    }
+
+    /// <summary>Field number for the "Id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private int id_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as Centro_MedicoGet);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(Centro_MedicoGet other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id != 0) hash ^= Id.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Id);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Id);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(Centro_MedicoGet other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Id = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Id = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class Tipo_Empleado : pb::IMessage<Tipo_Empleado>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -1443,7 +1643,7 @@ namespace Microservicio_Administracion.Administracion {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Microservicio_Administracion.Administracion.AdministracionServiceReflection.Descriptor.MessageTypes[4]; }
+      get { return global::Microservicio_Administracion.Administracion.AdministracionServiceReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

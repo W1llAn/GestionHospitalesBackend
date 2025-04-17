@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "SQCeOq8OJFYTflLOZaF0mUldKJYxNwlXPnh8mELodD8=",
+  "Hash": "ORVYIUOKpu2VENOXn0GIGs1hE+C0ZDoH99nXHPUckGc=",
   "Source": "Microservicio-Administracion",
   "BasePath": "_content/Microservicio-Administracion",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }
