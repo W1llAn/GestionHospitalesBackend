@@ -134,7 +134,7 @@ namespace Microservicio_Administracion.Protos
 
             return new Usuario
             {
-                Id = 0,
+                Id = usuarioGuardar.Id,
                 NombreUsuario = request.NombreUsuario,
                 Contrasenia = request.Contrasenia,
                 EmpleadoId = request.EmpleadoId,
