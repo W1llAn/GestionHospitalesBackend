@@ -2,9 +2,20 @@ syntax = "proto3";
 
 option csharp_namespace = "Microservicio_Administracion.Protos";
 
+package Auth;
+
 service UsuarioService{
 	rpc ValidarUsuario (UsuarioLogin) returns (UsuarioLoginRespuesta);
+    rpc RegistrarUsuario (UsuarioRegistro) returns (Usuario);
+    rpc BorrarUsuario(UsuarioBorrar) returns (RespuestaVacia);
+    rpc SeleccionarUsuarios(RespuestaVacia) returns (ListaUsuarios);
 }
+
+
+message ListaUsuarios{
+    repeated Usuario usuarios=1;
+}
+
 message UsuarioLogin {
   string nombre_usuario = 1;
   string contrasenia = 2;
@@ -12,6 +23,16 @@ message UsuarioLogin {
 message UsuarioLoginRespuesta {
   bool EsValido = 1;
   Usuario Usuario = 2;
+}
+
+message UsuarioRegistro{
+  string nombre_usuario = 1;
+  string contrasenia = 2;
+  int32 empleadoId=4;
+}
+
+message UsuarioBorrar{
+    int32 id=1;
 }
 
 message Usuario{
@@ -50,3 +71,7 @@ message Tipo_Empleado{
     int32 Id=1;
     string tipo=2;
 }
+
+message RespuestaVacia {
+}
+

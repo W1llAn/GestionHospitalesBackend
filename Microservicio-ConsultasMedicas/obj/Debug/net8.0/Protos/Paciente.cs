@@ -30,36 +30,42 @@ namespace Microservicio_ConsultasMedicas.Protos {
             "ZWxlZm9ubxgFIAEoCRIRCglkaXJlY2Npb24YBiABKAkiKQoSR2V0UGFjaWVu",
             "dGVSZXF1ZXN0EhMKC2lkX3BhY2llbnRlGAEgASgFIkAKE0dldFBhY2llbnRl",
             "UmVzcG9uc2USKQoIcGFjaWVudGUYASABKAsyFy5wYWNpZW50ZS5QYWNpZW50",
-            "ZU1vZGVsIkEKFENyZWFyUGFjaWVudGVSZXF1ZXN0EikKCHBhY2llbnRlGAEg",
-            "ASgLMhcucGFjaWVudGUuUGFjaWVudGVNb2RlbCJCChVDcmVhclBhY2llbnRl",
-            "UmVzcG9uc2USKQoIcGFjaWVudGUYASABKAsyFy5wYWNpZW50ZS5QYWNpZW50",
-            "ZU1vZGVsIkYKGUFjdHVhbGl6YXJQYWNpZW50ZVJlcXVlc3QSKQoIcGFjaWVu",
-            "dGUYASABKAsyFy5wYWNpZW50ZS5QYWNpZW50ZU1vZGVsIkcKGkFjdHVhbGl6",
-            "YXJQYWNpZW50ZVJlc3BvbnNlEikKCHBhY2llbnRlGAEgASgLMhcucGFjaWVu",
-            "dGUuUGFjaWVudGVNb2RlbCIuChdFbGltaW5hclBhY2llbnRlUmVxdWVzdBIT",
-            "CgtpZF9wYWNpZW50ZRgBIAEoBSIrChhFbGltaW5hclBhY2llbnRlUmVzcG9u",
-            "c2USDwoHc3VjY2VzcxgBIAEoCDLrAgoPUGFjaWVudGVTZXJ2aWNlEkoKC0dl",
-            "dFBhY2llbnRlEhwucGFjaWVudGUuR2V0UGFjaWVudGVSZXF1ZXN0Gh0ucGFj",
-            "aWVudGUuR2V0UGFjaWVudGVSZXNwb25zZRJQCg1DcmVhclBhY2llbnRlEh4u",
-            "cGFjaWVudGUuQ3JlYXJQYWNpZW50ZVJlcXVlc3QaHy5wYWNpZW50ZS5DcmVh",
-            "clBhY2llbnRlUmVzcG9uc2USXwoSQWN0dWFsaXphclBhY2llbnRlEiMucGFj",
-            "aWVudGUuQWN0dWFsaXphclBhY2llbnRlUmVxdWVzdBokLnBhY2llbnRlLkFj",
-            "dHVhbGl6YXJQYWNpZW50ZVJlc3BvbnNlElkKEEVsaW1pbmFyUGFjaWVudGUS",
-            "IS5wYWNpZW50ZS5FbGltaW5hclBhY2llbnRlUmVxdWVzdBoiLnBhY2llbnRl",
-            "LkVsaW1pbmFyUGFjaWVudGVSZXNwb25zZUIoqgIlTWljcm9zZXJ2aWNpb19D",
-            "b25zdWx0YXNNZWRpY2FzLlByb3Rvc2IGcHJvdG8z"));
+            "ZU1vZGVsIkYKGEdldFBhY2llbnRlTGlzdGFSZXNwb25zZRIqCglwYWNpZW50",
+            "ZXMYASADKAsyFy5wYWNpZW50ZS5QYWNpZW50ZU1vZGVsIkEKFENyZWFyUGFj",
+            "aWVudGVSZXF1ZXN0EikKCHBhY2llbnRlGAEgASgLMhcucGFjaWVudGUuUGFj",
+            "aWVudGVNb2RlbCJCChVDcmVhclBhY2llbnRlUmVzcG9uc2USKQoIcGFjaWVu",
+            "dGUYASABKAsyFy5wYWNpZW50ZS5QYWNpZW50ZU1vZGVsIkYKGUFjdHVhbGl6",
+            "YXJQYWNpZW50ZVJlcXVlc3QSKQoIcGFjaWVudGUYASABKAsyFy5wYWNpZW50",
+            "ZS5QYWNpZW50ZU1vZGVsIkcKGkFjdHVhbGl6YXJQYWNpZW50ZVJlc3BvbnNl",
+            "EikKCHBhY2llbnRlGAEgASgLMhcucGFjaWVudGUuUGFjaWVudGVNb2RlbCIu",
+            "ChdFbGltaW5hclBhY2llbnRlUmVxdWVzdBITCgtpZF9wYWNpZW50ZRgBIAEo",
+            "BSIrChhFbGltaW5hclBhY2llbnRlUmVzcG9uc2USDwoHc3VjY2VzcxgBIAEo",
+            "CCIPCg1FbXB0eVJlc3BvbnNlMroDCg9QYWNpZW50ZVNlcnZpY2USSgoLR2V0",
+            "UGFjaWVudGUSHC5wYWNpZW50ZS5HZXRQYWNpZW50ZVJlcXVlc3QaHS5wYWNp",
+            "ZW50ZS5HZXRQYWNpZW50ZVJlc3BvbnNlEk0KDkdldEFsbFBhY2llbnRlEhcu",
+            "cGFjaWVudGUuRW1wdHlSZXNwb25zZRoiLnBhY2llbnRlLkdldFBhY2llbnRl",
+            "TGlzdGFSZXNwb25zZRJQCg1DcmVhclBhY2llbnRlEh4ucGFjaWVudGUuQ3Jl",
+            "YXJQYWNpZW50ZVJlcXVlc3QaHy5wYWNpZW50ZS5DcmVhclBhY2llbnRlUmVz",
+            "cG9uc2USXwoSQWN0dWFsaXphclBhY2llbnRlEiMucGFjaWVudGUuQWN0dWFs",
+            "aXphclBhY2llbnRlUmVxdWVzdBokLnBhY2llbnRlLkFjdHVhbGl6YXJQYWNp",
+            "ZW50ZVJlc3BvbnNlElkKEEVsaW1pbmFyUGFjaWVudGUSIS5wYWNpZW50ZS5F",
+            "bGltaW5hclBhY2llbnRlUmVxdWVzdBoiLnBhY2llbnRlLkVsaW1pbmFyUGFj",
+            "aWVudGVSZXNwb25zZUIoqgIlTWljcm9zZXJ2aWNpb19Db25zdWx0YXNNZWRp",
+            "Y2FzLlByb3Rvc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.PacienteModel), global::Microservicio_ConsultasMedicas.Protos.PacienteModel.Parser, new[]{ "IdPaciente", "Nombre", "Cedula", "FechaNacimiento", "Telefono", "Direccion" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.GetPacienteRequest), global::Microservicio_ConsultasMedicas.Protos.GetPacienteRequest.Parser, new[]{ "IdPaciente" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.GetPacienteResponse), global::Microservicio_ConsultasMedicas.Protos.GetPacienteResponse.Parser, new[]{ "Paciente" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.GetPacienteListaResponse), global::Microservicio_ConsultasMedicas.Protos.GetPacienteListaResponse.Parser, new[]{ "Pacientes" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.CrearPacienteRequest), global::Microservicio_ConsultasMedicas.Protos.CrearPacienteRequest.Parser, new[]{ "Paciente" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.CrearPacienteResponse), global::Microservicio_ConsultasMedicas.Protos.CrearPacienteResponse.Parser, new[]{ "Paciente" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.ActualizarPacienteRequest), global::Microservicio_ConsultasMedicas.Protos.ActualizarPacienteRequest.Parser, new[]{ "Paciente" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.ActualizarPacienteResponse), global::Microservicio_ConsultasMedicas.Protos.ActualizarPacienteResponse.Parser, new[]{ "Paciente" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.EliminarPacienteRequest), global::Microservicio_ConsultasMedicas.Protos.EliminarPacienteRequest.Parser, new[]{ "IdPaciente" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.EliminarPacienteResponse), global::Microservicio_ConsultasMedicas.Protos.EliminarPacienteResponse.Parser, new[]{ "Success" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.EliminarPacienteResponse), global::Microservicio_ConsultasMedicas.Protos.EliminarPacienteResponse.Parser, new[]{ "Success" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.EmptyResponse), global::Microservicio_ConsultasMedicas.Protos.EmptyResponse.Parser, null, null, null, null, null)
           }));
     }
     #endregion
@@ -855,6 +861,193 @@ namespace Microservicio_ConsultasMedicas.Protos {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class GetPacienteListaResponse : pb::IMessage<GetPacienteListaResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<GetPacienteListaResponse> _parser = new pb::MessageParser<GetPacienteListaResponse>(() => new GetPacienteListaResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<GetPacienteListaResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Microservicio_ConsultasMedicas.Protos.PacienteReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetPacienteListaResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetPacienteListaResponse(GetPacienteListaResponse other) : this() {
+      pacientes_ = other.pacientes_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetPacienteListaResponse Clone() {
+      return new GetPacienteListaResponse(this);
+    }
+
+    /// <summary>Field number for the "pacientes" field.</summary>
+    public const int PacientesFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Microservicio_ConsultasMedicas.Protos.PacienteModel> _repeated_pacientes_codec
+        = pb::FieldCodec.ForMessage(10, global::Microservicio_ConsultasMedicas.Protos.PacienteModel.Parser);
+    private readonly pbc::RepeatedField<global::Microservicio_ConsultasMedicas.Protos.PacienteModel> pacientes_ = new pbc::RepeatedField<global::Microservicio_ConsultasMedicas.Protos.PacienteModel>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::Microservicio_ConsultasMedicas.Protos.PacienteModel> Pacientes {
+      get { return pacientes_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as GetPacienteListaResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(GetPacienteListaResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!pacientes_.Equals(other.pacientes_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= pacientes_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      pacientes_.WriteTo(output, _repeated_pacientes_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      pacientes_.WriteTo(ref output, _repeated_pacientes_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      size += pacientes_.CalculateSize(_repeated_pacientes_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(GetPacienteListaResponse other) {
+      if (other == null) {
+        return;
+      }
+      pacientes_.Add(other.pacientes_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            pacientes_.AddEntriesFrom(input, _repeated_pacientes_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            pacientes_.AddEntriesFrom(ref input, _repeated_pacientes_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class CrearPacienteRequest : pb::IMessage<CrearPacienteRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -869,7 +1062,7 @@ namespace Microservicio_ConsultasMedicas.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Microservicio_ConsultasMedicas.Protos.PacienteReflection.Descriptor.MessageTypes[3]; }
+      get { return global::Microservicio_ConsultasMedicas.Protos.PacienteReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1076,7 +1269,7 @@ namespace Microservicio_ConsultasMedicas.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Microservicio_ConsultasMedicas.Protos.PacienteReflection.Descriptor.MessageTypes[4]; }
+      get { return global::Microservicio_ConsultasMedicas.Protos.PacienteReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1286,7 +1479,7 @@ namespace Microservicio_ConsultasMedicas.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Microservicio_ConsultasMedicas.Protos.PacienteReflection.Descriptor.MessageTypes[5]; }
+      get { return global::Microservicio_ConsultasMedicas.Protos.PacienteReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1493,7 +1686,7 @@ namespace Microservicio_ConsultasMedicas.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Microservicio_ConsultasMedicas.Protos.PacienteReflection.Descriptor.MessageTypes[6]; }
+      get { return global::Microservicio_ConsultasMedicas.Protos.PacienteReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1700,7 +1893,7 @@ namespace Microservicio_ConsultasMedicas.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Microservicio_ConsultasMedicas.Protos.PacienteReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Microservicio_ConsultasMedicas.Protos.PacienteReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1898,7 +2091,7 @@ namespace Microservicio_ConsultasMedicas.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Microservicio_ConsultasMedicas.Protos.PacienteReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Microservicio_ConsultasMedicas.Protos.PacienteReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2074,6 +2267,167 @@ namespace Microservicio_ConsultasMedicas.Protos {
             Success = input.ReadBool();
             break;
           }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class EmptyResponse : pb::IMessage<EmptyResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<EmptyResponse> _parser = new pb::MessageParser<EmptyResponse>(() => new EmptyResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<EmptyResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Microservicio_ConsultasMedicas.Protos.PacienteReflection.Descriptor.MessageTypes[10]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public EmptyResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public EmptyResponse(EmptyResponse other) : this() {
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public EmptyResponse Clone() {
+      return new EmptyResponse(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as EmptyResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(EmptyResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(EmptyResponse other) {
+      if (other == null) {
+        return;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
         }
       }
     }

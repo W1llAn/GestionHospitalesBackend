@@ -1,4 +1,7 @@
 using Microservicio_ConsultasMedicas.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using Microservicio_ConsultasMedicas.protos;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +14,41 @@ builder.Services.AddDbContext<DataContext>(options =>
 
 
 builder.Services.AddGrpc();
+
+//JWT
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(o =>
+{
+    o.Events = new JwtBearerEvents
+    {
+        OnAuthenticationFailed = context =>
+        {
+            Console.WriteLine($"Error de autenticación: {context.Exception}");
+            return Task.CompletedTask;
+        },
+        OnForbidden = context =>
+        {
+            Console.WriteLine($"Error de autenticación: {context.Response}");
+            return Task.CompletedTask;
+        },
+        OnTokenValidated = context =>
+        {
+            Console.WriteLine($"Token validado: {context.SecurityToken}");
+            return Task.CompletedTask;
+        }
+    };
+
+    o.RequireHttpsMetadata = false;
+    o.TokenValidationParameters = new TokenValidationParameters
+    {
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"]!)),
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+
+        ClockSkew = TimeSpan.Zero
+    };
+
+});
+
 
 
 builder.Services.AddControllers();

@@ -176,6 +176,7 @@ namespace Microservicio_Administracion.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEmpleado(int id)
         {
+
             var empleado = await _context.Empleados.FindAsync(id);
             if (empleado == null)
             {
