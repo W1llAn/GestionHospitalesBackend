@@ -1,0 +1,60 @@
+﻿using Grpc.Core;
+using Grpc.Net.Client;
+using Microservicio_Administracion.Protos;
+using Microservicio_Autenticación.Protos;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Api_Gateway.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class LoginController : ControllerBase
+    {
+        IConfiguration _configuration; 
+        public LoginController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+        [HttpPost]
+        public async Task<ActionResult<Token>> PostUsuario(UsuarioLogin usuario)
+        {
+
+            try
+            {
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:autenticacion"]);
+
+                var cliente = new LoginService.LoginServiceClient(canal);
+
+                var Token = await cliente.LoginAsync(usuario);
+
+                return Token;
+            }catch (RpcException ex)
+            {
+                return erroresGrpc(ex.StatusCode,ex.Status.Detail);
+            }
+        }
+
+
+
+        private ObjectResult erroresGrpc(Grpc.Core.StatusCode codigo,string mensaje)
+        {
+            switch (codigo)
+            {
+                case Grpc.Core.StatusCode.InvalidArgument:
+                    return BadRequest(new { mensaje = mensaje });
+
+                case Grpc.Core.StatusCode.Unauthenticated:
+                    return Unauthorized(new { mensaje = mensaje });
+
+                case Grpc.Core.StatusCode.NotFound:
+                    return NotFound(new { mensaje = mensaje });
+
+                case Grpc.Core.StatusCode.AlreadyExists:
+                    return Conflict(new { mensaje = mensaje });
+
+                default:
+                    return StatusCode(500, new { mensaje = "Error interno: " + mensaje });
+            }
+        }
+    }
+}

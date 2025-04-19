@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+option csharp_namespace = "Microservicio_ConsultasMedicas.Protos";
+
+package paciente;
+
+message PacienteModel {
+  int32 id_paciente = 1;
+  string nombre = 2;
+  string cedula = 3;
+  string fecha_nacimiento = 4;
+  string telefono = 5;
+  string direccion = 6;
+}
+
+message GetPacienteRequest {
+  int32 id_paciente = 1;
+}
+
+message GetPacienteResponse {
+  PacienteModel paciente = 1;
+}
+
+message GetPacienteListaResponse {
+  repeated PacienteModel pacientes = 1;
+}
+
+message CrearPacienteRequest {
+  PacienteModel paciente = 1;
+}
+
+message CrearPacienteResponse {
+  PacienteModel paciente = 1;
+}
+
+// Nuevos mensajes para Actualizar y Eliminar
+message ActualizarPacienteRequest {
+  PacienteModel paciente = 1;
+}
+
+message ActualizarPacienteResponse {
+  PacienteModel paciente = 1;
+}
+
+message EliminarPacienteRequest {
+  int32 id_paciente = 1;
+}
+
+message EliminarPacienteResponse {
+  bool success = 1;
+}
+
+message EmptyResponse{
+}
+service PacienteService {
+  rpc GetPaciente(GetPacienteRequest) returns (GetPacienteResponse);
+  rpc GetAllPaciente(EmptyResponse) returns (GetPacienteListaResponse);
+  rpc CrearPaciente(CrearPacienteRequest) returns (CrearPacienteResponse);
+  rpc ActualizarPaciente(ActualizarPacienteRequest) returns (ActualizarPacienteResponse);
+  rpc EliminarPaciente(EliminarPacienteRequest) returns (EliminarPacienteResponse);
+}

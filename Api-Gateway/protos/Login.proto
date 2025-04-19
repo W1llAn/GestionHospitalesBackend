@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option csharp_namespace = "Microservicio_Autenticación.Protos";
+
+import "Protos/UsuarioService.proto";
+
+service LoginService{
+	rpc Login(Auth.UsuarioLogin) returns (Token);
+}
+message Token{
+	string token=1;
+}
