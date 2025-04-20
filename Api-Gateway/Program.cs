@@ -3,6 +3,15 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173") // Origen del frontend
+              .AllowAnyMethod() // Permitir GET, POST, etc.
+              .AllowAnyHeader(); // Permitir encabezados como Authorization
+    });
+});
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -50,7 +59,8 @@ if (app.Environment.IsDevelopment())
 AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
 
 app.UseHttpsRedirection();
-
+// Habilitar CORS antes de autenticación y autorización
+app.UseCors("AllowFrontend");
 app.UseAuthorization();
 
 app.MapControllers();
