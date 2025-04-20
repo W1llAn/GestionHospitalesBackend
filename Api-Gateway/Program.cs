@@ -47,6 +47,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

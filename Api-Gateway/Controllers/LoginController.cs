@@ -21,8 +21,14 @@ namespace Api_Gateway.Controllers
 
             try
             {
-                using var canal = GrpcChannel.ForAddress(_configuration["grcp:autenticacion"]);
-
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:autenticacion"], new GrpcChannelOptions
+                {
+                    HttpHandler = httpHandler
+                });
                 var cliente = new LoginService.LoginServiceClient(canal);
 
                 var Token = await cliente.LoginAsync(usuario);

@@ -24,7 +24,14 @@ namespace Api_Gateway.Controllers
         {
             try
             {
-                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"]);
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"], new GrpcChannelOptions
+                {
+                    HttpHandler = httpHandler
+                });
 
                 var cliente = new AdministracionService.AdministracionServiceClient(canal);
 
@@ -46,8 +53,14 @@ namespace Api_Gateway.Controllers
         {
             try
             {
-                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"]);
-
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"], new GrpcChannelOptions
+                {
+                    HttpHandler = httpHandler
+                });
                 var cliente = new AdministracionService.AdministracionServiceClient(canal);
 
                 var empleadoLista = await cliente.GetAllEmpleadoByEspecialidadAsync(new EspecialidadGet { Id=id}, callOptionsToken());
@@ -68,8 +81,14 @@ namespace Api_Gateway.Controllers
         {
             try
             {
-                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"]);
-
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"], new GrpcChannelOptions
+                {
+                    HttpHandler = httpHandler
+                });
                 var cliente = new AdministracionService.AdministracionServiceClient(canal);
 
                 var empleadoLista = await cliente.GetAllEmpleadoByCentroMedicoAsync(new Centro_MedicoGet { Id=id}, callOptionsToken());
@@ -91,8 +110,14 @@ namespace Api_Gateway.Controllers
         {
             try
             {
-                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"]);
-
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"], new GrpcChannelOptions
+                {
+                    HttpHandler = httpHandler
+                });
                 var cliente = new AdministracionService.AdministracionServiceClient(canal);
 
                 var empleado = await cliente.GetEmpleadoAsync(new EmpleadoGet { Id=id}, callOptionsToken());
@@ -116,8 +141,14 @@ namespace Api_Gateway.Controllers
         {
             try
             {
-                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"]);
-
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"], new GrpcChannelOptions
+                {
+                    HttpHandler = httpHandler
+                });
                 var cliente = new AdministracionService.AdministracionServiceClient(canal);
 
                 var empleadoLista = await cliente.PutEmpleadoAsync(empleado, callOptionsToken());
@@ -141,8 +172,14 @@ namespace Api_Gateway.Controllers
         {
             try
             {
-                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"]);
-
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"], new GrpcChannelOptions
+                {
+                    HttpHandler = httpHandler
+                });
                 var cliente = new AdministracionService.AdministracionServiceClient(canal);
 
                 var empleadoLista = await cliente.PostEmpleadoAsync(empleado, callOptionsToken());
@@ -166,8 +203,14 @@ namespace Api_Gateway.Controllers
 
             try
             {
-                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"]);
-
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"], new GrpcChannelOptions
+                {
+                    HttpHandler = httpHandler
+                });
                 var cliente = new AdministracionService.AdministracionServiceClient(canal);
 
                 var empleadoLista = await cliente.DeleteEmpleadoAsync(new EmpleadoGet { Id=id}, callOptionsToken());

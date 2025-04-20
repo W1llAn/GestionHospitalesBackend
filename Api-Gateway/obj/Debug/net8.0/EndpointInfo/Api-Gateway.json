@@ -712,6 +712,199 @@
         }
       }
     },
+    "/CentroMedico/Pacientes": {
+      "get": {
+        "tags": [
+          "Pacientes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microservicio_ConsultasMedicas.Protos.GetPacienteListaResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microservicio_ConsultasMedicas.Protos.GetPacienteListaResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microservicio_ConsultasMedicas.Protos.GetPacienteListaResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Pacientes"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Microservicio_ConsultasMedicas.Protos.CrearPacienteRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Microservicio_ConsultasMedicas.Protos.CrearPacienteRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Microservicio_ConsultasMedicas.Protos.CrearPacienteRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microservicio_ConsultasMedicas.Protos.PacienteModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microservicio_ConsultasMedicas.Protos.PacienteModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microservicio_ConsultasMedicas.Protos.PacienteModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CentroMedico/Pacientes/{id}": {
+      "get": {
+        "tags": [
+          "Pacientes"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microservicio_ConsultasMedicas.Protos.PacienteModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microservicio_ConsultasMedicas.Protos.PacienteModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microservicio_ConsultasMedicas.Protos.PacienteModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Pacientes"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Microservicio_ConsultasMedicas.Protos.ActualizarPacienteRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Microservicio_ConsultasMedicas.Protos.ActualizarPacienteRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Microservicio_ConsultasMedicas.Protos.ActualizarPacienteRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microservicio_ConsultasMedicas.Protos.PacienteModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microservicio_ConsultasMedicas.Protos.PacienteModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microservicio_ConsultasMedicas.Protos.PacienteModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Pacientes"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/Administracion/TiposEmpleados": {
       "get": {
         "tags": [
@@ -1457,6 +1650,68 @@
         "type": "object",
         "properties": {
           "token_": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Microservicio_ConsultasMedicas.Protos.ActualizarPacienteRequest": {
+        "type": "object",
+        "properties": {
+          "paciente": {
+            "$ref": "#/components/schemas/Microservicio_ConsultasMedicas.Protos.PacienteModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Microservicio_ConsultasMedicas.Protos.CrearPacienteRequest": {
+        "type": "object",
+        "properties": {
+          "paciente": {
+            "$ref": "#/components/schemas/Microservicio_ConsultasMedicas.Protos.PacienteModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Microservicio_ConsultasMedicas.Protos.GetPacienteListaResponse": {
+        "type": "object",
+        "properties": {
+          "pacientes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Microservicio_ConsultasMedicas.Protos.PacienteModel"
+            },
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Microservicio_ConsultasMedicas.Protos.PacienteModel": {
+        "type": "object",
+        "properties": {
+          "idPaciente": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "cedula": {
+            "type": "string",
+            "nullable": true
+          },
+          "fechaNacimiento": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefono": {
+            "type": "string",
+            "nullable": true
+          },
+          "direccion": {
             "type": "string",
             "nullable": true
           }

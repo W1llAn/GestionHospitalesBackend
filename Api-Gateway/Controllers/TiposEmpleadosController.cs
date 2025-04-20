@@ -25,8 +25,14 @@ namespace Api_Gateway.Controllers
         {
             try
             {
-                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"]);
-
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"], new GrpcChannelOptions
+                {
+                    HttpHandler = httpHandler
+                });
                 var cliente = new AdministracionService.AdministracionServiceClient(canal);
 
                 var tiposLista = await cliente.GetAllTipo_EmpleadoAsync(new Microservicio_Administracion.Administracion.RespuestaVacia { }, callOptionsToken());
@@ -49,8 +55,14 @@ namespace Api_Gateway.Controllers
         {
             try
             {
-                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"]);
-
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"], new GrpcChannelOptions
+                {
+                    HttpHandler = httpHandler
+                });
                 var cliente = new AdministracionService.AdministracionServiceClient(canal);
 
                 var tipo = await cliente.GetTipo_EmpleadoAsync(new Tipo_EmpleadoGet { Id=id}, callOptionsToken());
@@ -74,7 +86,14 @@ namespace Api_Gateway.Controllers
         {
             try
             {
-                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"]);
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"], new GrpcChannelOptions
+                {
+                    HttpHandler = httpHandler
+                });
 
                 var cliente = new AdministracionService.AdministracionServiceClient(canal);
 
@@ -99,8 +118,14 @@ namespace Api_Gateway.Controllers
         {
             try
             {
-                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"]);
-
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"], new GrpcChannelOptions
+                {
+                    HttpHandler = httpHandler
+                });
                 var cliente = new AdministracionService.AdministracionServiceClient(canal);
 
                 var tipo = await cliente.PostTipo_EmpleadoAsync(tipo_Empleado, callOptionsToken());
@@ -123,8 +148,14 @@ namespace Api_Gateway.Controllers
         {
             try
             {
-                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"]);
-
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"], new GrpcChannelOptions
+                {
+                    HttpHandler = httpHandler
+                });
                 var cliente = new AdministracionService.AdministracionServiceClient(canal);
 
                 var especialidadesLista = await cliente.DeleteTipo_EmpleadoAsync(new Tipo_EmpleadoGet { Id=id}, callOptionsToken());

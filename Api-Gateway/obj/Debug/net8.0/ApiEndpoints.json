@@ -590,6 +590,125 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Api_Gateway.Controllers.PacientesController",
+    "Method": "GetPacientes",
+    "RelativePath": "CentroMedico/Pacientes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Microservicio_ConsultasMedicas.Protos.GetPacienteListaResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Api_Gateway.Controllers.PacientesController",
+    "Method": "PostPaciente",
+    "RelativePath": "CentroMedico/Pacientes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "paciente",
+        "Type": "Microservicio_ConsultasMedicas.Protos.CrearPacienteRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Microservicio_ConsultasMedicas.Protos.PacienteModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Api_Gateway.Controllers.PacientesController",
+    "Method": "GetPaciente",
+    "RelativePath": "CentroMedico/Pacientes/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Microservicio_ConsultasMedicas.Protos.PacienteModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Api_Gateway.Controllers.PacientesController",
+    "Method": "PutPaciente",
+    "RelativePath": "CentroMedico/Pacientes/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "paciente",
+        "Type": "Microservicio_ConsultasMedicas.Protos.ActualizarPacienteRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Microservicio_ConsultasMedicas.Protos.PacienteModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Api_Gateway.Controllers.PacientesController",
+    "Method": "DeletePaciente",
+    "RelativePath": "CentroMedico/Pacientes/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Api_Gateway.Controllers.LoginController",
     "Method": "PostUsuario",
     "RelativePath": "Login",

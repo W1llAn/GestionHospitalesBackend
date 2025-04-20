@@ -25,8 +25,14 @@ namespace Api_Gateway.Controllers
         {
             try
             {
-                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"]);
-
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"], new GrpcChannelOptions
+                {
+                    HttpHandler = httpHandler
+                });
                 var cliente = new UsuarioService.UsuarioServiceClient(canal);
 
                 var usuariosLista = await cliente.SeleccionarUsuariosAsync(new RespuestaVacia { }, callOptionsToken());
@@ -50,9 +56,15 @@ namespace Api_Gateway.Controllers
         {
                 try
                 {
-                    using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"]);
-
-                    var cliente = new UsuarioService.UsuarioServiceClient(canal);
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"], new GrpcChannelOptions
+                {
+                    HttpHandler = httpHandler
+                });
+                var cliente = new UsuarioService.UsuarioServiceClient(canal);
 
                     var usuarioRegistro = await cliente.RegistrarUsuarioAsync(usuario, callOptionsToken());
 
@@ -74,9 +86,15 @@ namespace Api_Gateway.Controllers
         {
                 try
                 {
-                    using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"]);
-
-                    var cliente = new UsuarioService.UsuarioServiceClient(canal);
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"], new GrpcChannelOptions
+                {
+                    HttpHandler = httpHandler
+                });
+                var cliente = new UsuarioService.UsuarioServiceClient(canal);
 
                     var usuariosLista = await cliente.BorrarUsuarioAsync(new UsuarioBorrar { Id=id}, callOptionsToken());
 

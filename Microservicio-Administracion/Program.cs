@@ -6,6 +6,7 @@ using Microservicio_Administracion.Models;
 using Microservicio_Administracion.Protos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,17 @@ builder.Services.AddDbContext<AppDbContext>(
     );
 
 builder.Services.AddGrpc();
+//dotnet dev-certs https --trust
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(7256, listenOptions =>
+    {
+        listenOptions.UseHttps(); // ? Usa el certificado por defecto o personalizado
+        listenOptions.Protocols = HttpProtocols.Http2;
+    });
+});
+
+
 
 //JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(o =>

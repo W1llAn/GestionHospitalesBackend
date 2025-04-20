@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microservicio_ConsultasMedicas.protos;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,17 @@ builder.Services.AddDbContext<DataContext>(options =>
 
 
 builder.Services.AddGrpc();
+//dotnet dev-certs https --trust
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(7297, listenOptions =>
+    {
+        listenOptions.UseHttps(); // ✅ Usa el certificado por defecto o personalizado
+        listenOptions.Protocols = HttpProtocols.Http2;
+    });
+});
+
+
 
 //JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(o =>

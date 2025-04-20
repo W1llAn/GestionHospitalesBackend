@@ -6,6 +6,7 @@ using Grpc.Core;
 using Grpc.Net.Client;
 using Microservicio_Administracion.Protos;
 using Microservicio_Autenticación.Protos;
+using System.Security.Policy;
 
 namespace Api_Gateway.Controllers
 {
@@ -26,7 +27,14 @@ namespace Api_Gateway.Controllers
         {
             try
             {
-                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"]);
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"], new GrpcChannelOptions
+                {
+                    HttpHandler = httpHandler
+                });
 
                 var cliente = new AdministracionService.AdministracionServiceClient(canal);
 
@@ -50,7 +58,14 @@ namespace Api_Gateway.Controllers
         {
             try
             {
-                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"]);
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"], new GrpcChannelOptions
+                {
+                    HttpHandler = httpHandler
+                });
 
                 var cliente = new AdministracionService.AdministracionServiceClient(canal);
 
@@ -75,7 +90,14 @@ namespace Api_Gateway.Controllers
         {
             try
             {
-                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"]);
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"], new GrpcChannelOptions
+                {
+                    HttpHandler = httpHandler
+                });
 
                 var cliente = new AdministracionService.AdministracionServiceClient(canal);
 
@@ -100,7 +122,14 @@ namespace Api_Gateway.Controllers
         {
             try
             {
-                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"]);
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"], new GrpcChannelOptions
+                {
+                    HttpHandler = httpHandler
+                });
 
                 var cliente = new AdministracionService.AdministracionServiceClient(canal);
 
@@ -124,7 +153,15 @@ namespace Api_Gateway.Controllers
         {
             try
             {
-                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"]);
+
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"], new GrpcChannelOptions
+                {
+                    HttpHandler = httpHandler
+                });
 
                 var cliente = new AdministracionService.AdministracionServiceClient(canal);
 
