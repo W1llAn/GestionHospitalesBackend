@@ -590,6 +590,125 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Api_Gateway.Controllers.ConsultasController",
+    "Method": "GetConsultas",
+    "RelativePath": "CentroMedico/Consultas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "ConsultasMedicas.ConsultaList",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Api_Gateway.Controllers.ConsultasController",
+    "Method": "PostPaciente",
+    "RelativePath": "CentroMedico/Consultas",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "consulta",
+        "Type": "ConsultasMedicas.CreateConsultaRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ConsultasMedicas.Consulta",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Api_Gateway.Controllers.ConsultasController",
+    "Method": "DeletePaciente",
+    "RelativePath": "CentroMedico/Consultas/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Api_Gateway.Controllers.ConsultasController",
+    "Method": "GetConsultasFecha",
+    "RelativePath": "CentroMedico/Consultas/Fechas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "desde",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "hasta",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ConsultasMedicas.ConsultaList",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Api_Gateway.Controllers.ConsultasController",
+    "Method": "GetConsultasCedula",
+    "RelativePath": "CentroMedico/Consultas/Paciente/{cedula}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cedula",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ConsultasMedicas.ConsultaList",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Api_Gateway.Controllers.PacientesController",
     "Method": "GetPacientes",
     "RelativePath": "CentroMedico/Pacientes",
