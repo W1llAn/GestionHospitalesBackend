@@ -59,6 +59,8 @@ namespace Microservicio_Administracion.Protos {
     static readonly grpc::Marshaller<global::Microservicio_Administracion.Protos.RespuestaVacia> __Marshaller_Auth_RespuestaVacia = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Microservicio_Administracion.Protos.RespuestaVacia.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Microservicio_Administracion.Protos.ListaUsuarios> __Marshaller_Auth_ListaUsuarios = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Microservicio_Administracion.Protos.ListaUsuarios.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Microservicio_Administracion.Protos.UsuarioActualizar> __Marshaller_Auth_UsuarioActualizar = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Microservicio_Administracion.Protos.UsuarioActualizar.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Microservicio_Administracion.Protos.UsuarioLogin, global::Microservicio_Administracion.Protos.UsuarioLoginRespuesta> __Method_ValidarUsuario = new grpc::Method<global::Microservicio_Administracion.Protos.UsuarioLogin, global::Microservicio_Administracion.Protos.UsuarioLoginRespuesta>(
@@ -91,6 +93,14 @@ namespace Microservicio_Administracion.Protos {
         "SeleccionarUsuarios",
         __Marshaller_Auth_RespuestaVacia,
         __Marshaller_Auth_ListaUsuarios);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Microservicio_Administracion.Protos.UsuarioActualizar, global::Microservicio_Administracion.Protos.Usuario> __Method_ActualizarUsuario = new grpc::Method<global::Microservicio_Administracion.Protos.UsuarioActualizar, global::Microservicio_Administracion.Protos.Usuario>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "ActualizarUsuario",
+        __Marshaller_Auth_UsuarioActualizar,
+        __Marshaller_Auth_Usuario);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -204,6 +214,26 @@ namespace Microservicio_Administracion.Protos {
       public virtual grpc::AsyncUnaryCall<global::Microservicio_Administracion.Protos.ListaUsuarios> SeleccionarUsuariosAsync(global::Microservicio_Administracion.Protos.RespuestaVacia request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_SeleccionarUsuarios, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Microservicio_Administracion.Protos.Usuario ActualizarUsuario(global::Microservicio_Administracion.Protos.UsuarioActualizar request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ActualizarUsuario(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Microservicio_Administracion.Protos.Usuario ActualizarUsuario(global::Microservicio_Administracion.Protos.UsuarioActualizar request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_ActualizarUsuario, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Microservicio_Administracion.Protos.Usuario> ActualizarUsuarioAsync(global::Microservicio_Administracion.Protos.UsuarioActualizar request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ActualizarUsuarioAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Microservicio_Administracion.Protos.Usuario> ActualizarUsuarioAsync(global::Microservicio_Administracion.Protos.UsuarioActualizar request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_ActualizarUsuario, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]

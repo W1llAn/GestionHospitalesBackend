@@ -26,35 +26,43 @@ namespace ConsultasMedicas {
           string.Concat(
             "Ch1wcm90b3MvY29uc3VsdGFzTWVkaWNhcy5wcm90bxoVUHJvdG9zL3BhY2ll",
             "bnRlLnByb3RvGiJQcm90b3MvQWRtaW5pc3RyYWNpb25TZXJ2aWNlLnByb3Rv",
-            "IssBCghDb25zdWx0YRIaChJpZF9jb25zdWx0YV9tZWRpY2EYASABKAUSDQoF",
+            "IvcBCghDb25zdWx0YRIaChJpZF9jb25zdWx0YV9tZWRpY2EYASABKAUSDQoF",
             "ZmVjaGEYAiABKAkSDAoEaG9yYRgDIAEoCRIOCgZtb3Rpdm8YBCABKAkSEwoL",
-            "ZGlhZ25vc3RpY28YBSABKAkSEwoLdHJhdGFtaWVudG8YBiABKAkSIQoIZW1w",
-            "bGVhZG8YByABKAsyDy5BZG1pbi5FbXBsZWFkbxIpCghwYWNpZW50ZRgIIAEo",
-            "CzIXLnBhY2llbnRlLlBhY2llbnRlTW9kZWwiJwoVQ29uc3VsdGFDZWR1bGFS",
-            "ZXF1ZXN0Eg4KBmNlZHVsYRgBIAEoCSKRAQoVQ3JlYXRlQ29uc3VsdGFSZXF1",
-            "ZXN0Eg0KBWZlY2hhGAEgASgJEgwKBGhvcmEYAiABKAkSDgoGbW90aXZvGAMg",
-            "ASgJEhMKC2RpYWdub3N0aWNvGAQgASgJEhMKC3RyYXRhbWllbnRvGAUgASgJ",
-            "EhEKCWlkX21lZGljbxgGIAEoBRIOCgZjZWR1bGEYByABKAkiMwoVRGVsZXRl",
-            "Q29uc3VsdGFSZXF1ZXN0EhoKEmlkX2NvbnN1bHRhX21lZGljYRgBIAEoBSJA",
-            "ChRDb25zdWx0YUZlY2hhUmVxdWVzdBITCgtmZWNoYV9kZXNkZRgBIAEoCRIT",
-            "CgtmZWNoYV9oYXN0YRgCIAEoCSIPCg1FbXB0eVJlc3BvbnNlIiwKDENvbnN1",
-            "bHRhTGlzdBIcCgljb25zdWx0YXMYASADKAsyCS5Db25zdWx0YTKqAwoQQ29u",
-            "c3VsdGFzU2VydmljZRI2ChFHZXRDb25zdWx0YUNlZHVsYRIWLkNvbnN1bHRh",
-            "Q2VkdWxhUmVxdWVzdBoJLkNvbnN1bHRhEjMKDkNyZWF0ZUNvbnN1bHRhEhYu",
-            "Q3JlYXRlQ29uc3VsdGFSZXF1ZXN0GgkuQ29uc3VsdGESOAoORGVsZXRlQ29u",
-            "c3VsdGESFi5EZWxldGVDb25zdWx0YVJlcXVlc3QaDi5FbXB0eVJlc3BvbnNl",
-            "EjAKD0dldEFsbENvbnN1bHRhcxIOLkVtcHR5UmVzcG9uc2UaDS5Db25zdWx0",
-            "YUxpc3QSOwoTR2V0Q29uc3VsdGFzQnlGZWNoYRIVLkNvbnN1bHRhRmVjaGFS",
-            "ZXF1ZXN0Gg0uQ29uc3VsdGFMaXN0EjwKE0dldENvbnN1bHRhc1JlcG9ydGUS",
-            "Fi5Db25zdWx0YUNlZHVsYVJlcXVlc3QaDS5Db25zdWx0YUxpc3QSQgoYR2V0",
-            "Q29uc3VsdGFzQ2VudHJvTWVkaWNvEhcuQWRtaW4uQ2VudHJvX01lZGljb0dl",
-            "dBoNLkNvbnN1bHRhTGlzdEITqgIQQ29uc3VsdGFzTWVkaWNhc2IGcHJvdG8z"));
+            "ZGlhZ25vc3RpY28YBSABKAkSEwoLdHJhdGFtaWVudG8YBiABKAkSKgoMY2Vu",
+            "dHJvTWVkaWNvGAcgASgLMhQuQWRtaW4uQ2VudHJvX01lZGljbxIhCghlbXBs",
+            "ZWFkbxgIIAEoCzIPLkFkbWluLkVtcGxlYWRvEikKCHBhY2llbnRlGAkgASgL",
+            "MhcucGFjaWVudGUuUGFjaWVudGVNb2RlbCInChVDb25zdWx0YUNlZHVsYVJl",
+            "cXVlc3QSDgoGY2VkdWxhGAEgASgJIqsBChVDcmVhdGVDb25zdWx0YVJlcXVl",
+            "c3QSDQoFZmVjaGEYASABKAkSDAoEaG9yYRgCIAEoCRIOCgZtb3Rpdm8YAyAB",
+            "KAkSEwoLZGlhZ25vc3RpY28YBCABKAkSEwoLdHJhdGFtaWVudG8YBSABKAkS",
+            "EQoJaWRfbWVkaWNvGAYgASgFEg4KBmNlZHVsYRgHIAEoCRIYChBpZF9jZW50",
+            "cm9fbWVkaWNvGAggASgFIscBChVVcGRhdGVDb25zdWx0YVJlcXVlc3QSGgoS",
+            "aWRfY29uc3VsdGFfbWVkaWNhGAEgASgFEg0KBWZlY2hhGAIgASgJEgwKBGhv",
+            "cmEYAyABKAkSDgoGbW90aXZvGAQgASgJEhMKC2RpYWdub3N0aWNvGAUgASgJ",
+            "EhMKC3RyYXRhbWllbnRvGAYgASgJEhEKCWlkX21lZGljbxgHIAEoBRIOCgZj",
+            "ZWR1bGEYCCABKAkSGAoQaWRfY2VudHJvX21lZGljbxgJIAEoBSIzChVEZWxl",
+            "dGVDb25zdWx0YVJlcXVlc3QSGgoSaWRfY29uc3VsdGFfbWVkaWNhGAEgASgF",
+            "IkAKFENvbnN1bHRhRmVjaGFSZXF1ZXN0EhMKC2ZlY2hhX2Rlc2RlGAEgASgJ",
+            "EhMKC2ZlY2hhX2hhc3RhGAIgASgJIg8KDUVtcHR5UmVzcG9uc2UiLAoMQ29u",
+            "c3VsdGFMaXN0EhwKCWNvbnN1bHRhcxgBIAMoCzIJLkNvbnN1bHRhMqoDChBD",
+            "b25zdWx0YXNTZXJ2aWNlEjYKEUdldENvbnN1bHRhQ2VkdWxhEhYuQ29uc3Vs",
+            "dGFDZWR1bGFSZXF1ZXN0GgkuQ29uc3VsdGESMwoOQ3JlYXRlQ29uc3VsdGES",
+            "Fi5DcmVhdGVDb25zdWx0YVJlcXVlc3QaCS5Db25zdWx0YRI4Cg5EZWxldGVD",
+            "b25zdWx0YRIWLkRlbGV0ZUNvbnN1bHRhUmVxdWVzdBoOLkVtcHR5UmVzcG9u",
+            "c2USMAoPR2V0QWxsQ29uc3VsdGFzEg4uRW1wdHlSZXNwb25zZRoNLkNvbnN1",
+            "bHRhTGlzdBI7ChNHZXRDb25zdWx0YXNCeUZlY2hhEhUuQ29uc3VsdGFGZWNo",
+            "YVJlcXVlc3QaDS5Db25zdWx0YUxpc3QSPAoTR2V0Q29uc3VsdGFzUmVwb3J0",
+            "ZRIWLkNvbnN1bHRhQ2VkdWxhUmVxdWVzdBoNLkNvbnN1bHRhTGlzdBJCChhH",
+            "ZXRDb25zdWx0YXNDZW50cm9NZWRpY28SFy5BZG1pbi5DZW50cm9fTWVkaWNv",
+            "R2V0Gg0uQ29uc3VsdGFMaXN0QhOqAhBDb25zdWx0YXNNZWRpY2FzYgZwcm90",
+            "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Microservicio_ConsultasMedicas.Protos.PacienteReflection.Descriptor, global::Microservicio_Administracion.Administracion.AdministracionServiceReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ConsultasMedicas.Consulta), global::ConsultasMedicas.Consulta.Parser, new[]{ "IdConsultaMedica", "Fecha", "Hora", "Motivo", "Diagnostico", "Tratamiento", "Empleado", "Paciente" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ConsultasMedicas.Consulta), global::ConsultasMedicas.Consulta.Parser, new[]{ "IdConsultaMedica", "Fecha", "Hora", "Motivo", "Diagnostico", "Tratamiento", "CentroMedico", "Empleado", "Paciente" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ConsultasMedicas.ConsultaCedulaRequest), global::ConsultasMedicas.ConsultaCedulaRequest.Parser, new[]{ "Cedula" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ConsultasMedicas.CreateConsultaRequest), global::ConsultasMedicas.CreateConsultaRequest.Parser, new[]{ "Fecha", "Hora", "Motivo", "Diagnostico", "Tratamiento", "IdMedico", "Cedula" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ConsultasMedicas.CreateConsultaRequest), global::ConsultasMedicas.CreateConsultaRequest.Parser, new[]{ "Fecha", "Hora", "Motivo", "Diagnostico", "Tratamiento", "IdMedico", "Cedula", "IdCentroMedico" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ConsultasMedicas.UpdateConsultaRequest), global::ConsultasMedicas.UpdateConsultaRequest.Parser, new[]{ "IdConsultaMedica", "Fecha", "Hora", "Motivo", "Diagnostico", "Tratamiento", "IdMedico", "Cedula", "IdCentroMedico" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ConsultasMedicas.DeleteConsultaRequest), global::ConsultasMedicas.DeleteConsultaRequest.Parser, new[]{ "IdConsultaMedica" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ConsultasMedicas.ConsultaFechaRequest), global::ConsultasMedicas.ConsultaFechaRequest.Parser, new[]{ "FechaDesde", "FechaHasta" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ConsultasMedicas.EmptyResponse), global::ConsultasMedicas.EmptyResponse.Parser, null, null, null, null, null),
@@ -109,6 +117,7 @@ namespace ConsultasMedicas {
       motivo_ = other.motivo_;
       diagnostico_ = other.diagnostico_;
       tratamiento_ = other.tratamiento_;
+      centroMedico_ = other.centroMedico_ != null ? other.centroMedico_.Clone() : null;
       empleado_ = other.empleado_ != null ? other.empleado_.Clone() : null;
       paciente_ = other.paciente_ != null ? other.paciente_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -192,8 +201,20 @@ namespace ConsultasMedicas {
       }
     }
 
+    /// <summary>Field number for the "centroMedico" field.</summary>
+    public const int CentroMedicoFieldNumber = 7;
+    private global::Microservicio_Administracion.Administracion.Centro_Medico centroMedico_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Microservicio_Administracion.Administracion.Centro_Medico CentroMedico {
+      get { return centroMedico_; }
+      set {
+        centroMedico_ = value;
+      }
+    }
+
     /// <summary>Field number for the "empleado" field.</summary>
-    public const int EmpleadoFieldNumber = 7;
+    public const int EmpleadoFieldNumber = 8;
     private global::Microservicio_Administracion.Administracion.Empleado empleado_;
     /// <summary>
     /// Relaciones con Empleado (médico) y Paciente
@@ -208,7 +229,7 @@ namespace ConsultasMedicas {
     }
 
     /// <summary>Field number for the "paciente" field.</summary>
-    public const int PacienteFieldNumber = 8;
+    public const int PacienteFieldNumber = 9;
     private global::Microservicio_ConsultasMedicas.Protos.PacienteModel paciente_;
     /// <summary>
     /// Viene del microservicio de consultas
@@ -243,6 +264,7 @@ namespace ConsultasMedicas {
       if (Motivo != other.Motivo) return false;
       if (Diagnostico != other.Diagnostico) return false;
       if (Tratamiento != other.Tratamiento) return false;
+      if (!object.Equals(CentroMedico, other.CentroMedico)) return false;
       if (!object.Equals(Empleado, other.Empleado)) return false;
       if (!object.Equals(Paciente, other.Paciente)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -258,6 +280,7 @@ namespace ConsultasMedicas {
       if (Motivo.Length != 0) hash ^= Motivo.GetHashCode();
       if (Diagnostico.Length != 0) hash ^= Diagnostico.GetHashCode();
       if (Tratamiento.Length != 0) hash ^= Tratamiento.GetHashCode();
+      if (centroMedico_ != null) hash ^= CentroMedico.GetHashCode();
       if (empleado_ != null) hash ^= Empleado.GetHashCode();
       if (paciente_ != null) hash ^= Paciente.GetHashCode();
       if (_unknownFields != null) {
@@ -302,12 +325,16 @@ namespace ConsultasMedicas {
         output.WriteRawTag(50);
         output.WriteString(Tratamiento);
       }
-      if (empleado_ != null) {
+      if (centroMedico_ != null) {
         output.WriteRawTag(58);
+        output.WriteMessage(CentroMedico);
+      }
+      if (empleado_ != null) {
+        output.WriteRawTag(66);
         output.WriteMessage(Empleado);
       }
       if (paciente_ != null) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(74);
         output.WriteMessage(Paciente);
       }
       if (_unknownFields != null) {
@@ -344,12 +371,16 @@ namespace ConsultasMedicas {
         output.WriteRawTag(50);
         output.WriteString(Tratamiento);
       }
-      if (empleado_ != null) {
+      if (centroMedico_ != null) {
         output.WriteRawTag(58);
+        output.WriteMessage(CentroMedico);
+      }
+      if (empleado_ != null) {
+        output.WriteRawTag(66);
         output.WriteMessage(Empleado);
       }
       if (paciente_ != null) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(74);
         output.WriteMessage(Paciente);
       }
       if (_unknownFields != null) {
@@ -379,6 +410,9 @@ namespace ConsultasMedicas {
       }
       if (Tratamiento.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Tratamiento);
+      }
+      if (centroMedico_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CentroMedico);
       }
       if (empleado_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Empleado);
@@ -415,6 +449,12 @@ namespace ConsultasMedicas {
       }
       if (other.Tratamiento.Length != 0) {
         Tratamiento = other.Tratamiento;
+      }
+      if (other.centroMedico_ != null) {
+        if (centroMedico_ == null) {
+          CentroMedico = new global::Microservicio_Administracion.Administracion.Centro_Medico();
+        }
+        CentroMedico.MergeFrom(other.CentroMedico);
       }
       if (other.empleado_ != null) {
         if (empleado_ == null) {
@@ -472,13 +512,20 @@ namespace ConsultasMedicas {
             break;
           }
           case 58: {
+            if (centroMedico_ == null) {
+              CentroMedico = new global::Microservicio_Administracion.Administracion.Centro_Medico();
+            }
+            input.ReadMessage(CentroMedico);
+            break;
+          }
+          case 66: {
             if (empleado_ == null) {
               Empleado = new global::Microservicio_Administracion.Administracion.Empleado();
             }
             input.ReadMessage(Empleado);
             break;
           }
-          case 66: {
+          case 74: {
             if (paciente_ == null) {
               Paciente = new global::Microservicio_ConsultasMedicas.Protos.PacienteModel();
             }
@@ -529,13 +576,20 @@ namespace ConsultasMedicas {
             break;
           }
           case 58: {
+            if (centroMedico_ == null) {
+              CentroMedico = new global::Microservicio_Administracion.Administracion.Centro_Medico();
+            }
+            input.ReadMessage(CentroMedico);
+            break;
+          }
+          case 66: {
             if (empleado_ == null) {
               Empleado = new global::Microservicio_Administracion.Administracion.Empleado();
             }
             input.ReadMessage(Empleado);
             break;
           }
-          case 66: {
+          case 74: {
             if (paciente_ == null) {
               Paciente = new global::Microservicio_ConsultasMedicas.Protos.PacienteModel();
             }
@@ -795,6 +849,7 @@ namespace ConsultasMedicas {
       tratamiento_ = other.tratamiento_;
       idMedico_ = other.idMedico_;
       cedula_ = other.cedula_;
+      idCentroMedico_ = other.idCentroMedico_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -891,6 +946,18 @@ namespace ConsultasMedicas {
       }
     }
 
+    /// <summary>Field number for the "id_centro_medico" field.</summary>
+    public const int IdCentroMedicoFieldNumber = 8;
+    private int idCentroMedico_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int IdCentroMedico {
+      get { return idCentroMedico_; }
+      set {
+        idCentroMedico_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -913,6 +980,7 @@ namespace ConsultasMedicas {
       if (Tratamiento != other.Tratamiento) return false;
       if (IdMedico != other.IdMedico) return false;
       if (Cedula != other.Cedula) return false;
+      if (IdCentroMedico != other.IdCentroMedico) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -927,6 +995,7 @@ namespace ConsultasMedicas {
       if (Tratamiento.Length != 0) hash ^= Tratamiento.GetHashCode();
       if (IdMedico != 0) hash ^= IdMedico.GetHashCode();
       if (Cedula.Length != 0) hash ^= Cedula.GetHashCode();
+      if (IdCentroMedico != 0) hash ^= IdCentroMedico.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -973,6 +1042,10 @@ namespace ConsultasMedicas {
         output.WriteRawTag(58);
         output.WriteString(Cedula);
       }
+      if (IdCentroMedico != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(IdCentroMedico);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1011,6 +1084,10 @@ namespace ConsultasMedicas {
         output.WriteRawTag(58);
         output.WriteString(Cedula);
       }
+      if (IdCentroMedico != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(IdCentroMedico);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1041,6 +1118,9 @@ namespace ConsultasMedicas {
       }
       if (Cedula.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Cedula);
+      }
+      if (IdCentroMedico != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(IdCentroMedico);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1074,6 +1154,9 @@ namespace ConsultasMedicas {
       }
       if (other.Cedula.Length != 0) {
         Cedula = other.Cedula;
+      }
+      if (other.IdCentroMedico != 0) {
+        IdCentroMedico = other.IdCentroMedico;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1120,6 +1203,10 @@ namespace ConsultasMedicas {
           }
           case 58: {
             Cedula = input.ReadString();
+            break;
+          }
+          case 64: {
+            IdCentroMedico = input.ReadInt32();
             break;
           }
         }
@@ -1169,6 +1256,507 @@ namespace ConsultasMedicas {
             Cedula = input.ReadString();
             break;
           }
+          case 64: {
+            IdCentroMedico = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class UpdateConsultaRequest : pb::IMessage<UpdateConsultaRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<UpdateConsultaRequest> _parser = new pb::MessageParser<UpdateConsultaRequest>(() => new UpdateConsultaRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<UpdateConsultaRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ConsultasMedicas.ConsultasMedicasReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public UpdateConsultaRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public UpdateConsultaRequest(UpdateConsultaRequest other) : this() {
+      idConsultaMedica_ = other.idConsultaMedica_;
+      fecha_ = other.fecha_;
+      hora_ = other.hora_;
+      motivo_ = other.motivo_;
+      diagnostico_ = other.diagnostico_;
+      tratamiento_ = other.tratamiento_;
+      idMedico_ = other.idMedico_;
+      cedula_ = other.cedula_;
+      idCentroMedico_ = other.idCentroMedico_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public UpdateConsultaRequest Clone() {
+      return new UpdateConsultaRequest(this);
+    }
+
+    /// <summary>Field number for the "id_consulta_medica" field.</summary>
+    public const int IdConsultaMedicaFieldNumber = 1;
+    private int idConsultaMedica_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int IdConsultaMedica {
+      get { return idConsultaMedica_; }
+      set {
+        idConsultaMedica_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "fecha" field.</summary>
+    public const int FechaFieldNumber = 2;
+    private string fecha_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Fecha {
+      get { return fecha_; }
+      set {
+        fecha_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "hora" field.</summary>
+    public const int HoraFieldNumber = 3;
+    private string hora_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Hora {
+      get { return hora_; }
+      set {
+        hora_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "motivo" field.</summary>
+    public const int MotivoFieldNumber = 4;
+    private string motivo_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Motivo {
+      get { return motivo_; }
+      set {
+        motivo_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "diagnostico" field.</summary>
+    public const int DiagnosticoFieldNumber = 5;
+    private string diagnostico_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Diagnostico {
+      get { return diagnostico_; }
+      set {
+        diagnostico_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "tratamiento" field.</summary>
+    public const int TratamientoFieldNumber = 6;
+    private string tratamiento_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Tratamiento {
+      get { return tratamiento_; }
+      set {
+        tratamiento_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "id_medico" field.</summary>
+    public const int IdMedicoFieldNumber = 7;
+    private int idMedico_;
+    /// <summary>
+    /// ID del médico (Empleado)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int IdMedico {
+      get { return idMedico_; }
+      set {
+        idMedico_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cedula" field.</summary>
+    public const int CedulaFieldNumber = 8;
+    private string cedula_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Cedula {
+      get { return cedula_; }
+      set {
+        cedula_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "id_centro_medico" field.</summary>
+    public const int IdCentroMedicoFieldNumber = 9;
+    private int idCentroMedico_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int IdCentroMedico {
+      get { return idCentroMedico_; }
+      set {
+        idCentroMedico_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as UpdateConsultaRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(UpdateConsultaRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (IdConsultaMedica != other.IdConsultaMedica) return false;
+      if (Fecha != other.Fecha) return false;
+      if (Hora != other.Hora) return false;
+      if (Motivo != other.Motivo) return false;
+      if (Diagnostico != other.Diagnostico) return false;
+      if (Tratamiento != other.Tratamiento) return false;
+      if (IdMedico != other.IdMedico) return false;
+      if (Cedula != other.Cedula) return false;
+      if (IdCentroMedico != other.IdCentroMedico) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (IdConsultaMedica != 0) hash ^= IdConsultaMedica.GetHashCode();
+      if (Fecha.Length != 0) hash ^= Fecha.GetHashCode();
+      if (Hora.Length != 0) hash ^= Hora.GetHashCode();
+      if (Motivo.Length != 0) hash ^= Motivo.GetHashCode();
+      if (Diagnostico.Length != 0) hash ^= Diagnostico.GetHashCode();
+      if (Tratamiento.Length != 0) hash ^= Tratamiento.GetHashCode();
+      if (IdMedico != 0) hash ^= IdMedico.GetHashCode();
+      if (Cedula.Length != 0) hash ^= Cedula.GetHashCode();
+      if (IdCentroMedico != 0) hash ^= IdCentroMedico.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (IdConsultaMedica != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(IdConsultaMedica);
+      }
+      if (Fecha.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Fecha);
+      }
+      if (Hora.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Hora);
+      }
+      if (Motivo.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Motivo);
+      }
+      if (Diagnostico.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Diagnostico);
+      }
+      if (Tratamiento.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Tratamiento);
+      }
+      if (IdMedico != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(IdMedico);
+      }
+      if (Cedula.Length != 0) {
+        output.WriteRawTag(66);
+        output.WriteString(Cedula);
+      }
+      if (IdCentroMedico != 0) {
+        output.WriteRawTag(72);
+        output.WriteInt32(IdCentroMedico);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (IdConsultaMedica != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(IdConsultaMedica);
+      }
+      if (Fecha.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Fecha);
+      }
+      if (Hora.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Hora);
+      }
+      if (Motivo.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Motivo);
+      }
+      if (Diagnostico.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Diagnostico);
+      }
+      if (Tratamiento.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Tratamiento);
+      }
+      if (IdMedico != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(IdMedico);
+      }
+      if (Cedula.Length != 0) {
+        output.WriteRawTag(66);
+        output.WriteString(Cedula);
+      }
+      if (IdCentroMedico != 0) {
+        output.WriteRawTag(72);
+        output.WriteInt32(IdCentroMedico);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (IdConsultaMedica != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(IdConsultaMedica);
+      }
+      if (Fecha.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Fecha);
+      }
+      if (Hora.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Hora);
+      }
+      if (Motivo.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Motivo);
+      }
+      if (Diagnostico.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Diagnostico);
+      }
+      if (Tratamiento.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Tratamiento);
+      }
+      if (IdMedico != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(IdMedico);
+      }
+      if (Cedula.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Cedula);
+      }
+      if (IdCentroMedico != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(IdCentroMedico);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(UpdateConsultaRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.IdConsultaMedica != 0) {
+        IdConsultaMedica = other.IdConsultaMedica;
+      }
+      if (other.Fecha.Length != 0) {
+        Fecha = other.Fecha;
+      }
+      if (other.Hora.Length != 0) {
+        Hora = other.Hora;
+      }
+      if (other.Motivo.Length != 0) {
+        Motivo = other.Motivo;
+      }
+      if (other.Diagnostico.Length != 0) {
+        Diagnostico = other.Diagnostico;
+      }
+      if (other.Tratamiento.Length != 0) {
+        Tratamiento = other.Tratamiento;
+      }
+      if (other.IdMedico != 0) {
+        IdMedico = other.IdMedico;
+      }
+      if (other.Cedula.Length != 0) {
+        Cedula = other.Cedula;
+      }
+      if (other.IdCentroMedico != 0) {
+        IdCentroMedico = other.IdCentroMedico;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            IdConsultaMedica = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Fecha = input.ReadString();
+            break;
+          }
+          case 26: {
+            Hora = input.ReadString();
+            break;
+          }
+          case 34: {
+            Motivo = input.ReadString();
+            break;
+          }
+          case 42: {
+            Diagnostico = input.ReadString();
+            break;
+          }
+          case 50: {
+            Tratamiento = input.ReadString();
+            break;
+          }
+          case 56: {
+            IdMedico = input.ReadInt32();
+            break;
+          }
+          case 66: {
+            Cedula = input.ReadString();
+            break;
+          }
+          case 72: {
+            IdCentroMedico = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            IdConsultaMedica = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Fecha = input.ReadString();
+            break;
+          }
+          case 26: {
+            Hora = input.ReadString();
+            break;
+          }
+          case 34: {
+            Motivo = input.ReadString();
+            break;
+          }
+          case 42: {
+            Diagnostico = input.ReadString();
+            break;
+          }
+          case 50: {
+            Tratamiento = input.ReadString();
+            break;
+          }
+          case 56: {
+            IdMedico = input.ReadInt32();
+            break;
+          }
+          case 66: {
+            Cedula = input.ReadString();
+            break;
+          }
+          case 72: {
+            IdCentroMedico = input.ReadInt32();
+            break;
+          }
         }
       }
     }
@@ -1194,7 +1782,7 @@ namespace ConsultasMedicas {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ConsultasMedicas.ConsultasMedicasReflection.Descriptor.MessageTypes[3]; }
+      get { return global::ConsultasMedicas.ConsultasMedicasReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1395,7 +1983,7 @@ namespace ConsultasMedicas {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ConsultasMedicas.ConsultasMedicasReflection.Descriptor.MessageTypes[4]; }
+      get { return global::ConsultasMedicas.ConsultasMedicasReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1633,7 +2221,7 @@ namespace ConsultasMedicas {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ConsultasMedicas.ConsultasMedicasReflection.Descriptor.MessageTypes[5]; }
+      get { return global::ConsultasMedicas.ConsultasMedicasReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1797,7 +2385,7 @@ namespace ConsultasMedicas {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ConsultasMedicas.ConsultasMedicasReflection.Descriptor.MessageTypes[6]; }
+      get { return global::ConsultasMedicas.ConsultasMedicasReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

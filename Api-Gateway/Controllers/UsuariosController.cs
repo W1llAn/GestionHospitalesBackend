@@ -80,6 +80,36 @@ namespace Api_Gateway.Controllers
                 }
             }
 
+        [HttpPut("Usuarios/{id}")]
+        public async Task<ActionResult<Usuario>> PutUsuario(int id,UsuarioActualizar usuario)
+        {
+            try
+            {
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+                using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"], new GrpcChannelOptions
+                {
+                    HttpHandler = httpHandler
+                });
+                var cliente = new UsuarioService.UsuarioServiceClient(canal);
+
+                var usuarioRegistro = await cliente.ActualizarUsuarioAsync(usuario, callOptionsToken());
+
+                return usuarioRegistro;
+            }
+            catch (RpcException ex)
+            {
+                return erroresGrpc(ex.StatusCode, ex.Status.Detail);
+            }
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest("Sin Token");
+            }
+        }
+
+
         // DELETE: api/Usuarios/5
         [HttpDelete("Usuarios/{id}")]
         public async Task<IActionResult> DeleteUsuario(int id)

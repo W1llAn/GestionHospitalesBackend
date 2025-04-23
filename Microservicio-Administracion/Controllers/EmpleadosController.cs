@@ -116,19 +116,22 @@ namespace Microservicio_Administracion.Controllers
                 return BadRequest();
             }
 
-            var empleadoModificar = new EmpleadoDTOCrear {
-                Id = empleado.Id,
-                cedula = empleado.cedula,
-                email = empleado.email,
-                nombre = empleado.nombre,
-                telefono = empleado.telefono,
-                salario= empleado.salario,
-                centro_medicoID=empleado.centro_medicoID,
-                especialidadID = empleado.especialidadID,
-                tipo_empleadoID = empleado.tipo_empleadoID
-            };
+            var empleadoExistente = await _context.Empleados.FindAsync(id);
 
-            _context.Entry(empleadoModificar).State = EntityState.Modified;
+            if (empleadoExistente == null)
+            {
+                return NotFound();
+            }
+
+            // Mapea los datos del DTO a la entidad
+            empleadoExistente.cedula = empleado.cedula;
+            empleadoExistente.email = empleado.email;
+            empleadoExistente.nombre = empleado.nombre;
+            empleadoExistente.telefono = empleado.telefono;
+            empleadoExistente.salario = empleado.salario;
+            empleadoExistente.centro_medicoID = empleado.centro_medicoID;
+            empleadoExistente.especialidadID = empleado.especialidadID;
+            empleadoExistente.tipo_empleadoID = empleado.tipo_empleadoID;
 
             try
             {

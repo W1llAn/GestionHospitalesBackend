@@ -4,6 +4,8 @@ option csharp_namespace = "Microservicio_ConsultasMedicas.Protos";
 
 package paciente;
 
+import "Protos/AdministracionService.proto";
+
 message PacienteModel {
   int32 id_paciente = 1;
   string nombre = 2;
@@ -11,6 +13,7 @@ message PacienteModel {
   string fecha_nacimiento = 4;
   string telefono = 5;
   string direccion = 6;
+  Admin.Centro_Medico centroMedico=7;
 }
 
 message GetPacienteRequest {
@@ -26,7 +29,13 @@ message GetPacienteListaResponse {
 }
 
 message CrearPacienteRequest {
-  PacienteModel paciente = 1;
+  int32 id_paciente = 1;
+  string nombre = 2;
+  string cedula = 3;
+  string fecha_nacimiento = 4;
+  string telefono = 5;
+  string direccion = 6;
+  int32 id_centroMedico=7;
 }
 
 message CrearPacienteResponse {
@@ -35,7 +44,13 @@ message CrearPacienteResponse {
 
 // Nuevos mensajes para Actualizar y Eliminar
 message ActualizarPacienteRequest {
-  PacienteModel paciente = 1;
+  int32 id_paciente = 1;
+  string nombre = 2;
+  string cedula = 3;
+  string fecha_nacimiento = 4;
+  string telefono = 5;
+  string direccion = 6;
+  int32 id_centroMedico=7;
 }
 
 message ActualizarPacienteResponse {

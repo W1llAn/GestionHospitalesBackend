@@ -24,44 +24,50 @@ namespace Microservicio_ConsultasMedicas.Protos {
     static PacienteReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChVwcm90b3MvcGFjaWVudGUucHJvdG8SCHBhY2llbnRlIoMBCg1QYWNpZW50",
-            "ZU1vZGVsEhMKC2lkX3BhY2llbnRlGAEgASgFEg4KBm5vbWJyZRgCIAEoCRIO",
-            "CgZjZWR1bGEYAyABKAkSGAoQZmVjaGFfbmFjaW1pZW50bxgEIAEoCRIQCgh0",
-            "ZWxlZm9ubxgFIAEoCRIRCglkaXJlY2Npb24YBiABKAkiKQoSR2V0UGFjaWVu",
-            "dGVSZXF1ZXN0EhMKC2lkX3BhY2llbnRlGAEgASgFIkAKE0dldFBhY2llbnRl",
+            "ChVwcm90b3MvcGFjaWVudGUucHJvdG8SCHBhY2llbnRlGiJQcm90b3MvQWRt",
+            "aW5pc3RyYWNpb25TZXJ2aWNlLnByb3RvIq8BCg1QYWNpZW50ZU1vZGVsEhMK",
+            "C2lkX3BhY2llbnRlGAEgASgFEg4KBm5vbWJyZRgCIAEoCRIOCgZjZWR1bGEY",
+            "AyABKAkSGAoQZmVjaGFfbmFjaW1pZW50bxgEIAEoCRIQCgh0ZWxlZm9ubxgF",
+            "IAEoCRIRCglkaXJlY2Npb24YBiABKAkSKgoMY2VudHJvTWVkaWNvGAcgASgL",
+            "MhQuQWRtaW4uQ2VudHJvX01lZGljbyIpChJHZXRQYWNpZW50ZVJlcXVlc3QS",
+            "EwoLaWRfcGFjaWVudGUYASABKAUiQAoTR2V0UGFjaWVudGVSZXNwb25zZRIp",
+            "CghwYWNpZW50ZRgBIAEoCzIXLnBhY2llbnRlLlBhY2llbnRlTW9kZWwiRgoY",
+            "R2V0UGFjaWVudGVMaXN0YVJlc3BvbnNlEioKCXBhY2llbnRlcxgBIAMoCzIX",
+            "LnBhY2llbnRlLlBhY2llbnRlTW9kZWwiowEKFENyZWFyUGFjaWVudGVSZXF1",
+            "ZXN0EhMKC2lkX3BhY2llbnRlGAEgASgFEg4KBm5vbWJyZRgCIAEoCRIOCgZj",
+            "ZWR1bGEYAyABKAkSGAoQZmVjaGFfbmFjaW1pZW50bxgEIAEoCRIQCgh0ZWxl",
+            "Zm9ubxgFIAEoCRIRCglkaXJlY2Npb24YBiABKAkSFwoPaWRfY2VudHJvTWVk",
+            "aWNvGAcgASgFIkIKFUNyZWFyUGFjaWVudGVSZXNwb25zZRIpCghwYWNpZW50",
+            "ZRgBIAEoCzIXLnBhY2llbnRlLlBhY2llbnRlTW9kZWwiqAEKGUFjdHVhbGl6",
+            "YXJQYWNpZW50ZVJlcXVlc3QSEwoLaWRfcGFjaWVudGUYASABKAUSDgoGbm9t",
+            "YnJlGAIgASgJEg4KBmNlZHVsYRgDIAEoCRIYChBmZWNoYV9uYWNpbWllbnRv",
+            "GAQgASgJEhAKCHRlbGVmb25vGAUgASgJEhEKCWRpcmVjY2lvbhgGIAEoCRIX",
+            "Cg9pZF9jZW50cm9NZWRpY28YByABKAUiRwoaQWN0dWFsaXphclBhY2llbnRl",
             "UmVzcG9uc2USKQoIcGFjaWVudGUYASABKAsyFy5wYWNpZW50ZS5QYWNpZW50",
-            "ZU1vZGVsIkYKGEdldFBhY2llbnRlTGlzdGFSZXNwb25zZRIqCglwYWNpZW50",
-            "ZXMYASADKAsyFy5wYWNpZW50ZS5QYWNpZW50ZU1vZGVsIkEKFENyZWFyUGFj",
-            "aWVudGVSZXF1ZXN0EikKCHBhY2llbnRlGAEgASgLMhcucGFjaWVudGUuUGFj",
-            "aWVudGVNb2RlbCJCChVDcmVhclBhY2llbnRlUmVzcG9uc2USKQoIcGFjaWVu",
-            "dGUYASABKAsyFy5wYWNpZW50ZS5QYWNpZW50ZU1vZGVsIkYKGUFjdHVhbGl6",
-            "YXJQYWNpZW50ZVJlcXVlc3QSKQoIcGFjaWVudGUYASABKAsyFy5wYWNpZW50",
-            "ZS5QYWNpZW50ZU1vZGVsIkcKGkFjdHVhbGl6YXJQYWNpZW50ZVJlc3BvbnNl",
-            "EikKCHBhY2llbnRlGAEgASgLMhcucGFjaWVudGUuUGFjaWVudGVNb2RlbCIu",
-            "ChdFbGltaW5hclBhY2llbnRlUmVxdWVzdBITCgtpZF9wYWNpZW50ZRgBIAEo",
-            "BSIrChhFbGltaW5hclBhY2llbnRlUmVzcG9uc2USDwoHc3VjY2VzcxgBIAEo",
-            "CCIPCg1FbXB0eVJlc3BvbnNlMroDCg9QYWNpZW50ZVNlcnZpY2USSgoLR2V0",
-            "UGFjaWVudGUSHC5wYWNpZW50ZS5HZXRQYWNpZW50ZVJlcXVlc3QaHS5wYWNp",
-            "ZW50ZS5HZXRQYWNpZW50ZVJlc3BvbnNlEk0KDkdldEFsbFBhY2llbnRlEhcu",
-            "cGFjaWVudGUuRW1wdHlSZXNwb25zZRoiLnBhY2llbnRlLkdldFBhY2llbnRl",
-            "TGlzdGFSZXNwb25zZRJQCg1DcmVhclBhY2llbnRlEh4ucGFjaWVudGUuQ3Jl",
-            "YXJQYWNpZW50ZVJlcXVlc3QaHy5wYWNpZW50ZS5DcmVhclBhY2llbnRlUmVz",
-            "cG9uc2USXwoSQWN0dWFsaXphclBhY2llbnRlEiMucGFjaWVudGUuQWN0dWFs",
-            "aXphclBhY2llbnRlUmVxdWVzdBokLnBhY2llbnRlLkFjdHVhbGl6YXJQYWNp",
-            "ZW50ZVJlc3BvbnNlElkKEEVsaW1pbmFyUGFjaWVudGUSIS5wYWNpZW50ZS5F",
-            "bGltaW5hclBhY2llbnRlUmVxdWVzdBoiLnBhY2llbnRlLkVsaW1pbmFyUGFj",
-            "aWVudGVSZXNwb25zZUIoqgIlTWljcm9zZXJ2aWNpb19Db25zdWx0YXNNZWRp",
-            "Y2FzLlByb3Rvc2IGcHJvdG8z"));
+            "ZU1vZGVsIi4KF0VsaW1pbmFyUGFjaWVudGVSZXF1ZXN0EhMKC2lkX3BhY2ll",
+            "bnRlGAEgASgFIisKGEVsaW1pbmFyUGFjaWVudGVSZXNwb25zZRIPCgdzdWNj",
+            "ZXNzGAEgASgIIg8KDUVtcHR5UmVzcG9uc2UyugMKD1BhY2llbnRlU2Vydmlj",
+            "ZRJKCgtHZXRQYWNpZW50ZRIcLnBhY2llbnRlLkdldFBhY2llbnRlUmVxdWVz",
+            "dBodLnBhY2llbnRlLkdldFBhY2llbnRlUmVzcG9uc2USTQoOR2V0QWxsUGFj",
+            "aWVudGUSFy5wYWNpZW50ZS5FbXB0eVJlc3BvbnNlGiIucGFjaWVudGUuR2V0",
+            "UGFjaWVudGVMaXN0YVJlc3BvbnNlElAKDUNyZWFyUGFjaWVudGUSHi5wYWNp",
+            "ZW50ZS5DcmVhclBhY2llbnRlUmVxdWVzdBofLnBhY2llbnRlLkNyZWFyUGFj",
+            "aWVudGVSZXNwb25zZRJfChJBY3R1YWxpemFyUGFjaWVudGUSIy5wYWNpZW50",
+            "ZS5BY3R1YWxpemFyUGFjaWVudGVSZXF1ZXN0GiQucGFjaWVudGUuQWN0dWFs",
+            "aXphclBhY2llbnRlUmVzcG9uc2USWQoQRWxpbWluYXJQYWNpZW50ZRIhLnBh",
+            "Y2llbnRlLkVsaW1pbmFyUGFjaWVudGVSZXF1ZXN0GiIucGFjaWVudGUuRWxp",
+            "bWluYXJQYWNpZW50ZVJlc3BvbnNlQiiqAiVNaWNyb3NlcnZpY2lvX0NvbnN1",
+            "bHRhc01lZGljYXMuUHJvdG9zYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { },
+          new pbr::FileDescriptor[] { global::Microservicio_Administracion.Administracion.AdministracionServiceReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.PacienteModel), global::Microservicio_ConsultasMedicas.Protos.PacienteModel.Parser, new[]{ "IdPaciente", "Nombre", "Cedula", "FechaNacimiento", "Telefono", "Direccion" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.PacienteModel), global::Microservicio_ConsultasMedicas.Protos.PacienteModel.Parser, new[]{ "IdPaciente", "Nombre", "Cedula", "FechaNacimiento", "Telefono", "Direccion", "CentroMedico" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.GetPacienteRequest), global::Microservicio_ConsultasMedicas.Protos.GetPacienteRequest.Parser, new[]{ "IdPaciente" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.GetPacienteResponse), global::Microservicio_ConsultasMedicas.Protos.GetPacienteResponse.Parser, new[]{ "Paciente" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.GetPacienteListaResponse), global::Microservicio_ConsultasMedicas.Protos.GetPacienteListaResponse.Parser, new[]{ "Pacientes" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.CrearPacienteRequest), global::Microservicio_ConsultasMedicas.Protos.CrearPacienteRequest.Parser, new[]{ "Paciente" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.CrearPacienteRequest), global::Microservicio_ConsultasMedicas.Protos.CrearPacienteRequest.Parser, new[]{ "IdPaciente", "Nombre", "Cedula", "FechaNacimiento", "Telefono", "Direccion", "IdCentroMedico" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.CrearPacienteResponse), global::Microservicio_ConsultasMedicas.Protos.CrearPacienteResponse.Parser, new[]{ "Paciente" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.ActualizarPacienteRequest), global::Microservicio_ConsultasMedicas.Protos.ActualizarPacienteRequest.Parser, new[]{ "Paciente" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.ActualizarPacienteRequest), global::Microservicio_ConsultasMedicas.Protos.ActualizarPacienteRequest.Parser, new[]{ "IdPaciente", "Nombre", "Cedula", "FechaNacimiento", "Telefono", "Direccion", "IdCentroMedico" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.ActualizarPacienteResponse), global::Microservicio_ConsultasMedicas.Protos.ActualizarPacienteResponse.Parser, new[]{ "Paciente" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.EliminarPacienteRequest), global::Microservicio_ConsultasMedicas.Protos.EliminarPacienteRequest.Parser, new[]{ "IdPaciente" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Microservicio_ConsultasMedicas.Protos.EliminarPacienteResponse), global::Microservicio_ConsultasMedicas.Protos.EliminarPacienteResponse.Parser, new[]{ "Success" }, null, null, null, null),
@@ -113,6 +119,7 @@ namespace Microservicio_ConsultasMedicas.Protos {
       fechaNacimiento_ = other.fechaNacimiento_;
       telefono_ = other.telefono_;
       direccion_ = other.direccion_;
+      centroMedico_ = other.centroMedico_ != null ? other.centroMedico_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -194,6 +201,18 @@ namespace Microservicio_ConsultasMedicas.Protos {
       }
     }
 
+    /// <summary>Field number for the "centroMedico" field.</summary>
+    public const int CentroMedicoFieldNumber = 7;
+    private global::Microservicio_Administracion.Administracion.Centro_Medico centroMedico_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Microservicio_Administracion.Administracion.Centro_Medico CentroMedico {
+      get { return centroMedico_; }
+      set {
+        centroMedico_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -215,6 +234,7 @@ namespace Microservicio_ConsultasMedicas.Protos {
       if (FechaNacimiento != other.FechaNacimiento) return false;
       if (Telefono != other.Telefono) return false;
       if (Direccion != other.Direccion) return false;
+      if (!object.Equals(CentroMedico, other.CentroMedico)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -228,6 +248,7 @@ namespace Microservicio_ConsultasMedicas.Protos {
       if (FechaNacimiento.Length != 0) hash ^= FechaNacimiento.GetHashCode();
       if (Telefono.Length != 0) hash ^= Telefono.GetHashCode();
       if (Direccion.Length != 0) hash ^= Direccion.GetHashCode();
+      if (centroMedico_ != null) hash ^= CentroMedico.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -270,6 +291,10 @@ namespace Microservicio_ConsultasMedicas.Protos {
         output.WriteRawTag(50);
         output.WriteString(Direccion);
       }
+      if (centroMedico_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(CentroMedico);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -304,6 +329,10 @@ namespace Microservicio_ConsultasMedicas.Protos {
         output.WriteRawTag(50);
         output.WriteString(Direccion);
       }
+      if (centroMedico_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(CentroMedico);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -331,6 +360,9 @@ namespace Microservicio_ConsultasMedicas.Protos {
       }
       if (Direccion.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Direccion);
+      }
+      if (centroMedico_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CentroMedico);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -361,6 +393,12 @@ namespace Microservicio_ConsultasMedicas.Protos {
       }
       if (other.Direccion.Length != 0) {
         Direccion = other.Direccion;
+      }
+      if (other.centroMedico_ != null) {
+        if (centroMedico_ == null) {
+          CentroMedico = new global::Microservicio_Administracion.Administracion.Centro_Medico();
+        }
+        CentroMedico.MergeFrom(other.CentroMedico);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -405,6 +443,13 @@ namespace Microservicio_ConsultasMedicas.Protos {
             Direccion = input.ReadString();
             break;
           }
+          case 58: {
+            if (centroMedico_ == null) {
+              CentroMedico = new global::Microservicio_Administracion.Administracion.Centro_Medico();
+            }
+            input.ReadMessage(CentroMedico);
+            break;
+          }
         }
       }
     #endif
@@ -446,6 +491,13 @@ namespace Microservicio_ConsultasMedicas.Protos {
           }
           case 50: {
             Direccion = input.ReadString();
+            break;
+          }
+          case 58: {
+            if (centroMedico_ == null) {
+              CentroMedico = new global::Microservicio_Administracion.Administracion.Centro_Medico();
+            }
+            input.ReadMessage(CentroMedico);
             break;
           }
         }
@@ -1082,7 +1134,13 @@ namespace Microservicio_ConsultasMedicas.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CrearPacienteRequest(CrearPacienteRequest other) : this() {
-      paciente_ = other.paciente_ != null ? other.paciente_.Clone() : null;
+      idPaciente_ = other.idPaciente_;
+      nombre_ = other.nombre_;
+      cedula_ = other.cedula_;
+      fechaNacimiento_ = other.fechaNacimiento_;
+      telefono_ = other.telefono_;
+      direccion_ = other.direccion_;
+      idCentroMedico_ = other.idCentroMedico_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1092,15 +1150,87 @@ namespace Microservicio_ConsultasMedicas.Protos {
       return new CrearPacienteRequest(this);
     }
 
-    /// <summary>Field number for the "paciente" field.</summary>
-    public const int PacienteFieldNumber = 1;
-    private global::Microservicio_ConsultasMedicas.Protos.PacienteModel paciente_;
+    /// <summary>Field number for the "id_paciente" field.</summary>
+    public const int IdPacienteFieldNumber = 1;
+    private int idPaciente_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Microservicio_ConsultasMedicas.Protos.PacienteModel Paciente {
-      get { return paciente_; }
+    public int IdPaciente {
+      get { return idPaciente_; }
       set {
-        paciente_ = value;
+        idPaciente_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "nombre" field.</summary>
+    public const int NombreFieldNumber = 2;
+    private string nombre_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Nombre {
+      get { return nombre_; }
+      set {
+        nombre_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "cedula" field.</summary>
+    public const int CedulaFieldNumber = 3;
+    private string cedula_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Cedula {
+      get { return cedula_; }
+      set {
+        cedula_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "fecha_nacimiento" field.</summary>
+    public const int FechaNacimientoFieldNumber = 4;
+    private string fechaNacimiento_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string FechaNacimiento {
+      get { return fechaNacimiento_; }
+      set {
+        fechaNacimiento_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "telefono" field.</summary>
+    public const int TelefonoFieldNumber = 5;
+    private string telefono_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Telefono {
+      get { return telefono_; }
+      set {
+        telefono_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "direccion" field.</summary>
+    public const int DireccionFieldNumber = 6;
+    private string direccion_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Direccion {
+      get { return direccion_; }
+      set {
+        direccion_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "id_centroMedico" field.</summary>
+    public const int IdCentroMedicoFieldNumber = 7;
+    private int idCentroMedico_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int IdCentroMedico {
+      get { return idCentroMedico_; }
+      set {
+        idCentroMedico_ = value;
       }
     }
 
@@ -1119,7 +1249,13 @@ namespace Microservicio_ConsultasMedicas.Protos {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Paciente, other.Paciente)) return false;
+      if (IdPaciente != other.IdPaciente) return false;
+      if (Nombre != other.Nombre) return false;
+      if (Cedula != other.Cedula) return false;
+      if (FechaNacimiento != other.FechaNacimiento) return false;
+      if (Telefono != other.Telefono) return false;
+      if (Direccion != other.Direccion) return false;
+      if (IdCentroMedico != other.IdCentroMedico) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1127,7 +1263,13 @@ namespace Microservicio_ConsultasMedicas.Protos {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (paciente_ != null) hash ^= Paciente.GetHashCode();
+      if (IdPaciente != 0) hash ^= IdPaciente.GetHashCode();
+      if (Nombre.Length != 0) hash ^= Nombre.GetHashCode();
+      if (Cedula.Length != 0) hash ^= Cedula.GetHashCode();
+      if (FechaNacimiento.Length != 0) hash ^= FechaNacimiento.GetHashCode();
+      if (Telefono.Length != 0) hash ^= Telefono.GetHashCode();
+      if (Direccion.Length != 0) hash ^= Direccion.GetHashCode();
+      if (IdCentroMedico != 0) hash ^= IdCentroMedico.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1146,9 +1288,33 @@ namespace Microservicio_ConsultasMedicas.Protos {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (paciente_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Paciente);
+      if (IdPaciente != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(IdPaciente);
+      }
+      if (Nombre.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Nombre);
+      }
+      if (Cedula.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Cedula);
+      }
+      if (FechaNacimiento.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(FechaNacimiento);
+      }
+      if (Telefono.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Telefono);
+      }
+      if (Direccion.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Direccion);
+      }
+      if (IdCentroMedico != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(IdCentroMedico);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1160,9 +1326,33 @@ namespace Microservicio_ConsultasMedicas.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (paciente_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Paciente);
+      if (IdPaciente != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(IdPaciente);
+      }
+      if (Nombre.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Nombre);
+      }
+      if (Cedula.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Cedula);
+      }
+      if (FechaNacimiento.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(FechaNacimiento);
+      }
+      if (Telefono.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Telefono);
+      }
+      if (Direccion.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Direccion);
+      }
+      if (IdCentroMedico != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(IdCentroMedico);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1174,8 +1364,26 @@ namespace Microservicio_ConsultasMedicas.Protos {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (paciente_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Paciente);
+      if (IdPaciente != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(IdPaciente);
+      }
+      if (Nombre.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Nombre);
+      }
+      if (Cedula.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Cedula);
+      }
+      if (FechaNacimiento.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(FechaNacimiento);
+      }
+      if (Telefono.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Telefono);
+      }
+      if (Direccion.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Direccion);
+      }
+      if (IdCentroMedico != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(IdCentroMedico);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1189,11 +1397,26 @@ namespace Microservicio_ConsultasMedicas.Protos {
       if (other == null) {
         return;
       }
-      if (other.paciente_ != null) {
-        if (paciente_ == null) {
-          Paciente = new global::Microservicio_ConsultasMedicas.Protos.PacienteModel();
-        }
-        Paciente.MergeFrom(other.Paciente);
+      if (other.IdPaciente != 0) {
+        IdPaciente = other.IdPaciente;
+      }
+      if (other.Nombre.Length != 0) {
+        Nombre = other.Nombre;
+      }
+      if (other.Cedula.Length != 0) {
+        Cedula = other.Cedula;
+      }
+      if (other.FechaNacimiento.Length != 0) {
+        FechaNacimiento = other.FechaNacimiento;
+      }
+      if (other.Telefono.Length != 0) {
+        Telefono = other.Telefono;
+      }
+      if (other.Direccion.Length != 0) {
+        Direccion = other.Direccion;
+      }
+      if (other.IdCentroMedico != 0) {
+        IdCentroMedico = other.IdCentroMedico;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1214,11 +1437,32 @@ namespace Microservicio_ConsultasMedicas.Protos {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (paciente_ == null) {
-              Paciente = new global::Microservicio_ConsultasMedicas.Protos.PacienteModel();
-            }
-            input.ReadMessage(Paciente);
+          case 8: {
+            IdPaciente = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Nombre = input.ReadString();
+            break;
+          }
+          case 26: {
+            Cedula = input.ReadString();
+            break;
+          }
+          case 34: {
+            FechaNacimiento = input.ReadString();
+            break;
+          }
+          case 42: {
+            Telefono = input.ReadString();
+            break;
+          }
+          case 50: {
+            Direccion = input.ReadString();
+            break;
+          }
+          case 56: {
+            IdCentroMedico = input.ReadInt32();
             break;
           }
         }
@@ -1240,11 +1484,32 @@ namespace Microservicio_ConsultasMedicas.Protos {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (paciente_ == null) {
-              Paciente = new global::Microservicio_ConsultasMedicas.Protos.PacienteModel();
-            }
-            input.ReadMessage(Paciente);
+          case 8: {
+            IdPaciente = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Nombre = input.ReadString();
+            break;
+          }
+          case 26: {
+            Cedula = input.ReadString();
+            break;
+          }
+          case 34: {
+            FechaNacimiento = input.ReadString();
+            break;
+          }
+          case 42: {
+            Telefono = input.ReadString();
+            break;
+          }
+          case 50: {
+            Direccion = input.ReadString();
+            break;
+          }
+          case 56: {
+            IdCentroMedico = input.ReadInt32();
             break;
           }
         }
@@ -1499,7 +1764,13 @@ namespace Microservicio_ConsultasMedicas.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ActualizarPacienteRequest(ActualizarPacienteRequest other) : this() {
-      paciente_ = other.paciente_ != null ? other.paciente_.Clone() : null;
+      idPaciente_ = other.idPaciente_;
+      nombre_ = other.nombre_;
+      cedula_ = other.cedula_;
+      fechaNacimiento_ = other.fechaNacimiento_;
+      telefono_ = other.telefono_;
+      direccion_ = other.direccion_;
+      idCentroMedico_ = other.idCentroMedico_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1509,15 +1780,87 @@ namespace Microservicio_ConsultasMedicas.Protos {
       return new ActualizarPacienteRequest(this);
     }
 
-    /// <summary>Field number for the "paciente" field.</summary>
-    public const int PacienteFieldNumber = 1;
-    private global::Microservicio_ConsultasMedicas.Protos.PacienteModel paciente_;
+    /// <summary>Field number for the "id_paciente" field.</summary>
+    public const int IdPacienteFieldNumber = 1;
+    private int idPaciente_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Microservicio_ConsultasMedicas.Protos.PacienteModel Paciente {
-      get { return paciente_; }
+    public int IdPaciente {
+      get { return idPaciente_; }
       set {
-        paciente_ = value;
+        idPaciente_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "nombre" field.</summary>
+    public const int NombreFieldNumber = 2;
+    private string nombre_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Nombre {
+      get { return nombre_; }
+      set {
+        nombre_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "cedula" field.</summary>
+    public const int CedulaFieldNumber = 3;
+    private string cedula_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Cedula {
+      get { return cedula_; }
+      set {
+        cedula_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "fecha_nacimiento" field.</summary>
+    public const int FechaNacimientoFieldNumber = 4;
+    private string fechaNacimiento_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string FechaNacimiento {
+      get { return fechaNacimiento_; }
+      set {
+        fechaNacimiento_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "telefono" field.</summary>
+    public const int TelefonoFieldNumber = 5;
+    private string telefono_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Telefono {
+      get { return telefono_; }
+      set {
+        telefono_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "direccion" field.</summary>
+    public const int DireccionFieldNumber = 6;
+    private string direccion_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Direccion {
+      get { return direccion_; }
+      set {
+        direccion_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "id_centroMedico" field.</summary>
+    public const int IdCentroMedicoFieldNumber = 7;
+    private int idCentroMedico_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int IdCentroMedico {
+      get { return idCentroMedico_; }
+      set {
+        idCentroMedico_ = value;
       }
     }
 
@@ -1536,7 +1879,13 @@ namespace Microservicio_ConsultasMedicas.Protos {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Paciente, other.Paciente)) return false;
+      if (IdPaciente != other.IdPaciente) return false;
+      if (Nombre != other.Nombre) return false;
+      if (Cedula != other.Cedula) return false;
+      if (FechaNacimiento != other.FechaNacimiento) return false;
+      if (Telefono != other.Telefono) return false;
+      if (Direccion != other.Direccion) return false;
+      if (IdCentroMedico != other.IdCentroMedico) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1544,7 +1893,13 @@ namespace Microservicio_ConsultasMedicas.Protos {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (paciente_ != null) hash ^= Paciente.GetHashCode();
+      if (IdPaciente != 0) hash ^= IdPaciente.GetHashCode();
+      if (Nombre.Length != 0) hash ^= Nombre.GetHashCode();
+      if (Cedula.Length != 0) hash ^= Cedula.GetHashCode();
+      if (FechaNacimiento.Length != 0) hash ^= FechaNacimiento.GetHashCode();
+      if (Telefono.Length != 0) hash ^= Telefono.GetHashCode();
+      if (Direccion.Length != 0) hash ^= Direccion.GetHashCode();
+      if (IdCentroMedico != 0) hash ^= IdCentroMedico.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1563,9 +1918,33 @@ namespace Microservicio_ConsultasMedicas.Protos {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (paciente_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Paciente);
+      if (IdPaciente != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(IdPaciente);
+      }
+      if (Nombre.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Nombre);
+      }
+      if (Cedula.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Cedula);
+      }
+      if (FechaNacimiento.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(FechaNacimiento);
+      }
+      if (Telefono.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Telefono);
+      }
+      if (Direccion.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Direccion);
+      }
+      if (IdCentroMedico != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(IdCentroMedico);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1577,9 +1956,33 @@ namespace Microservicio_ConsultasMedicas.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (paciente_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Paciente);
+      if (IdPaciente != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(IdPaciente);
+      }
+      if (Nombre.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Nombre);
+      }
+      if (Cedula.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Cedula);
+      }
+      if (FechaNacimiento.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(FechaNacimiento);
+      }
+      if (Telefono.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Telefono);
+      }
+      if (Direccion.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Direccion);
+      }
+      if (IdCentroMedico != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(IdCentroMedico);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1591,8 +1994,26 @@ namespace Microservicio_ConsultasMedicas.Protos {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (paciente_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Paciente);
+      if (IdPaciente != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(IdPaciente);
+      }
+      if (Nombre.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Nombre);
+      }
+      if (Cedula.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Cedula);
+      }
+      if (FechaNacimiento.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(FechaNacimiento);
+      }
+      if (Telefono.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Telefono);
+      }
+      if (Direccion.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Direccion);
+      }
+      if (IdCentroMedico != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(IdCentroMedico);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1606,11 +2027,26 @@ namespace Microservicio_ConsultasMedicas.Protos {
       if (other == null) {
         return;
       }
-      if (other.paciente_ != null) {
-        if (paciente_ == null) {
-          Paciente = new global::Microservicio_ConsultasMedicas.Protos.PacienteModel();
-        }
-        Paciente.MergeFrom(other.Paciente);
+      if (other.IdPaciente != 0) {
+        IdPaciente = other.IdPaciente;
+      }
+      if (other.Nombre.Length != 0) {
+        Nombre = other.Nombre;
+      }
+      if (other.Cedula.Length != 0) {
+        Cedula = other.Cedula;
+      }
+      if (other.FechaNacimiento.Length != 0) {
+        FechaNacimiento = other.FechaNacimiento;
+      }
+      if (other.Telefono.Length != 0) {
+        Telefono = other.Telefono;
+      }
+      if (other.Direccion.Length != 0) {
+        Direccion = other.Direccion;
+      }
+      if (other.IdCentroMedico != 0) {
+        IdCentroMedico = other.IdCentroMedico;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1631,11 +2067,32 @@ namespace Microservicio_ConsultasMedicas.Protos {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (paciente_ == null) {
-              Paciente = new global::Microservicio_ConsultasMedicas.Protos.PacienteModel();
-            }
-            input.ReadMessage(Paciente);
+          case 8: {
+            IdPaciente = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Nombre = input.ReadString();
+            break;
+          }
+          case 26: {
+            Cedula = input.ReadString();
+            break;
+          }
+          case 34: {
+            FechaNacimiento = input.ReadString();
+            break;
+          }
+          case 42: {
+            Telefono = input.ReadString();
+            break;
+          }
+          case 50: {
+            Direccion = input.ReadString();
+            break;
+          }
+          case 56: {
+            IdCentroMedico = input.ReadInt32();
             break;
           }
         }
@@ -1657,11 +2114,32 @@ namespace Microservicio_ConsultasMedicas.Protos {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (paciente_ == null) {
-              Paciente = new global::Microservicio_ConsultasMedicas.Protos.PacienteModel();
-            }
-            input.ReadMessage(Paciente);
+          case 8: {
+            IdPaciente = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Nombre = input.ReadString();
+            break;
+          }
+          case 26: {
+            Cedula = input.ReadString();
+            break;
+          }
+          case 34: {
+            FechaNacimiento = input.ReadString();
+            break;
+          }
+          case 42: {
+            Telefono = input.ReadString();
+            break;
+          }
+          case 50: {
+            Direccion = input.ReadString();
+            break;
+          }
+          case 56: {
+            IdCentroMedico = input.ReadInt32();
             break;
           }
         }

@@ -9,6 +9,7 @@ service UsuarioService{
     rpc RegistrarUsuario (UsuarioRegistro) returns (Usuario);
     rpc BorrarUsuario(UsuarioBorrar) returns (RespuestaVacia);
     rpc SeleccionarUsuarios(RespuestaVacia) returns (ListaUsuarios);
+    rpc ActualizarUsuario(UsuarioActualizar) returns (Usuario);
 }
 
 
@@ -28,6 +29,13 @@ message UsuarioLoginRespuesta {
 message UsuarioRegistro{
   string nombre_usuario = 1;
   string contrasenia = 2;
+  int32 empleadoId=3;
+}
+
+message UsuarioActualizar{
+    int32 id=1;
+  string nombre_usuario = 2;
+  string contrasenia = 3;
   int32 empleadoId=4;
 }
 

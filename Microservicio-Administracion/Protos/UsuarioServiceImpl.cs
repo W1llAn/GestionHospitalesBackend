@@ -251,5 +251,90 @@ namespace Microservicio_Administracion.Protos
             }
                 ;
         }
+        [Authorize(Policy ="TipoEmpleadoPolitica")]
+        public override async Task<Usuario> ActualizarUsuario(UsuarioActualizar request, ServerCallContext context)
+        {
+            var usuarioBuscar = await _context.Usuarios
+                .Include(u => u.empleado)
+                .FirstOrDefaultAsync(u => u.Id == request.Id);
+
+            if (usuarioBuscar == null)
+            {
+                throw new RpcException(new Status(StatusCode.NotFound, "El usuario no existe"));
+            }
+
+            var empleado = await _context.Empleados
+                .Include(e => e.Centro_Medico)
+                .Include(e => e.Tipo_Empleado)
+                .Include(e => e.Especialidad)
+                .FirstOrDefaultAsync(e => e.Id == request.EmpleadoId);
+
+            if (empleado == null)
+            {
+                throw new RpcException(new Status(StatusCode.NotFound, "El empleado no existe"));
+            }
+
+            // Validar que el empleado no esté asignado a otro usuario
+            var empleadoUsuarioBuscar = await _context.Usuarios
+                .FirstOrDefaultAsync(u => u.empleadoId == request.EmpleadoId && u.Id != usuarioBuscar.Id);
+
+            if (empleadoUsuarioBuscar != null)
+            {
+                throw new RpcException(new Status(StatusCode.AlreadyExists, "El empleado ya está asignado a otro usuario"));
+            }
+
+            // Actualizar directamente el usuario encontrado
+            usuarioBuscar.contraseña = request.Contrasenia;
+            usuarioBuscar.empleadoId = request.EmpleadoId;
+            usuarioBuscar.nombre_usuario = request.NombreUsuario;
+            usuarioBuscar.empleado = empleado;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                throw new RpcException(new Status(StatusCode.Internal, "Error al guardar el usuario."));
+            }
+
+            return new Usuario
+            {
+                Id = usuarioBuscar.Id,
+                NombreUsuario = usuarioBuscar.nombre_usuario,
+                Contrasenia = usuarioBuscar.contraseña,
+                EmpleadoId = usuarioBuscar.empleadoId,
+                Empleado = new Empleado
+                {
+                    Id = empleado.Id,
+                    Cedula = empleado.cedula,
+                    CentroMedicoID = empleado.centro_medicoID,
+                    Email = empleado.email,
+                    EspecialidadID = empleado.especialidadID,
+                    Nombre = empleado.nombre,
+                    Salario = empleado.salario,
+                    Telefono = empleado.telefono,
+                    TipoEmpleadoID = empleado.tipo_empleadoID,
+                    CentroMedico = new Centro_Medico
+                    {
+                        Id = empleado.Centro_Medico.Id,
+                        Ciudad = empleado.Centro_Medico.ciudad,
+                        Direccion = empleado.Centro_Medico.direccion,
+                        Nombre = empleado.Centro_Medico.nombre
+                    },
+                    Especialidad = new Especialidad
+                    {
+                        Id = empleado.Especialidad.Id,
+                        Especialidad_ = empleado.Especialidad.especialidad
+                    },
+                    TipoEmpleado = new Tipo_Empleado
+                    {
+                        Id = empleado.Tipo_Empleado.Id,
+                        Tipo = empleado.Tipo_Empleado.tipo
+                    }
+                }
+            };
+        }
+
     }
 }

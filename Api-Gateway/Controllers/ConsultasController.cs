@@ -23,71 +23,179 @@ namespace Api_Gateway.Controllers
         [HttpGet]
         public async Task<ActionResult<ConsultaList>> GetConsultas()
         {
+
             try
             {
-                var token = Request.Headers["Authorization"];
+                var token = Request.Headers["Authorization"].ToString();
                 var payload = leerPayload(token);
-                var centroMedico = payload.TryGetValue("CentroMedico", out var cm) ? cm.ToString() : null;
 
-                    var clave = $"centroMedico-{centroMedico}";
-                    var url = _configuration[$"grcp:{clave}"];
+                if (payload == null || !payload.TryGetValue("TipoEmpleado", out var tipoEmpleado))
+                {
+                    return BadRequest("Token inválido o sin tipo de empleado.");
+                }
 
-                var httpHandler = new HttpClientHandler
+                if (tipoEmpleado.ToString() == "Administrador")
+                {
+                    var consultas = new List<Consulta>();
+                    var centros = _configuration.GetSection("grcp:centrosMedicos").Get<List<string>>();
+
+                    foreach (var clave in centros)
+                    {
+                        var url = _configuration[$"grcp:{clave}"];
+                        if (string.IsNullOrEmpty(url)) continue;
+
+                        using var canal = GrpcChannel.ForAddress(url, new GrpcChannelOptions
+                        {
+                            HttpHandler = new HttpClientHandler
+                            {
+                                ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                            }
+                        });
+
+                        var cliente = new ConsultasService.ConsultasServiceClient(canal);
+                        try
+                        {
+                            var respuesta = await cliente.GetAllConsultasAsync(new ConsultasMedicas.EmptyResponse { }, callOptionsToken());
+                            if (respuesta?.Consultas != null)
+                            {
+                                consultas.AddRange(respuesta.Consultas);
+                            }
+                        }
+                        catch { continue; }
+                    }
+
+                    if (consultas.Count == 0)
+                        return NotFound("Consulta no encontrada.");
+
+                    return Ok(consultas);
+                }
+
+                // Si NO es administrador, consultar solo su centro
+                if (!payload.TryGetValue("CentroMedico", out var centroMedico))
+                {
+                    return BadRequest("No se pudo determinar el centro médico.");
+                }
+
+                var claveCentro = $"centroMedico-{centroMedico}";
+                var urlCentro = _configuration[$"grcp:{claveCentro}"];
+                if (string.IsNullOrEmpty(urlCentro))
+                {
+                    return BadRequest("Centro médico no configurado.");
+                }
+
+                var httpHandlerSolo = new HttpClientHandler
                 {
                     ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
                 };
-                using var canal = GrpcChannel.ForAddress(url, new GrpcChannelOptions
+
+                using var canalSolo = GrpcChannel.ForAddress(urlCentro, new GrpcChannelOptions { HttpHandler = httpHandlerSolo });
+                var clienteSolo = new ConsultasService.ConsultasServiceClient(canalSolo);
+
+                var consultasBuscar = await clienteSolo.GetAllConsultasAsync(new ConsultasMedicas.EmptyResponse { }, callOptionsToken());
+
+                if (consultasBuscar == null)
                 {
-                    HttpHandler = httpHandler
-                });
+                    return NotFound("Consulta no encontrada.");
+                }
+                return consultasBuscar;
 
-                var cliente = new ConsultasService.ConsultasServiceClient(canal);
-                    var consultaLista = await cliente.GetAllConsultasAsync(new ConsultasMedicas.EmptyResponse { }, callOptionsToken());                
-
-                return consultaLista;
             }
             catch (RpcException ex)
             {
                 return erroresGrpc(ex.StatusCode, ex.Status.Detail);
             }
-            catch (ArgumentNullException)
+            catch (Exception)
             {
-                return BadRequest("Sin Token");
+                return BadRequest("Error general.");
             }
+
         }
         [HttpGet("Paciente/{cedula}")]
         public async Task<ActionResult<ConsultaList>> GetConsultasCedula(string cedula)
         {
             try
             {
-                var token = Request.Headers["Authorization"];
+                var token = Request.Headers["Authorization"].ToString();
                 var payload = leerPayload(token);
-                var centroMedico = payload.TryGetValue("CentroMedico", out var cm) ? cm.ToString() : null;
 
-                var clave = $"centroMedico-{centroMedico}";
-                var url = _configuration[$"grcp:{clave}"];
+                if (payload == null || !payload.TryGetValue("TipoEmpleado", out var tipoEmpleado))
+                {
+                    return BadRequest("Token inválido o sin tipo de empleado.");
+                }
 
-                var httpHandler = new HttpClientHandler
+                if (tipoEmpleado.ToString() == "Administrador")
+                {
+                    var consultas = new List<Consulta>();
+                    var centros = _configuration.GetSection("grcp:centrosMedicos").Get<List<string>>();
+
+                    foreach (var clave in centros)
+                    {
+                        var url = _configuration[$"grcp:{clave}"];
+                        if (string.IsNullOrEmpty(url)) continue;
+
+                        using var canal = GrpcChannel.ForAddress(url, new GrpcChannelOptions
+                        {
+                            HttpHandler = new HttpClientHandler
+                            {
+                                ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                            }
+                        });
+
+                        var cliente = new ConsultasService.ConsultasServiceClient(canal);
+                        try
+                        {
+                            var respuesta = await cliente.GetConsultasReporteAsync(new ConsultaCedulaRequest {Cedula=cedula }, callOptionsToken());
+                            if (respuesta?.Consultas != null)
+                            {
+                                consultas.AddRange(respuesta.Consultas);
+                            }
+                        }
+                        catch { continue; }
+                    }
+
+                    if (consultas.Count == 0)
+                        return NotFound("Consulta no encontrada.");
+
+                    return Ok(consultas);
+                }
+
+                // Si NO es administrador, consultar solo su centro
+                if (!payload.TryGetValue("CentroMedico", out var centroMedico))
+                {
+                    return BadRequest("No se pudo determinar el centro médico.");
+                }
+
+                var claveCentro = $"centroMedico-{centroMedico}";
+                var urlCentro = _configuration[$"grcp:{claveCentro}"];
+                if (string.IsNullOrEmpty(urlCentro))
+                {
+                    return BadRequest("Centro médico no configurado.");
+                }
+
+                var httpHandlerSolo = new HttpClientHandler
                 {
                     ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
                 };
-                using var canal = GrpcChannel.ForAddress(url, new GrpcChannelOptions
+
+                using var canalSolo = GrpcChannel.ForAddress(urlCentro, new GrpcChannelOptions { HttpHandler = httpHandlerSolo });
+                var clienteSolo = new ConsultasService.ConsultasServiceClient(canalSolo);
+
+                var consultasBuscar =await clienteSolo.GetConsultasReporteAsync(new ConsultaCedulaRequest { Cedula = cedula }, callOptionsToken());
+
+                if (consultasBuscar == null)
                 {
-                    HttpHandler = httpHandler
-                });
+                    return NotFound("Consulta no encontrada.");
+                }
+                return consultasBuscar;
 
-                var cliente = new ConsultasService.ConsultasServiceClient(canal);
-                var consultaLista = await cliente.GetConsultasReporteAsync(new ConsultaCedulaRequest { Cedula=cedula}, callOptionsToken());
-
-                return consultaLista;
             }
             catch (RpcException ex)
             {
                 return erroresGrpc(ex.StatusCode, ex.Status.Detail);
             }
-            catch (ArgumentNullException)
+            catch (Exception)
             {
-                return BadRequest("Sin Token");
+                return BadRequest("Error general.");
             }
         }
 
@@ -96,34 +204,87 @@ namespace Api_Gateway.Controllers
         {
             try
             {
-                var token = Request.Headers["Authorization"];
+                var token = Request.Headers["Authorization"].ToString();
                 var payload = leerPayload(token);
-                var centroMedico = payload.TryGetValue("CentroMedico", out var cm) ? cm.ToString() : null;
 
-                var clave = $"centroMedico-{centroMedico}";
-                var url = _configuration[$"grcp:{clave}"];
+                if (payload == null || !payload.TryGetValue("TipoEmpleado", out var tipoEmpleado))
+                {
+                    return BadRequest("Token inválido o sin tipo de empleado.");
+                }
 
-                var httpHandler = new HttpClientHandler
+                if (tipoEmpleado.ToString() == "Administrador")
+                {
+                    var consultas = new List<Consulta>();
+                    var centros = _configuration.GetSection("grcp:centrosMedicos").Get<List<string>>();
+
+                    foreach (var clave in centros)
+                    {
+                        var url = _configuration[$"grcp:{clave}"];
+                        if (string.IsNullOrEmpty(url)) continue;
+
+                        using var canal = GrpcChannel.ForAddress(url, new GrpcChannelOptions
+                        {
+                            HttpHandler = new HttpClientHandler
+                            {
+                                ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                            }
+                        });
+
+                        var cliente = new ConsultasService.ConsultasServiceClient(canal);
+                        try
+                        {
+                            var respuesta = await cliente.GetConsultasByFechaAsync(new ConsultaFechaRequest { FechaDesde=desde.ToString(),FechaHasta=hasta.ToString()}, callOptionsToken());
+                            if (respuesta?.Consultas != null)
+                            {
+                                consultas.AddRange(respuesta.Consultas);
+                            }
+                        }
+                        catch { continue; }
+                    }
+
+                    if (consultas.Count == 0)
+                        return NotFound("Consulta no encontrada.");
+
+                    return Ok(consultas);
+                }
+
+                // Si NO es administrador, consultar solo su centro
+                if (!payload.TryGetValue("CentroMedico", out var centroMedico))
+                {
+                    return BadRequest("No se pudo determinar el centro médico.");
+                }
+
+                var claveCentro = $"centroMedico-{centroMedico}";
+                var urlCentro = _configuration[$"grcp:{claveCentro}"];
+                if (string.IsNullOrEmpty(urlCentro))
+                {
+                    return BadRequest("Centro médico no configurado.");
+                }
+
+                var httpHandlerSolo = new HttpClientHandler
                 {
                     ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
                 };
-                using var canal = GrpcChannel.ForAddress(url, new GrpcChannelOptions
+
+                using var canalSolo = GrpcChannel.ForAddress(urlCentro, new GrpcChannelOptions { HttpHandler = httpHandlerSolo });
+                var clienteSolo = new ConsultasService.ConsultasServiceClient(canalSolo);
+
+                var consultasBuscar = await clienteSolo.GetConsultasByFechaAsync(new ConsultaFechaRequest { FechaDesde = desde.ToString(), FechaHasta = hasta.ToString() }, callOptionsToken());
+
+                if (consultasBuscar == null)
                 {
-                    HttpHandler = httpHandler
-                });
+                    return NotFound("Consulta no encontrada.");
+                }
+                return consultasBuscar;
 
-                var cliente = new ConsultasService.ConsultasServiceClient(canal);
-                var consultaLista = await cliente.GetConsultasByFechaAsync(new ConsultaFechaRequest {FechaDesde=desde.ToString("yyyy/MM/dd"),FechaHasta=hasta.ToString("yyyy/MM/dd") }, callOptionsToken());
-
-                return consultaLista;
             }
             catch (RpcException ex)
             {
                 return erroresGrpc(ex.StatusCode, ex.Status.Detail);
             }
-            catch (ArgumentNullException)
+            catch (Exception)
             {
-                return BadRequest("Sin Token");
+                return BadRequest("Error general.");
             }
         }
 
@@ -133,69 +294,50 @@ namespace Api_Gateway.Controllers
         {
             try
             {
-                var token = Request.Headers["Authorization"];
-                var payload = leerPayload(token);
-                var centroMedico = payload.TryGetValue("CentroMedico", out var cm) ? cm.ToString() : null;
+                var ciudad = this.GetCentro_Medico(consulta.IdCentroMedico).Result.Ciudad;
 
-
-                var clave = $"centroMedico-{centroMedico}";
-                var url = _configuration[$"grcp:{clave}"];
+                var url = _configuration[$"grcp:centroMedico-{ciudad}"];
 
                 var httpHandler = new HttpClientHandler
                 {
                     ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
                 };
-                using var canal = GrpcChannel.ForAddress(url, new GrpcChannelOptions
-                {
-                    HttpHandler = httpHandler
-                });
-                var cliente = new ConsultasService.ConsultasServiceClient(canal);
-                var consultaCreada = await cliente.CreateConsultaAsync(consulta, callOptionsToken());
 
-                return consultaCreada;
+                using var canal = GrpcChannel.ForAddress(url, new GrpcChannelOptions { HttpHandler = httpHandler });
+                var cliente = new ConsultasService.ConsultasServiceClient(canal);
+
+                var respuesta = await cliente.CreateConsultaAsync(consulta, callOptionsToken());
+                return respuesta;
             }
             catch (RpcException ex)
             {
                 return erroresGrpc(ex.StatusCode, ex.Status.Detail);
             }
-            catch (ArgumentNullException)
-            {
-                return BadRequest("Sin Token");
-            }
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePaciente(int id)
+        public async Task<IActionResult> DeletePaciente(int id,UpdateConsultaRequest consulta)
         {
             try
             {
-                var token = Request.Headers["Authorization"];
-                var payload = leerPayload(token);
-                var centroMedico = payload.TryGetValue("CentroMedico", out var cm) ? cm.ToString() : null;
+                var ciudad = this.GetCentro_Medico(consulta.IdCentroMedico).Result.Ciudad;
 
-                var clave = $"centroMedico-{centroMedico}";
-                var url = _configuration[$"grcp:{clave}"];
+                var url = _configuration[$"grcp:centroMedico-{ciudad}"];
 
                 var httpHandler = new HttpClientHandler
                 {
                     ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
                 };
-                using var canal = GrpcChannel.ForAddress(url, new GrpcChannelOptions
-                {
-                    HttpHandler = httpHandler
-                });
-                var cliente = new ConsultasService.ConsultasServiceClient(canal);
-                var pacientesLista = await cliente.DeleteConsultaAsync(new DeleteConsultaRequest{IdConsultaMedica=id }, callOptionsToken());
 
+                using var canal = GrpcChannel.ForAddress(url, new GrpcChannelOptions { HttpHandler = httpHandler });
+                var cliente = new ConsultasService.ConsultasServiceClient(canal);
+
+                var respuesta = await cliente.DeleteConsultaAsync(new DeleteConsultaRequest { IdConsultaMedica= consulta.IdConsultaMedica }, callOptionsToken());
                 return Ok();
             }
             catch (RpcException ex)
             {
                 return erroresGrpc(ex.StatusCode, ex.Status.Detail);
-            }
-            catch (ArgumentNullException)
-            {
-                return BadRequest("Sin Token");
             }
         }
 
@@ -242,6 +384,28 @@ namespace Api_Gateway.Controllers
             var handler = new JwtSecurityTokenHandler();
             var jwt=handler.ReadJwtToken(token);
             return jwt.Payload;
+        }
+        private async Task<Centro_Medico> GetCentro_Medico(int id_centro_medico)
+        {
+            var httpHandler = new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+            };
+            using var canal = GrpcChannel.ForAddress(_configuration["grcp:administracion"], new GrpcChannelOptions
+            {
+                HttpHandler = httpHandler
+            });
+
+            var cliente = new AdministracionService.AdministracionServiceClient(canal);
+
+            var centro_Medico = await cliente.GetCentro_MedicoAsync(new Centro_MedicoGet { Id = id_centro_medico }, this.callOptionsToken());
+
+            if (centro_Medico == null)
+            {
+                throw new RpcException(new Status(Grpc.Core.StatusCode.NotFound, "Centro Medico no encontrado"));
+            }
+
+            return centro_Medico;
         }
     }
 }
