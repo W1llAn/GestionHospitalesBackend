@@ -21,7 +21,9 @@ namespace Microservicio_Autenticación.Auth
                 new Claim(JwtRegisteredClaimNames.Email, usuario.Empleado.Email.ToString()),
                 new Claim("Especialidad",usuario.Empleado.Especialidad.Especialidad_.ToString()),
                 new Claim("TipoEmpleado",usuario.Empleado.TipoEmpleado.Tipo.ToString()),
-                new Claim("CentroMedico",usuario.Empleado.CentroMedico.Ciudad.ToString())
+                new Claim("CentroMedico",usuario.Empleado.CentroMedico.Ciudad.ToString()),
+                new Claim("IdEmpleado",usuario.Empleado.Id.ToString()),
+                new Claim("idCentroMedico",usuario.Empleado.CentroMedicoID.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddMinutes(configuration.GetValue<int>("Jwt:TiempoExpira")),
                 SigningCredentials = credentials,
