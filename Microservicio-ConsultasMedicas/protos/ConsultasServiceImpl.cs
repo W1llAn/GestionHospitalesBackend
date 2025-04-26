@@ -149,6 +149,85 @@ namespace Microservicio_ConsultasMedicas.protos
 
             return consultaResponse;
         }
+        [Authorize]
+        public override async Task<Consulta> ActualizarConsulta(UpdateConsultaRequest request, ServerCallContext context)
+        {
+            // Validación básica
+            if (request.IdConsultaMedica == 0 ||
+                string.IsNullOrEmpty(request.Fecha) ||
+                string.IsNullOrEmpty(request.Hora) ||
+                string.IsNullOrEmpty(request.Motivo) ||
+                string.IsNullOrEmpty(request.Cedula))
+            {
+                throw new RpcException(new Status(StatusCode.InvalidArgument, "Datos de consulta incompletos"));
+            }
+
+            // Buscar la consulta existente
+            var consultaExistente = await _context.ConsultasMedicas
+                .Include(c => c.paciente)
+                .FirstOrDefaultAsync(c => c.id_consulta_medica == request.IdConsultaMedica);
+
+            if (consultaExistente == null)
+            {
+                throw new RpcException(new Status(StatusCode.NotFound, "Consulta médica no encontrada"));
+            }
+
+            // Buscar paciente por cédula
+            var paciente = await _context.Paciente
+                .FirstOrDefaultAsync(p => p.cedula == request.Cedula);
+
+            if (paciente == null)
+            {
+                throw new RpcException(new Status(StatusCode.NotFound, "Paciente no encontrado por la cédula"));
+            }
+
+            // Buscar el médico (empleado) relacionado
+            var empleadoResponse = GetEmpleado(request.IdMedico, context).Result;
+
+            if (empleadoResponse == null || empleadoResponse.Id == 0)
+            {
+                throw new RpcException(new Status(StatusCode.NotFound, "Médico no encontrado"));
+            }
+
+            // Actualizar los campos de la consulta
+            consultaExistente.fecha = DateOnly.Parse(request.Fecha);
+            consultaExistente.hora = request.Hora;
+            consultaExistente.motivo = request.Motivo;
+            consultaExistente.diagnostico = request.Diagnostico ?? "Sin diagnóstico";
+            consultaExistente.tratamiento = request.Tratamiento ?? "Sin tratamiento";
+            consultaExistente.id_empleado = request.IdMedico;
+            consultaExistente.paciente = paciente;
+            consultaExistente.id_centro_medico = request.IdCentroMedico;
+
+            // Guardar cambios
+            await _context.SaveChangesAsync();
+
+            // Devolver la respuesta
+            var consultaResponse = new Consulta
+            {
+                IdConsultaMedica = consultaExistente.id_consulta_medica,
+                Fecha = consultaExistente.fecha.ToString("yyyy-MM-dd"),
+                Hora = consultaExistente.hora,
+                Motivo = consultaExistente.motivo,
+                Diagnostico = consultaExistente.diagnostico,
+                Tratamiento = consultaExistente.tratamiento,
+                Paciente = new PacienteModel
+                {
+                    IdPaciente = paciente.id_paciente,
+                    Nombre = paciente.nombre,
+                    Cedula = paciente.cedula,
+                    FechaNacimiento = paciente.fecha_nacimiento.ToString("yyyy-MM-dd"),
+                    Telefono = paciente.telefono,
+                    Direccion = paciente.direccion,
+                    CentroMedico = this.GetCentro_Medico(paciente.id_centro_medico, context).Result
+                },
+                Empleado = empleadoResponse,
+                CentroMedico = this.GetCentro_Medico(consultaExistente.id_centro_medico, context).Result
+            };
+
+            return consultaResponse;
+        }
+
         //eliminar una consulta 
         [Authorize]
         public override async Task<ConsultasMedicas.EmptyResponse> DeleteConsulta(DeleteConsultaRequest request, ServerCallContext context)

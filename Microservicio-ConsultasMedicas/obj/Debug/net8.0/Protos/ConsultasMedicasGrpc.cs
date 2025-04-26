@@ -55,6 +55,8 @@ namespace ConsultasMedicas {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::ConsultasMedicas.CreateConsultaRequest> __Marshaller_CreateConsultaRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ConsultasMedicas.CreateConsultaRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::ConsultasMedicas.UpdateConsultaRequest> __Marshaller_UpdateConsultaRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ConsultasMedicas.UpdateConsultaRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::ConsultasMedicas.DeleteConsultaRequest> __Marshaller_DeleteConsultaRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ConsultasMedicas.DeleteConsultaRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::ConsultasMedicas.EmptyResponse> __Marshaller_EmptyResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ConsultasMedicas.EmptyResponse.Parser));
@@ -79,6 +81,14 @@ namespace ConsultasMedicas {
         __ServiceName,
         "CreateConsulta",
         __Marshaller_CreateConsultaRequest,
+        __Marshaller_Consulta);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::ConsultasMedicas.UpdateConsultaRequest, global::ConsultasMedicas.Consulta> __Method_ActualizarConsulta = new grpc::Method<global::ConsultasMedicas.UpdateConsultaRequest, global::ConsultasMedicas.Consulta>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "ActualizarConsulta",
+        __Marshaller_UpdateConsultaRequest,
         __Marshaller_Consulta);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
@@ -156,6 +166,18 @@ namespace ConsultasMedicas {
       }
 
       /// <summary>
+      ///Actualizar una consulta médica
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::ConsultasMedicas.Consulta> ActualizarConsulta(global::ConsultasMedicas.UpdateConsultaRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
       /// Eliminar una consulta por ID  ya esta
       /// </summary>
       /// <param name="request">The request received from the client.</param>
@@ -225,6 +247,7 @@ namespace ConsultasMedicas {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_GetConsultaCedula, serviceImpl.GetConsultaCedula)
           .AddMethod(__Method_CreateConsulta, serviceImpl.CreateConsulta)
+          .AddMethod(__Method_ActualizarConsulta, serviceImpl.ActualizarConsulta)
           .AddMethod(__Method_DeleteConsulta, serviceImpl.DeleteConsulta)
           .AddMethod(__Method_GetAllConsultas, serviceImpl.GetAllConsultas)
           .AddMethod(__Method_GetConsultasByFecha, serviceImpl.GetConsultasByFecha)
@@ -241,6 +264,7 @@ namespace ConsultasMedicas {
     {
       serviceBinder.AddMethod(__Method_GetConsultaCedula, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ConsultasMedicas.ConsultaCedulaRequest, global::ConsultasMedicas.Consulta>(serviceImpl.GetConsultaCedula));
       serviceBinder.AddMethod(__Method_CreateConsulta, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ConsultasMedicas.CreateConsultaRequest, global::ConsultasMedicas.Consulta>(serviceImpl.CreateConsulta));
+      serviceBinder.AddMethod(__Method_ActualizarConsulta, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ConsultasMedicas.UpdateConsultaRequest, global::ConsultasMedicas.Consulta>(serviceImpl.ActualizarConsulta));
       serviceBinder.AddMethod(__Method_DeleteConsulta, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ConsultasMedicas.DeleteConsultaRequest, global::ConsultasMedicas.EmptyResponse>(serviceImpl.DeleteConsulta));
       serviceBinder.AddMethod(__Method_GetAllConsultas, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ConsultasMedicas.EmptyResponse, global::ConsultasMedicas.ConsultaList>(serviceImpl.GetAllConsultas));
       serviceBinder.AddMethod(__Method_GetConsultasByFecha, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ConsultasMedicas.ConsultaFechaRequest, global::ConsultasMedicas.ConsultaList>(serviceImpl.GetConsultasByFecha));

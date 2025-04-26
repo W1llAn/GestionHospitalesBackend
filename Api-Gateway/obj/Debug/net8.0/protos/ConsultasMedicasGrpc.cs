@@ -55,6 +55,8 @@ namespace ConsultasMedicas {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::ConsultasMedicas.CreateConsultaRequest> __Marshaller_CreateConsultaRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ConsultasMedicas.CreateConsultaRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::ConsultasMedicas.UpdateConsultaRequest> __Marshaller_UpdateConsultaRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ConsultasMedicas.UpdateConsultaRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::ConsultasMedicas.DeleteConsultaRequest> __Marshaller_DeleteConsultaRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ConsultasMedicas.DeleteConsultaRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::ConsultasMedicas.EmptyResponse> __Marshaller_EmptyResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::ConsultasMedicas.EmptyResponse.Parser));
@@ -79,6 +81,14 @@ namespace ConsultasMedicas {
         __ServiceName,
         "CreateConsulta",
         __Marshaller_CreateConsultaRequest,
+        __Marshaller_Consulta);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::ConsultasMedicas.UpdateConsultaRequest, global::ConsultasMedicas.Consulta> __Method_ActualizarConsulta = new grpc::Method<global::ConsultasMedicas.UpdateConsultaRequest, global::ConsultasMedicas.Consulta>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "ActualizarConsulta",
+        __Marshaller_UpdateConsultaRequest,
         __Marshaller_Consulta);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
@@ -249,6 +259,54 @@ namespace ConsultasMedicas {
       public virtual grpc::AsyncUnaryCall<global::ConsultasMedicas.Consulta> CreateConsultaAsync(global::ConsultasMedicas.CreateConsultaRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_CreateConsulta, null, options, request);
+      }
+      /// <summary>
+      ///Editar una Consulta
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::ConsultasMedicas.Consulta ActualizarConsulta(global::ConsultasMedicas.UpdateConsultaRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ActualizarConsulta(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      ///Editar una Consulta
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::ConsultasMedicas.Consulta ActualizarConsulta(global::ConsultasMedicas.UpdateConsultaRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_ActualizarConsulta, null, options, request);
+      }
+      /// <summary>
+      ///Editar una Consulta
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::ConsultasMedicas.Consulta> ActualizarConsultaAsync(global::ConsultasMedicas.UpdateConsultaRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ActualizarConsultaAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      ///Editar una Consulta
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::ConsultasMedicas.Consulta> ActualizarConsultaAsync(global::ConsultasMedicas.UpdateConsultaRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_ActualizarConsulta, null, options, request);
       }
       /// <summary>
       /// Eliminar una consulta por ID  ya esta

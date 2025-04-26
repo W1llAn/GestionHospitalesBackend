@@ -359,6 +359,65 @@
         }
       }
     },
+    "/CentroMedico/Consultas/{idConsulta}": {
+      "put": {
+        "tags": [
+          "Consultas"
+        ],
+        "parameters": [
+          {
+            "name": "idConsulta",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsultasMedicas.UpdateConsultaRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsultasMedicas.UpdateConsultaRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsultasMedicas.UpdateConsultaRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsultasMedicas.Consulta"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsultasMedicas.Consulta"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsultasMedicas.Consulta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/CentroMedico/Consultas/{id}": {
       "delete": {
         "tags": [

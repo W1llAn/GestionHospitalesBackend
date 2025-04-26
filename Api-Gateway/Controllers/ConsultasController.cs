@@ -314,6 +314,51 @@ namespace Api_Gateway.Controllers
                 return erroresGrpc(ex.StatusCode, ex.Status.Detail);
             }
         }
+        [HttpPut("{idConsulta}")]
+        public async Task<ActionResult<Consulta>> PutConsultaMedica(int idConsulta, UpdateConsultaRequest consulta)
+        {
+            try
+            {
+                // Validar que el idConsulta del path y del body coincidan
+                if (idConsulta != consulta.IdConsultaMedica)
+                {
+                    return BadRequest(new { message = "El ID de la URL no coincide con el ID de la consulta." });
+                }
+
+                // Usar await, no .Result
+                var centroMedico = await this.GetCentro_Medico(consulta.IdCentroMedico);
+
+                if (centroMedico == null)
+                {
+                    return NotFound(new { message = "Centro médico no encontrado." });
+                }
+
+                var ciudad = centroMedico.Ciudad;
+
+                var url = _configuration[$"grcp:centroMedico-{ciudad}"];
+
+                var httpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+
+                using var canal = GrpcChannel.ForAddress(url, new GrpcChannelOptions { HttpHandler = httpHandler });
+                var cliente = new ConsultasService.ConsultasServiceClient(canal);
+
+                var respuesta = await cliente.ActualizarConsultaAsync(consulta, callOptionsToken());
+
+                return Ok(respuesta);
+            }
+            catch (RpcException ex)
+            {
+                return erroresGrpc(ex.StatusCode, ex.Status.Detail);
+            }
+            catch (Exception ex)
+            {
+                // Cualquier otro error que no sea gRPC
+                return StatusCode(500, new { message = ex.Message });
+            }
+        }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePaciente(int id,UpdateConsultaRequest consulta)

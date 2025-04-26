@@ -79,6 +79,9 @@ service ConsultasService {
     // Crear una nueva consulta ya esta
     rpc CreateConsulta(CreateConsultaRequest) returns (Consulta);
 
+    //Editar una Consulta
+    rpc ActualizarConsulta(UpdateConsultaRequest) returns (Consulta);
+
     // Eliminar una consulta por ID  ya esta
     rpc DeleteConsulta(DeleteConsultaRequest) returns (EmptyResponse);
 

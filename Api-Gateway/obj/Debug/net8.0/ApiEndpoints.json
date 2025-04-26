@@ -689,6 +689,37 @@
   },
   {
     "ContainingType": "Api_Gateway.Controllers.ConsultasController",
+    "Method": "PutConsultaMedica",
+    "RelativePath": "CentroMedico/Consultas/{idConsulta}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idConsulta",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "consulta",
+        "Type": "ConsultasMedicas.UpdateConsultaRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ConsultasMedicas.Consulta",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Api_Gateway.Controllers.ConsultasController",
     "Method": "GetConsultasFecha",
     "RelativePath": "CentroMedico/Consultas/Fechas",
     "HttpMethod": "GET",
