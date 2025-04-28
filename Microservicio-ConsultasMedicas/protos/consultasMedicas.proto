@@ -15,9 +15,10 @@ message Consulta {
     string diagnostico = 5;
     string tratamiento = 6;
     
+    Admin.Centro_Medico centroMedico=7;
     // Relaciones con Empleado (médico) y Paciente
-    Admin.Empleado empleado = 7; // Viene del microservicio de administración
-    paciente.PacienteModel paciente = 8; // Viene del microservicio de consultas
+    Admin.Empleado empleado = 8; // Viene del microservicio de administración
+    paciente.PacienteModel paciente = 9; // Viene del microservicio de consultas
 }
 // Solicitud para buscar consulta por cédula del paciente
 message ConsultaCedulaRequest {
@@ -34,6 +35,19 @@ message CreateConsultaRequest {
     string tratamiento = 5;
     int32 id_medico = 6; // ID del médico (Empleado)
     string cedula = 7;
+    int32 id_centro_medico=8;
+}
+
+message UpdateConsultaRequest {
+    int32 id_consulta_medica = 1;
+    string fecha = 2;
+    string hora = 3;
+    string motivo = 4;
+    string diagnostico = 5;
+    string tratamiento = 6;
+    int32 id_medico = 7; // ID del médico (Empleado)
+    string cedula = 8;
+    int32 id_centro_medico=9;
 }
 
 // Solicitud para eliminar una consulta
@@ -64,6 +78,9 @@ service ConsultasService {
 
     // Crear una nueva consulta ya esta
     rpc CreateConsulta(CreateConsultaRequest) returns (Consulta);
+
+    //Actualizar una consulta médica
+    rpc ActualizarConsulta(UpdateConsultaRequest) returns (Consulta);
 
     // Eliminar una consulta por ID  ya esta
     rpc DeleteConsulta(DeleteConsultaRequest) returns (EmptyResponse);

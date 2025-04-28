@@ -1,0 +1,3 @@
+obj\Debug\net8.0\protos/Login.cs \
+obj\Debug\net8.0\protos/LoginGrpc.cs: Protos/UsuarioService.proto\
+ protos/Login.proto

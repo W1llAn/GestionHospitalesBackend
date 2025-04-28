@@ -47,16 +47,8 @@ namespace Microservicio_ConsultasMedicas.protos
             }
 
             // Obtener el médico (empleado) desde el microservicio de administración
-            var authHeader = context.RequestHeaders.FirstOrDefault(h=>h.Key=="authorization");
-            var token= authHeader?.Value;
-            var empleadoRequest = new EmpleadoGet { Id = consulta.id_empleado };
-            using var canal = GrpcChannel.ForAddress(_config["grcp:administracion"]);
-            var cliente = new AdministracionService.AdministracionServiceClient(canal);
-            var metadata = new Metadata {
-                { "Authorization",token}
-            };
-            var empleadoResponse = await cliente.GetEmpleadoAsync(new EmpleadoGet { Id = consulta.id_empleado },new CallOptions(headers: metadata));
 
+            var empleadoResponse = GetEmpleado(consulta.id_empleado, context).Result;
             if (empleadoResponse == null)
             {
                 throw new RpcException(new Status(StatusCode.NotFound, "Médico no encontrado"));
@@ -78,9 +70,11 @@ namespace Microservicio_ConsultasMedicas.protos
                     Cedula = paciente.cedula,
                     FechaNacimiento = paciente.fecha_nacimiento.ToString("yyyy-MM-dd"),
                     Telefono = paciente.telefono,
-                    Direccion = paciente.direccion
+                    Direccion = paciente.direccion,
+                    CentroMedico = this.GetCentro_Medico(paciente.id_centro_medico, context).Result
                 },
-                Empleado = empleadoResponse
+                Empleado = empleadoResponse,
+                CentroMedico = this.GetCentro_Medico(consulta.id_centro_medico, context).Result
             };
 
             return consultaResponse;
@@ -104,15 +98,8 @@ namespace Microservicio_ConsultasMedicas.protos
                 throw new RpcException(new Status(StatusCode.NotFound, "Paciente no encontrado por la cédula"));
             }
 
-            // Obtener el médico desde el microservicio de administración
-            var authHeader = context.RequestHeaders.FirstOrDefault(h => h.Key == "authorization");
-            var token = authHeader?.Value;
-            using var canal = GrpcChannel.ForAddress(_config["grcp:administracion"]);
-            var cliente = new AdministracionService.AdministracionServiceClient(canal);
-            var metadata = new Metadata {
-                { "Authorization",token}
-            };
-            var empleadoResponse = await cliente.GetEmpleadoAsync(new EmpleadoGet { Id = request.IdMedico }, new CallOptions(headers: metadata));
+
+            var empleadoResponse= GetEmpleado(request.IdMedico, context).Result;
 
             if (empleadoResponse == null || empleadoResponse.Id == 0)
             {
@@ -127,7 +114,8 @@ namespace Microservicio_ConsultasMedicas.protos
                 diagnostico: request.Diagnostico ?? "Sin diagnóstico",
                 tratamiento: request.Tratamiento ?? "Sin tratamiento",
                 id_empleado: request.IdMedico,
-                paciente: paciente
+                paciente: paciente,
+                id_centroMedico:request.IdCentroMedico
             );
 
 
@@ -152,13 +140,94 @@ namespace Microservicio_ConsultasMedicas.protos
                     Cedula = paciente.cedula,
                     FechaNacimiento = paciente.fecha_nacimiento.ToString("yyyy-MM-dd"),
                     Telefono = paciente.telefono,
-                    Direccion = paciente.direccion
+                    Direccion = paciente.direccion,
+                    CentroMedico = this.GetCentro_Medico(paciente.id_centro_medico, context).Result
                 },
-                Empleado = empleadoResponse
+                Empleado = empleadoResponse,
+                CentroMedico = this.GetCentro_Medico(nuevaConsulta.id_centro_medico, context).Result
             };
 
             return consultaResponse;
         }
+        [Authorize]
+        public override async Task<Consulta> ActualizarConsulta(UpdateConsultaRequest request, ServerCallContext context)
+        {
+            // Validación básica
+            if (request.IdConsultaMedica == 0 ||
+                string.IsNullOrEmpty(request.Fecha) ||
+                string.IsNullOrEmpty(request.Hora) ||
+                string.IsNullOrEmpty(request.Motivo) ||
+                string.IsNullOrEmpty(request.Cedula))
+            {
+                throw new RpcException(new Status(StatusCode.InvalidArgument, "Datos de consulta incompletos"));
+            }
+
+            // Buscar la consulta existente
+            var consultaExistente = await _context.ConsultasMedicas
+                .Include(c => c.paciente)
+                .FirstOrDefaultAsync(c => c.id_consulta_medica == request.IdConsultaMedica);
+
+            if (consultaExistente == null)
+            {
+                throw new RpcException(new Status(StatusCode.NotFound, "Consulta médica no encontrada"));
+            }
+
+            // Buscar paciente por cédula
+            var paciente = await _context.Paciente
+                .FirstOrDefaultAsync(p => p.cedula == request.Cedula);
+
+            if (paciente == null)
+            {
+                throw new RpcException(new Status(StatusCode.NotFound, "Paciente no encontrado por la cédula"));
+            }
+
+            // Buscar el médico (empleado) relacionado
+            var empleadoResponse = GetEmpleado(request.IdMedico, context).Result;
+
+            if (empleadoResponse == null || empleadoResponse.Id == 0)
+            {
+                throw new RpcException(new Status(StatusCode.NotFound, "Médico no encontrado"));
+            }
+
+            // Actualizar los campos de la consulta
+            consultaExistente.fecha = DateOnly.Parse(request.Fecha);
+            consultaExistente.hora = request.Hora;
+            consultaExistente.motivo = request.Motivo;
+            consultaExistente.diagnostico = request.Diagnostico ?? "Sin diagnóstico";
+            consultaExistente.tratamiento = request.Tratamiento ?? "Sin tratamiento";
+            consultaExistente.id_empleado = request.IdMedico;
+            consultaExistente.paciente = paciente;
+            consultaExistente.id_centro_medico = request.IdCentroMedico;
+
+            // Guardar cambios
+            await _context.SaveChangesAsync();
+
+            // Devolver la respuesta
+            var consultaResponse = new Consulta
+            {
+                IdConsultaMedica = consultaExistente.id_consulta_medica,
+                Fecha = consultaExistente.fecha.ToString("yyyy-MM-dd"),
+                Hora = consultaExistente.hora,
+                Motivo = consultaExistente.motivo,
+                Diagnostico = consultaExistente.diagnostico,
+                Tratamiento = consultaExistente.tratamiento,
+                Paciente = new PacienteModel
+                {
+                    IdPaciente = paciente.id_paciente,
+                    Nombre = paciente.nombre,
+                    Cedula = paciente.cedula,
+                    FechaNacimiento = paciente.fecha_nacimiento.ToString("yyyy-MM-dd"),
+                    Telefono = paciente.telefono,
+                    Direccion = paciente.direccion,
+                    CentroMedico = this.GetCentro_Medico(paciente.id_centro_medico, context).Result
+                },
+                Empleado = empleadoResponse,
+                CentroMedico = this.GetCentro_Medico(consultaExistente.id_centro_medico, context).Result
+            };
+
+            return consultaResponse;
+        }
+
         //eliminar una consulta 
         [Authorize]
         public override async Task<ConsultasMedicas.EmptyResponse> DeleteConsulta(DeleteConsultaRequest request, ServerCallContext context)
@@ -210,21 +279,12 @@ namespace Microservicio_ConsultasMedicas.protos
             // Crear la lista de mensajes Consulta para la respuesta
             var consultaResponses = new List<Consulta>();
 
-            // Configurar el canal gRPC para el microservicio de administración
-            var authHeader = context.RequestHeaders.FirstOrDefault(h => h.Key == "authorization");
-            var token = authHeader?.Value;
-            using var canal = GrpcChannel.ForAddress(_config["grcp:administracion"]);
-            var cliente = new AdministracionService.AdministracionServiceClient(canal);
-            var metadata = new Metadata {
-                { "Authorization",token}
-            };
 
             // Mapear cada consulta de la base de datos a un mensaje Consulta del proto
             foreach (var consulta in consultas)
             {
                 // Obtener el médico (empleado) desde el microservicio de administración
-                var empleadoRequest = new EmpleadoGet { Id = consulta.id_empleado };
-                var empleadoResponse = await cliente.GetEmpleadoAsync(empleadoRequest, new CallOptions(headers: metadata));
+                var empleadoResponse = GetEmpleado(consulta.id_empleado, context).Result;
 
                 if (empleadoResponse == null || empleadoResponse.Id == 0)
                 {
@@ -252,9 +312,11 @@ namespace Microservicio_ConsultasMedicas.protos
                         Cedula = consulta.paciente.cedula,
                         FechaNacimiento = consulta.paciente.fecha_nacimiento.ToString("yyyy-MM-dd"),
                         Telefono = consulta.paciente.telefono,
-                        Direccion = consulta.paciente.direccion
+                        Direccion = consulta.paciente.direccion,
+                        CentroMedico = this.GetCentro_Medico(consulta.paciente.id_centro_medico, context).Result
                     },
-                    Empleado = empleadoResponse
+                    Empleado = empleadoResponse,
+                    CentroMedico=this.GetCentro_Medico(consulta.id_centro_medico,context).Result
                 };
 
                 consultaResponses.Add(consultaResponse);
@@ -281,21 +343,13 @@ namespace Microservicio_ConsultasMedicas.protos
             // Crear la lista de mensajes Consulta para la respuesta
             var consultaResponses = new List<Consulta>();
 
-            // Configurar el canal gRPC para el microservicio de administración
-            var authHeader = context.RequestHeaders.FirstOrDefault(h => h.Key == "authorization");
-            var token = authHeader?.Value;
-            using var canal = GrpcChannel.ForAddress(_config["grcp:administracion"]);
-            var cliente = new AdministracionService.AdministracionServiceClient(canal);
-            var metadata = new Metadata {
-                { "Authorization",token}
-            };
+
 
             // Mapear cada consulta de la base de datos a un mensaje Consulta del proto
             foreach (var consulta in consultas)
             {
                 // Obtener el médico (empleado) desde el microservicio de administración
-                var empleadoRequest = new EmpleadoGet { Id = consulta.id_empleado };
-                var empleadoResponse = await cliente.GetEmpleadoAsync(empleadoRequest, new CallOptions(headers: metadata));
+                var empleadoResponse = GetEmpleado(consulta.id_empleado, context).Result;
 
                 if (empleadoResponse == null || empleadoResponse.Id == 0)
                 {
@@ -323,9 +377,11 @@ namespace Microservicio_ConsultasMedicas.protos
                         Cedula = consulta.paciente.cedula,
                         FechaNacimiento = consulta.paciente.fecha_nacimiento.ToString("yyyy-MM-dd"),
                         Telefono = consulta.paciente.telefono,
-                        Direccion = consulta.paciente.direccion
+                        Direccion = consulta.paciente.direccion,
+                        CentroMedico = this.GetCentro_Medico(consulta.paciente.id_centro_medico, context).Result
                     },
-                    Empleado = empleadoResponse
+                    Empleado = empleadoResponse,
+                    CentroMedico = this.GetCentro_Medico(consulta.id_centro_medico, context).Result
                 };
 
                 consultaResponses.Add(consultaResponse);
@@ -340,6 +396,7 @@ namespace Microservicio_ConsultasMedicas.protos
             // Obtener todas las consultas de la base de datos, incluyendo los pacientes relacionados
             var consultas = await _context.ConsultasMedicas
                 .Include(c => c.paciente) // Incluir el paciente relacionado para evitar consultas adicionales
+                .Where(c=>c.id_consulta_medica==request.Id)
                 .ToListAsync();
 
             // Si no hay consultas, devolver una lista vacía
@@ -352,20 +409,12 @@ namespace Microservicio_ConsultasMedicas.protos
             var consultaResponses = new List<Consulta>();
 
             // Configurar el canal gRPC para el microservicio de administración
-            var authHeader = context.RequestHeaders.FirstOrDefault(h => h.Key == "authorization");
-            var token = authHeader?.Value;
-            using var canal = GrpcChannel.ForAddress(_config["grcp:administracion"]);
-            var cliente = new AdministracionService.AdministracionServiceClient(canal);
-            var metadata = new Metadata {
-                { "Authorization",token}
-            };
 
             // Mapear cada consulta de la base de datos a un mensaje Consulta del proto
             foreach (var consulta in consultas)
             {
                 // Obtener el médico (empleado) desde el microservicio de administración
-                var empleadoRequest = new EmpleadoGet { Id = consulta.id_empleado };
-                var empleadoResponse = await cliente.GetEmpleadoAsync(empleadoRequest, new CallOptions(headers: metadata));
+                var empleadoResponse = GetEmpleado(consulta.id_empleado, context).Result;
 
                 if (empleadoResponse == null || empleadoResponse.Id == 0)
                 {
@@ -393,14 +442,13 @@ namespace Microservicio_ConsultasMedicas.protos
                         Cedula = consulta.paciente.cedula,
                         FechaNacimiento = consulta.paciente.fecha_nacimiento.ToString("yyyy-MM-dd"),
                         Telefono = consulta.paciente.telefono,
-                        Direccion = consulta.paciente.direccion
+                        Direccion = consulta.paciente.direccion,
+                        CentroMedico = this.GetCentro_Medico(consulta.paciente.id_centro_medico, context).Result
                     },
-                    Empleado = empleadoResponse
+                    Empleado = empleadoResponse,
+                    CentroMedico = this.GetCentro_Medico(consulta.id_centro_medico, context).Result
                 };
-                if (consultaResponse.Empleado.CentroMedicoID==request.Id) 
-                {
                     consultaResponses.Add(consultaResponse);
-                }
 
             }
 
@@ -425,21 +473,13 @@ namespace Microservicio_ConsultasMedicas.protos
             // Crear la lista de mensajes Consulta para la respuesta
             var consultaResponses = new List<Consulta>();
 
-            // Configurar el canal gRPC para el microservicio de administración
-            var authHeader = context.RequestHeaders.FirstOrDefault(h => h.Key == "authorization");
-            var token = authHeader?.Value;
-            using var canal = GrpcChannel.ForAddress(_config["grcp:administracion"]);
-            var cliente = new AdministracionService.AdministracionServiceClient(canal);
-            var metadata = new Metadata {
-                { "Authorization",token}
-            };
 
             // Mapear cada consulta de la base de datos a un mensaje Consulta del proto
             foreach (var consulta in consultas)
             {
                 // Obtener el médico (empleado) desde el microservicio de administración
                 var empleadoRequest = new EmpleadoGet { Id = consulta.id_empleado };
-                var empleadoResponse = await cliente.GetEmpleadoAsync(empleadoRequest, new CallOptions(headers: metadata));
+                var empleadoResponse = GetEmpleado(consulta.id_empleado, context).Result;
 
                 if (empleadoResponse == null || empleadoResponse.Id == 0)
                 {
@@ -467,9 +507,11 @@ namespace Microservicio_ConsultasMedicas.protos
                         Cedula = consulta.paciente.cedula,
                         FechaNacimiento = consulta.paciente.fecha_nacimiento.ToString("yyyy-MM-dd"),
                         Telefono = consulta.paciente.telefono,
-                        Direccion = consulta.paciente.direccion
+                        Direccion = consulta.paciente.direccion,
+                        CentroMedico = this.GetCentro_Medico(consulta.paciente.id_centro_medico, context).Result
                     },
-                    Empleado = empleadoResponse
+                    Empleado = empleadoResponse,
+                    CentroMedico = this.GetCentro_Medico(consulta.id_centro_medico, context).Result
                 };
 
                 consultaResponses.Add(consultaResponse);
@@ -478,5 +520,69 @@ namespace Microservicio_ConsultasMedicas.protos
             // Devolver la lista de consultas en un mensaje ConsultaList
             return new ConsultaList { Consultas = { consultaResponses } };
         }
+        private async Task<Empleado> GetEmpleado(int idEmpleado, ServerCallContext context)
+        {
+            var httpHandler = new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+            };
+
+            using var canal = GrpcChannel.ForAddress(_config["grcp:administracion"], new GrpcChannelOptions
+            {
+                HttpHandler = httpHandler
+            });
+
+            var cliente = new AdministracionService.AdministracionServiceClient(canal);
+            var empleado = await cliente.GetEmpleadoAsync(new EmpleadoGet { Id = idEmpleado }, callOptionsToken(context));
+
+            if (empleado == null || empleado.Id == 0)
+            {
+                throw new RpcException(new Status(StatusCode.NotFound, "Médico no encontrado"));
+            }
+
+            return empleado;
+        }
+
+        private CallOptions callOptionsToken(ServerCallContext context)
+        {
+            var authHeader = context.RequestHeaders.FirstOrDefault(h => h.Key == "authorization");
+            var token = authHeader?.Value;
+
+            if (string.IsNullOrEmpty(token))
+            {
+                throw new RpcException(new Status(StatusCode.Unauthenticated, "Token no proporcionado"));
+            }
+
+            var metadata = new Metadata
+    {
+        { "Authorization", token }
+    };
+
+            return new CallOptions(headers: metadata);
+        }
+
+        private async Task<Centro_Medico> GetCentro_Medico(int id_centro_medico, ServerCallContext context)
+        {
+            var httpHandler = new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+            };
+            using var canal = GrpcChannel.ForAddress(_config["grcp:administracion"], new GrpcChannelOptions
+            {
+                HttpHandler = httpHandler
+            });
+
+            var cliente = new AdministracionService.AdministracionServiceClient(canal);
+
+            var centro_Medico = await cliente.GetCentro_MedicoAsync(new Centro_MedicoGet { Id = id_centro_medico }, this.callOptionsToken(context));
+
+            if (centro_Medico == null)
+            {
+                throw new RpcException(new Status(StatusCode.NotFound, "Centro Medico no encontrado"));
+            }
+
+            return centro_Medico;
+        }
+
     }
 }
